@@ -10,13 +10,14 @@
 
 </script>
 
-<style scoped>
+<style lang='less'>
 	.head-img {
 		width:100%;
 		height:285px;
 		position: relative;
 		background:url('../assets/bg.jpg');
 		background-size: cover;
+		
 		.pic {
 			position: absolute;
 			width: 140px;

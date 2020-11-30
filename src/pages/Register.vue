@@ -1,10 +1,10 @@
 <template>
-	<div class="change-pass">
+	<div class="register">
 		<HeadImg/>
-		<div class="c-title">
-			<p>忘记密码</p>			
+		<div class="r-title">
+			<p>注册账号</p>			
 		</div>
-		<div class="change">
+		<div class="reg">
 			<el-form
 			:ref="ruleForm"
 			:model="ruleForm"
@@ -32,10 +32,10 @@
 				<el-form-item class="input-sty" label="确认密码" prop="new">
 					<el-input v-model="ruleForm.new" placeholder="请确认密码"></el-input>
 				</el-form-item>
-					<el-button class="button" type="primary">修改密码</el-button>	
+					<el-button class="button" type="primary">注册账号</el-button>	
 			</el-form>
+			
 		</div>
-	</div>
 	</div>
 </template>
 
@@ -93,7 +93,7 @@
 			}
 		},
 		methods:{
-			changeWay(show,status){	
+			regWay(show,status){	
 				if (status == 1) {
 					this.show = true
 				}
@@ -106,8 +106,8 @@
 </script>
 
 <style lang='less'>
-	.change-pass {
-		.c-title {
+	.register {
+		.r-title {
 			text-align: center;
 			height: 31px;
 			font-size: 32px;
@@ -121,7 +121,7 @@
 				border-bottom: solid 1px #E4E4E4;
 			}
 		}
-		.change {
+		.reg {
 			margin: 130px 55px 0 55px;
 			.el-form-item__label {
 				font-size: 23px !important;

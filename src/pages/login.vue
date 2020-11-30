@@ -45,7 +45,7 @@
 					<div  style="display: flex;justify-content: space-between;">
 						<el-form-item class="input-sty code-sty" 
 						label="验证码" 
-						prop="passwd" >
+						prop="code" >
 							<el-input type="password" 
 							autocomplete="off" 
 							v-model="ruleForm.code" 
@@ -58,8 +58,8 @@
 			</div>
 		</div>
 		<div class="forget-pass">
-			<a href="">忘记密码?</a>
-			<a href="">快速注册</a>
+			<router-link to='/change-pass'>忘记密码?</router-link>
+			<router-link to='/reg'>快速注册</router-link>
 		</div>
 	</div>
 </template>
@@ -79,6 +79,8 @@
 				ruleForm: {
 					user: '',
 					passwd: '',
+					code:'',
+					phone:'',
 				},
 				rules: {
 					user: [{
@@ -200,6 +202,7 @@
 				font-weight: bold;
 				text-decoration: underline;
 				color: #C12BE2;
+				cursor: pointer;
 			}
 		}
 	}

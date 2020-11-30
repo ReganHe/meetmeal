@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '../pages/login.vue'
 import ChPass from '../pages/ChPass.vue'
 import Pay from '../pages/Pay.vue'
+import Register from '../pages/Register.vue'
 
 Vue.use(Router)
 
@@ -35,8 +36,16 @@ const router = new Router({
 			}
 		},
 		{
-			path: '/chpass',
+			path: '/change-pass',
 			component: ChPass,
+			meta: {
+				requireAuth: false,
+				title: 'pay'
+			}
+		},
+		{
+			path: '/reg',
+			component: Register,
 			meta: {
 				requireAuth: false,
 				title: 'pay'
