@@ -19,7 +19,7 @@ const router = new Router({
 		},
 		{
 			path: '/ch-pass',
-			name: 'ch-pass'
+			name: 'ch-pass',
 			component: ChPass,
 			meta: {
 				requireAuth: false,
@@ -29,6 +29,14 @@ const router = new Router({
 		{
 			path: '/pay',
 			component: Pay,
+			meta: {
+				requireAuth: false,
+				title: 'pay'
+			}
+		},
+		{
+			path: '/chpass',
+			component: ChPass,
 			meta: {
 				requireAuth: false,
 				title: 'pay'

@@ -68,8 +68,8 @@
 	import HeadImg from '../components/HeadImg.vue'
 	
 	export default {
-		comments:{
-			HeadImg,			
+		components:{
+			HeadImg,
 		},
 		data () {
 			return {
