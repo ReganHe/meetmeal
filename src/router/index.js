@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Home from '../pages/Home.vue'
 import Login from '../pages/login.vue'
 import ChPass from '../pages/ChPass.vue'
 import Pay from '../pages/Pay.vue'
@@ -12,10 +13,10 @@ const router = new Router({
 	routes:[
 		{
 			path: '/',
-			component: Login,
+			component: Home,
 			meta: {
 				requireAuth: false,
-				title: 'login'
+				title: 'home'
 			}
 		},
 		{
