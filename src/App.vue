@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<login/>
+		<router-view />
 	</div>
 </template>
 
@@ -10,7 +10,7 @@
 	export default{
 		name:'app',
 		components:{
-			login,
+
 		}
 	}
 </script>

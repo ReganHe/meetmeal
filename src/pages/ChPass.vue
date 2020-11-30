@@ -1,6 +1,10 @@
 <template>
 	<div class="login">
-		<HeadImg/>
+		<div class="head-img">
+			<div class="pic">
+				<img src="../assets/999.jpg" alt="">
+			</div>
+		</div>
 		<div class="ch-type">
 			<div @click="changeWay(show,s1)" :class="{'active':show}"><span>账号密码登录</span></div>
 			<div @click="changeWay(show,s2)" :class="{'active':!show}"><span>手机验证码登录</span></div>
@@ -65,12 +69,7 @@
 </template>
 
 <script>
-	import HeadImg from '../components/HeadImg.vue'
-	
 	export default {
-		comments:{
-			HeadImg,			
-		},
 		data () {
 			return {
 				show:'true',
@@ -119,6 +118,27 @@
 
 <style lang='less'>
 	.login {
+		.head-img {
+			width:100%;
+			height:285px;
+			position: relative;
+			background:url('../assets/bg.jpg');
+			background-size: cover;
+			.pic {
+				position: absolute;
+				width: 140px;
+				height: 140px;
+				overflow: hidden;
+				bottom: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				border: solid 6px #FEDC70;
+				border-radius: 15px;
+			}
+			img {
+				width: 100%;
+			}
+		}
 		.ch-type {
 			display: flex;
 			text-align: center;
