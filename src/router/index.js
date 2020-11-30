@@ -10,7 +10,7 @@ const router = new Router({
 	mode:'history',
 	routes:[
 		{
-			path: '/login',
+			path: '/',
 			component: Login,
 			meta: {
 				requireAuth: false,
@@ -19,7 +19,8 @@ const router = new Router({
 		},
 		{
 			path: '/ch-pass',
-			component: ch-pass,
+			name: 'ch-pass'
+			component: ChPass,
 			meta: {
 				requireAuth: false,
 				title: 'ch-pass'
