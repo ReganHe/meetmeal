@@ -35,6 +35,7 @@
         </div>
         <router-link to="/home" v-if="pageType == 4">
         	<img src="../assets/home_active.jpg" alt="home">
+			<div class="h1"></div>
         	<div calss="bar-title">订单</div>
         </router-link>
       </li>
