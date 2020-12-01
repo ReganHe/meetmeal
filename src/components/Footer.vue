@@ -71,7 +71,7 @@
   }
 </script>
 
-<style>
+<style lang='less'>
 
 .footer {
 	margin: 0;
@@ -80,11 +80,11 @@
 	bottom: 0;
 	width: 100%;
 	max-width: 1500px;
-	min-width: 500px;
-	padding-top: 10px;
+	min-width: 350px;
+	padding-top: 1.3vw;
 	background: url(../assets/footer_bg.png) no-repeat;
 	background-size: 100% 100%;
-	background-position: -8px;
+	background-position: -0.5vw;
 }
 .footer img {
   max-width: 100%;
@@ -96,26 +96,38 @@
   display: block;
 }
 .footer ul .bar-title {
-	font-size: 22px;
+	font-size: 2.93vw;
 	font-weight: 400;
 	color: #C5C5C5;
-	line-height: 9px;
+	line-height: 1.2vw;
 }
 
 .footer ul .h1 {
-	height: 12px;
+	height: 1.6vw;
 }
 
 .footer ul {
-	padding: 0 50px;
+	padding: 0 6.66vw;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   text-align: center;
   list-style-type:none;
-  font-size: 22px;
+  font-size: 2.93vw;
   font-weight: 400;
   color: #C5C5C5;
-  line-height: 9px;
+  height: 12.67vw;
+  line-height: 1.2vw;
+  li {
+	  width: 6.3vw;
+	  height: 10vw;
+  }
+  .add {
+	  width: 15vw;
+	  height: 15vw;
+  }
+  a {
+  	text-decoration: none;
+  }
 }
 </style>
