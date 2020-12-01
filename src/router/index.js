@@ -1,12 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../pages/Home.vue'
-import Login from '../pages/login.vue'
-import ChPass from '../pages/ChPass.vue'
-import Pay from '../pages/Pay.vue'
-import Register from '../pages/Register.vue'
 
 Vue.use(Router)
+
+const files = require.context('../pages', false, /\.vue$/);
+let pages = [],rules = [];
+
+files.keys().forEach(key => {
+  pages[key.replace(/(\.\/|\.vue)/g, '')] = files(key).default;
+});
+
+Object.keys(pages).forEach(item => {
+  rules.push({
+    path: '/'+item.replace(/[A-Z]/g, function(word){return '-'+word;}).replace('-', '')
+		.toLowerCase(),
+    component: pages[item],
+	meta: {
+		requireAuth: false,
+		title: item
+	}
+  })
+});
 
 const router = new Router({
 	mode:'history',
@@ -19,39 +34,7 @@ const router = new Router({
 				title: 'home'
 			}
 		},
-		{
-			path: '/ch-pass',
-			name: 'ch-pass',
-			component: ChPass,
-			meta: {
-				requireAuth: false,
-				title: 'ch-pass'
-			}
-		},
-		{
-			path: '/pay',
-			component: Pay,
-			meta: {
-				requireAuth: false,
-				title: 'pay'
-			}
-		},
-		{
-			path: '/change-pass',
-			component: ChPass,
-			meta: {
-				requireAuth: false,
-				title: 'pay'
-			}
-		},
-		{
-			path: '/reg',
-			component: Register,
-			meta: {
-				requireAuth: false,
-				title: 'pay'
-			}
-		}
+		...rules,
 	]
 })
 

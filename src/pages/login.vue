@@ -2,8 +2,8 @@
 	<div class="login">
 		<HeadImg/>
 		<div class="ch-type">
-			<div @click="changeWay(show,s1)" :class="{'active':show}"><span>账号密码登录</span></div>
-			<div @click="changeWay(show,s2)" :class="{'active':!show}"><span>手机验证码登录</span></div>
+			<div @click="changeWay(1)" :class="{'active':show}"><span>账号密码登录</span></div>
+			<div @click="changeWay(2)" :class="{'active':!show}"><span>手机验证码登录</span></div>
 		</div>
 		<div class="log-type">
 			<div v-show="show">
@@ -59,7 +59,7 @@
 		</div>
 		<div class="forget-pass">
 			<router-link to='/change-pass'>忘记密码?</router-link>
-			<router-link to='/reg'>快速注册</router-link>
+			<router-link to='/register'>快速注册</router-link>
 		</div>
 	</div>
 </template>
@@ -74,8 +74,6 @@
 		data () {
 			return {
 				show:'true',
-				s1: '1',
-				s2: '2',
 				ruleForm: {
 					user: '',
 					passwd: '',
@@ -107,11 +105,11 @@
 			}
 		},
 		methods:{
-			changeWay(show,status){	
-				if (status == 1) {
+			changeWay(num){	
+				if (num == 1) {
 					this.show = true
 				}
-				if (status == 2) {
+				if (num == 2) {
 					this.show = false
 				}
 			}
