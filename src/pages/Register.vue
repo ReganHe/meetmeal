@@ -32,7 +32,7 @@
 				<el-form-item class="input-sty" label="确认密码" prop="new">
 					<el-input v-model="ruleForm.new" placeholder="请确认密码"></el-input>
 				</el-form-item>
-					<el-button class="button" type="primary">注册账号</el-button>	
+					<el-button class="button" type="primary" @click="register">注册账号</el-button>	
 			</el-form>
 			
 		</div>
@@ -41,6 +41,7 @@
 
 <script>
 	import HeadImg from '../components/HeadImg.vue'
+	import {RegisterApi} from '../api/register.js'
 	
 	export default {
 		components:{
@@ -100,6 +101,9 @@
 				if (status == 2) {
 					this.show = false
 				}
+			},
+			register () {
+				RegisterApi()
 			}
 		}
 	}
