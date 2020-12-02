@@ -22,6 +22,15 @@
 		<div class="content">
 			<div class="with-img">
 				<i class="el-icon-location-outline">1.8 Mile</i>
+				<div class="down">
+					<div class="status"></div>
+					<span>在线</span>
+					<div class="gender">
+						<i class="el-icon-male"></i>
+						18
+					</div>
+					<div>上海刘亦菲</div>
+				</div>
 			</div>
 			<div class="info"></div>
 		</div>
@@ -159,6 +168,32 @@ export default {
 			height: 46vw;
 			background: url(../assets/img.jpg) no-repeat scroll left center / 100% 46vw;	
 			border-radius: 1.9vw 0px 0px 1.9vw;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-end;
+			color: white;
+			i {
+				font-size: 2.6vw;
+				margin: 1.6vw;
+			}
+			.down {
+				margin-right: auto;
+				font-size: 2.9vw;
+				white-space: nowrap;
+				display: flex;
+				align-items: center;
+				margin: 1.6vw;
+				.status {
+					height: 1.6vw;
+					width: 1.6vw;
+					background: #32EE13;
+					border-radius: 50%;
+				}
+				* {
+					margin-right: 1vw;
+				}
+			}
 		}
 		.info {
 			width: 50%;

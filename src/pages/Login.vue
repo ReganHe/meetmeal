@@ -164,6 +164,9 @@
 			}
 			.el-input {
 				width: 90%;
+				.el-form-item__error {
+					font-size: 1.6vw;
+				}
 			}
 			.el-input__inner {
 				border: none;

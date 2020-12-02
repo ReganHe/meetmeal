@@ -9,7 +9,7 @@
 			:ref="ruleForm"
 			:model="ruleForm"
 			:rules="rules"
-			label-width="120px"
+			label-width="17vw"
 			hide-required-asterisk>
 				<el-form-item class="input-sty" 
 				label="用户名" prop="user">
@@ -109,60 +109,64 @@
 	.register {
 		.r-title {
 			text-align: center;
-			height: 31px;
-			font-size: 32px;
+			height: 4.1vw;
+			font-size: 4.2vw;
 			font-weight: bold;
 			color: #C12BE2;
-			margin-top: 30px;
-			padding: 0 30px;
+			margin-top: 4vw;
+			padding: 0 4vw;
 			p {
 				width: 100%;
-				padding: 30px 0;
+				padding: 4vw 0;
 				border-bottom: solid 1px #E4E4E4;
 			}
 		}
 		.reg {
-			margin: 130px 55px 0 55px;
+			margin: 17.3vw 7.3vw 0 7.3vw;
+			white-space: nowrap;
 			.el-form-item__label {
-				font-size: 23px !important;
+				font-size: 3vw !important;
 				font-weight: bold !important;
 				color: #333333 !important;
 			}
 			.input-sty {
 				background-color: #F2F2F2;
-				border-radius: 10px;
+				border-radius: 1.4vw;
 			}
 			.el-form-item__label {
-				line-height: 85px;
+				line-height: 11.3vw;
 				text-align: left;
-				padding-left: 10px;
+				padding-left: 1.4vw;
 			}
 			.el-form-item__content {
-				line-height: 85px;
+				line-height: 11.3vw;
+			}
+			.el-form-item__error {
+				font-size: 1.6vw;
 			}
 			.el-input__inner {
 				border: none;
 				background-color:#F2F2F2;				
-				font-size: 26px;
+				font-size: 3.5vw;
 				font-weight: bold;
 				color: #BCBBC1;
 			}
 			.button {
 				width: 100%;	
-				height: 78px;
-				margin-top: 65px;
+				height: 10.4vw;
+				margin-top: 8.6vw;
 				background: #C12BE2;
-				border-radius: 10px;
-				font-size: 31px;
+				border-radius: 1.4vw;
+				font-size: 4.1vw;
 				font-weight: bold;
 				color: #FFFFFF;
 			}
 			.get-code {
-				width: 222px;
+				width: 29.6vw;
 				background: #C12BE2;
-				border-radius: 10px;
-				height: 85px;
-				font-size: 28px;
+				border-radius: 1.4vw;
+				height: 11.3vw;
+				font-size: 3.7vw;
 				font-weight: bold;
 				color: #FFFFFF;
 				width: 43%;
