@@ -12,7 +12,7 @@
 				:ref="ruleForm"
 				:model="ruleForm"
 				:rules="rules"
-				label-width="14vw"
+				label-width="15vw"
 				hide-required-asterisk>
 					<el-form-item class="input-sty" 
 					label="用户名" prop="user">
@@ -36,7 +36,7 @@
 				:ref="ruleForm"
 				:model="ruleForm"
 				:rules="rules"
-				label-width="14vw"
+				label-width="15vw"
 				hide-required-asterisk>
 					<el-form-item class="input-sty" 
 					label="手机号" prop="user">
@@ -161,6 +161,9 @@
 			}
 			.el-form-item__content {
 				line-height: 11.3vw;
+			}
+			.el-input {
+				width: 90%;
 			}
 			.el-input__inner {
 				border: none;

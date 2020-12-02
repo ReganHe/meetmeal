@@ -2,13 +2,14 @@
 <template>
 	<div class="home">
 		<div class="header">
-			<div class="type">
-				<div class="auction" >
-					<img src="../assets/auction_icon.gif" alt="">
-					<span class="finish">拍卖中</span>
-					<span class="fin">已结束</span>
+			<div class="auction" :class="{'pick-up':fin}">
+				<div class='sty'>
+					<div v-if="fin" class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
+					<div v-else class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
+					<div class="on-sale" @click="changeStyle(1)">拍卖中</div>
+					<div class="fin" @click="changeStyle(2)">已结束</div>
+					<div class="search"><i class="el-icon-search"></i></div>
 				</div>
-				<div><i class="el-icon-search"></i></div>
 			</div>
 			<div class="day">
 				<div>全部</div>
@@ -131,10 +132,23 @@ import Footer from '../components/Footer.vue';
 export default {
 	name: 'Home',
 	data() {
-		return {};
+		return {
+			fin: true,
+			dayType:'',
+		};
 	},
 	components: {
 		Footer
+	},
+	methods:{
+		changeStyle (num) {
+			if (num == 1) {
+				this.fin = true;
+			}
+			if (num == 2) {
+				this.fin = false;
+			}
+		}
 	}
 };
 </script>
@@ -153,17 +167,60 @@ export default {
 		width: 100%;
 		color:@unpick-color;
 		font-size: 3.73vw;
-		.type {
-			display: flex;
-			justify-content: space-between;
-		}
 		.auction {
-			.fin {
+			width: 100%;
+			&::after {
+				content: '';
+				width: 2.7vw;
+				height: 0.9vw;
+				background-color: @base-color;
+				display: block;
+				margin-top: 3.86vw ;
+				border-radius: 10px;
+				margin-left: 31vw;
+			}
+			.sty {
+				display: flex;
+				align-items: center;
+				.on-sale {
+					font-size: 3.6vw;
+				}
+				.fin {
+					margin-left: 10vw;
+					color: @base-color;
+					font-size: 4.5vw;
+				}
+				.pic {
+					width: 4vw;
+					height: 4vw;
+					overflow: hidden;
+					img {
+						width: 100%;
+					}
+				}
+				.search {
+					margin-left: auto;
+					color: @base-color;
+				}
+			}
+		}
+		.pick-up {
+			&::after {
 				margin-left: 10vw;
 			}
-			img {
-				width: 4vw;
-				height: 5vw;
+			.sty {
+				.on-sale {
+					color: @base-color;
+					font-size: 4.5vw;
+				}
+				.fin {
+					color: @unpick-color;
+					font-size: 3.6vw;
+				}
+				.pic {
+					width: 5vw;
+					height: 5vw;
+				}
 			}
 		}
 		.day {
