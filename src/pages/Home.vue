@@ -210,8 +210,8 @@ export default {
 				}
 				.gender-bg {
 					background: #FE6491;
-					padding: 1vw;
-					border-radius: 1vw;
+					padding: 0.2vw 0.5vw;
+					border-radius: 0.5vw;
 				}
 				* {
 					margin-left: 1vw;
@@ -248,7 +248,6 @@ export default {
 				}
 			}
 			.time {
-				
 				.el-icon-timer {
 					margin-right: 1vw;
 				}
@@ -290,6 +289,7 @@ export default {
 				color: white;
 				font-size: 2.9vw;
 				padding: 1.6vw 2.6vw;
+				border-radius: 2vw;
 			}
 		}
 	}
