@@ -25,14 +25,31 @@
 				<div class="down">
 					<div class="status"></div>
 					<span>在线</span>
-					<div class="gender">
-						<i class="el-icon-male"></i>
-						18
-					</div>
+					<i class="el-icon-male gender-bg">18</i>
 					<div>上海刘亦菲</div>
 				</div>
 			</div>
-			<div class="info"></div>
+			<div class="info">
+				<div class="dinner">
+					<span class="d1">今日晚餐</span>
+					<span class="d2">1.5小时</span>
+				</div>
+				<div class="time">
+					<i class="el-icon-timer"> 距结束</i>
+					<span class="count-down">12:30:59</span>
+				</div>
+				<div class="local">
+					<i class="el-icon-location"></i>
+					<div>上海市</div>
+				</div>
+				<div class="price">
+					<span class="p1">当前价</span>
+					<span class="p2">$</span>
+					<span class="p3">60</span>
+					<span class="p4">(V00851)</span>
+				</div>
+				<el-button class="want-bid">我要竞拍</el-button>
+			</div>
 		</div>
 		<Footer/>
 	</div>
@@ -67,7 +84,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='less' scoped>
 	@import '../css/global.less';
 	.home {
@@ -173,6 +189,7 @@ export default {
 			justify-content: space-between;
 			align-items: flex-end;
 			color: white;
+			border: none;
 			i {
 				font-size: 2.6vw;
 				margin: 1.6vw;
@@ -183,15 +200,21 @@ export default {
 				white-space: nowrap;
 				display: flex;
 				align-items: center;
-				margin: 1.6vw;
+				margin: 0.6vw 1.5vw;
+				margin-right: auto;
 				.status {
 					height: 1.6vw;
 					width: 1.6vw;
 					background: #32EE13;
 					border-radius: 50%;
 				}
+				.gender-bg {
+					background: #FE6491;
+					padding: 1vw;
+					border-radius: 1vw;
+				}
 				* {
-					margin-right: 1vw;
+					margin-left: 1vw;
 				}
 			}
 		}
@@ -201,6 +224,73 @@ export default {
 			border: 1px solid @base-color;
 			border-left: none;
 			height: 46vw;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-end;
+			justify-content: space-between;
+			font-size: 3.2vw;
+			color: @unpick-color;
+			padding: 3.6vw;
+			box-sizing: border-box;
+			.dinner {
+				.d1 {
+					font-size: 4vw;
+					font-weight: 600;
+					color: #333333;
+					margin-right: 3.5vw;
+				}
+				.d2 {
+					padding: 1vw;
+					font-size: 2.9vw;
+					color: white;
+					border-radius: 1vw;
+					background: @button-sty;
+				}
+			}
+			.time {
+				
+				.el-icon-timer {
+					margin-right: 1vw;
+				}
+				.count-down {
+					color: #FA5353;
+				}
+			}
+			.local {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				.el-icon-location {
+					font-size: 5.5vw;
+					color: @unpick-color;
+					margin-right: 1vw;
+					span {
+						font-size: 4vw;
+						color: @unpick-color;
+					}
+				}
+			}
+			.price {
+				.p2 {
+					color: #FA5353;
+					margin: 0 1.5vw;
+				}
+				.p3 {
+					color: #FA5353;
+					font-size: 6.8vw;
+					font-weight: 600;
+					margin-right: 1.2vw;
+				}
+			}
+			.want-bid {
+				background: @button-sty;
+				width: 21.6vw;
+				height: 8.7vw;
+				border: none;
+				color: white;
+				font-size: 2.9vw;
+				padding: 1.6vw 2.6vw;
+			}
 		}
 	}
 </style>
