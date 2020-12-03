@@ -49,7 +49,7 @@
 				<p>提醒</p>
 			</div>
 			<div class="adjust">
-				<span>出价:</span>
+				<span class="a1">出价:</span>
 				<el-button class="adj-but" @click="reduceCount()">-</el-button>
 				<div class="adj-num">{{count}}</div>
 				<el-button class="adj-but" @click="plusCount()">+</el-button>
@@ -61,9 +61,33 @@
 		  :visible.sync="dialogVisible"
 		  width="70%"
 		  top="24vh">
-		  <div class="tip">
+		  <div class="pic">
 			  <div class="img"><img src="../assets/img.jpg" alt=""></div>
 		  </div>
+		  <div class="user-info">
+			  <span>上海刘亦菲</span>
+			  <span class="age">
+				  <i class="el-icon-male gender-bg">18</i>
+			  </span>
+		  </div>
+		  <div class="price-info">
+				<p>起拍价: $50</p>
+				<p>当前价: <span class="i1">$</span><span class="i2">60</span></p>
+				<p>加价: <span class="i3">$</span>
+					<span class="i4">5</span>
+					<span class="i6">出价人:</span>
+					<span class="i7">V00866</span>
+				</p>
+				<div class="p-time">
+					<i class="el-icon-timer"> 距结束</i>
+					<span class="count-down">12:30:59</span>
+				</div>
+		  </div>
+		  <div class="note">
+			  <p>第一次参拍，需支付$12元保证金</p>
+			  <p>详情见保证金退还及扣除规则</p>
+		  </div>
+		  <el-button class="bid-but">确认参与竞拍</el-button>
 		</el-dialog>
 	</div>
 </template>
@@ -194,7 +218,7 @@
 				.d2 {
 					font-size: 4vw;
 					color: @unpick-color;
-					margin-right: 13vw;
+					margin-right: 20vw;
 				}
 				.d3 {
 					padding: 1vw 2vw;
@@ -208,7 +232,7 @@
 			.local {
 				display: flex;
 				font-size: 5vw;
-				el-icon-location {
+				.el-icon-location {
 					line-height: 7vw;
 				}
 				div {
@@ -243,9 +267,6 @@
 			position: fixed;
 			bottom: 0;
 			border-top: 1px solid #F1F1F1;
-			span {
-				margin-right: 2vw;
-			}
 			.alert {
 				display: flex;
 				flex-direction: column;
@@ -254,12 +275,11 @@
 				color: @bid-color;
 				margin-left: 7vw;
 				.el-icon-alarm-clock {
-					font-size: 8.5vw;
+					font-size: 6vw;
 				}
 				p {
 					margin: 0;
-					font-size: 2vw;
-					transform: scale(0.8);
+					font-size: 3vw;
 				}
 			}
 			.adjust {
@@ -267,6 +287,9 @@
 				align-items: center;
 				color: @unpick-color;
 				font-size: 4vw;
+				.a1 {
+					margin-right: 2vw;
+				}
 				.adj-but {
 					color: white;
 					height: 7vw;
@@ -274,16 +297,16 @@
 					padding: 0;
 					background: @bid-color;
 					font-size: 6vw;
-					line-height: 6vw;
 				}
 				.adj-num {
 					width: 10vw;
 					text-align: center;
+					padding: 0.5vw 0;
 					border: 1px solid #F1F1F1;
 					border-radius: 5px;
 					margin: 0 1vw;
-					height: 7vw;
-					font-size: 5vw;
+					line-height: 6vw;
+					font-size: 6vw;
 					color: @bid-color;
 				}
 			}
@@ -297,28 +320,123 @@
 		}
 		.pop-up {
 			.el-dialog {
-				border-radius: 30px !important;
-			}
+				border-radius: 4vw;
+				height: 93vw;
+				.el-dialog__body {
+					padding: 0;
+				}
 			.el-dialog__header {
 				.el-dialog__headerbtn {
+					right: 1.5vw;
+					top: 2vw;
+				}
+				.el-icon{
+					font-size: 7vw;
+					font-weight: 400;
+					color: #111111;
 				}
 			}
-			.tip {
-				display: flex;
-				justify-content: center;
-				.img {
-					width: 20vw;
-					height: 20vw;
-					overflow: hidden;
-					border-radius: 50%;
-					transform: translateY(-130%);
-					img {
-						width: 100%;
-						height: 100%;
+			.user-info {
+				color: @bid-color;
+				font-size: 4.3vw;
+				text-align: center;
+				font-weight: 600;
+				width: 100%;
+				padding-bottom: 3vw;
+				border-bottom: 1px solid #E1E1E1;
+				.age {
+					padding: 0.5vw 1vw;
+					background-color: #FE6491;
+					border-radius: 1vw;
+					font-size: 3.7vw;
+					color: white;
+					margin-left: 3vw;
+				}
+			}
+			.price-info {
+					font-size: 3.2vw;
+					color: @unpick-color;
+					text-align: center;
+					p {
+						margin: 2vw 0;
+					}
+					.i1 {
+						font-size: 7vw;
+						color: @price-color;
+						margin: 0 1vw;
+						font-weight: 600;
+					}
+					.i2 {
+						font-size: 10vw;
+						color: @price-color;
+						font-weight: 600;
+					}
+					.i3 {
+						font-size: 4.5vw;
+						color: @price-color;
+						margin: 0 0.5vw;
+					}
+					.i4 {
+						font-size: 5vw;
+						color: @price-color;
+					}
+					.i6 {
+						font-size: 4vw;
+						margin-left: 2vw;
+					}
+					.i7 {
+						font-size: 5vw;
+						color: @bid-color;
+						margin-left: 0.5vw;
+					}
+					.p-time {
+						font-size: 5.5vw;
+						margin: 5vw 0;
+						.el-icon-timer {							
+							color: #333333;
+						}
+						.count-down {
+							color: @bid-color;
+							margin-left: 1vw;
+						}
 					}
 				}
+				.note {
+					font-size: 3vw;
+					color: @unpick-color;
+					padding-left: 4vw;
+					margin: 4vw 0;
+					p {
+						margin: 2vw 0;
+					}
+				}
+				.pic {
+					display: flex;
+					justify-content: center;
+					height: 4vw;
+					.img {
+						width: 20vw;
+						height: 20vw;
+						overflow: hidden;
+						border-radius: 50%;
+						transform: translateY(-90%);
+						img {
+							width: 100%;
+							height: 100%;
+						}
+					}
+				}
+				.bid-but {
+					width: 91.5%;
+					margin: 0 3vw;
+					color: white;
+					background: @bid-color;
+					box-shadow: 0px 3px 9px 1px rgba(255, 184, 0, 0.23);
+					border-radius: 6vw;
+					padding: 3vw 0;
+					font-size: 4.3vw;
+				}
 			}
-			
 		}
 	}
 </style>
