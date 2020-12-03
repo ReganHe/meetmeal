@@ -64,7 +64,7 @@
 	
 </script>
 
-<style>
+<style scoped>
 	.bal{
 			position: relative;
 			margin-left: 2%;
