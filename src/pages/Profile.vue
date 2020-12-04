@@ -51,13 +51,22 @@
 			</div>
 		</div>
 		<div class="p-bottom">
-			<el-button class="chat"><p>文字聊天</p><p style="font-size: 2.4vw;margin-top: 1vw;">0.1 $/条</p></el-button>
+			<el-button class="chat" @click="dialogVisible = true"><p>文字聊天</p><p style="font-size: 2.4vw;margin-top: 1vw;">0.1 $/条</p></el-button>
 			<el-button class="join">参与竞拍</el-button>
 		</div>
 		<el-button class="float">
 			<i class="el-icon-chat-line-round"></i>
 			<p>30s</p>
 		</el-button>
+		<el-dialog
+			class="pop-up"
+			:visible.sync="dialogVisible"
+			width="70%"
+			top="24vh">
+			<i class="el-icon-error"></i>
+			<p>您当前的Coin不足,无法开始聊天</p>
+			<el-button>去充值</el-button>
+		</el-dialog>
 	</div>
 </template>
 
@@ -70,7 +79,7 @@
 		},
 		data () {
 			return {
-				
+				dialogVisible: false
 			}
 		}
 	}
@@ -145,6 +154,44 @@
 		p {
 			margin: 0;
 			padding: 0;
+		}
+		.pop-up {
+			text-align: center;
+			.el-dialog {
+				border-radius: 4vw;
+				height: 60vw;
+				.el-dialog__body {
+					padding: 0;
+				}
+			.el-dialog__header {
+				.el-dialog__headerbtn {
+					right: 1.5vw;
+					top: 2vw;
+				}
+				.el-icon{
+					font-size: 7vw;
+					font-weight: 400;
+					color: #111111;
+					}
+				}
+			}
+			.el-icon-error {
+				font-size: 12.5vw;
+				color: #FF5767;
+			}
+			p {
+				margin: 10vw 0;
+				font-size: 3.7vw;
+				font-weight: normal;
+				color: #666666;
+			}
+			.el-button {
+				width: 33vw;
+				height: 10vw;
+				color: white;
+				background: #B629FF;
+				border-radius: 5vw;
+			}
 		}
 	}
 </style>

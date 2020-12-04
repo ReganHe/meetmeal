@@ -44,10 +44,10 @@
 			<el-button class="confirm"  @click="dialogVisible = true">确认出价</el-button>
 		</div>
 		<el-dialog
-		  class="pop-up"
-		  :visible.sync="dialogVisible"
-		  width="70%"
-		  top="24vh">
+			class="pop-up"
+			:visible.sync="dialogVisible"
+			width="70%"
+			top="24vh">
 		  <div class="pic">
 			  <div class="img"><img src="../assets/img.jpg" alt=""></div>
 		  </div>
