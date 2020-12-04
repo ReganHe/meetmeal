@@ -26,7 +26,9 @@
 		</router-link>
       </li>
       <li class="add">
-        <img src="../assets/add.png" alt="add"></li>
+        <div>
+			<el-button class="but">+</el-button>
+		</div>
       <li>
         <div v-if="pageType !== 4" @click="ch_page(4)">
         	<img src="../assets/message_icon.gif" alt="home">
@@ -84,13 +86,29 @@
 	padding-top: 1.3vw;
 	background: url(../assets/footer_bg.png) no-repeat;
 	background-size: 100% 100%;
-	background-position: -0.5vw;
+	.add {
+		div {
+			width: 15vw;
+			height: 15vw;
+			background: linear-gradient(-39deg, rgba(104, 2, 156, 0.26), rgba(206, 110, 226, 0.26));
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.but {
+				width: 11.7vw;
+				height: 11.7vw;
+				background: linear-gradient(-39deg, #68029C, #CE6EE2);
+				border-radius: 50%;
+				color: white;
+				font-size: 9.6vw;
+				padding: 0;
+			}
+		}
+	}
 }
 .footer img {
   max-width: 100%;
-}
-.footer .add img {
-  border-radius: 50%;
 }
 .footer .icon {
   display: block;
