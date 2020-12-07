@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="paypage">
 		<!--余额显示-->
 		<div class="bal" >
 			<p style="font-size: 20px; padding-top: 20px;">账户余额</p>
@@ -61,20 +61,22 @@
 </template>
 
 <script>
-	
+	export default{
+		name:'Pay'
+	}
 </script>
 
 <style scoped>
-	.bal{
+	.paypage .bal{
 			position: relative;
-			margin-left: 2%;
+			margin-left:2%;
 			border-radius:10px;
 			width:97%;
 			text-align: center;
 			background-color: #a135ff;
 			color: white;
 	}
-	.num{
+	.paypage .num{
 		position: relative;
 		float: left;
 		box-sizing: border-box;
@@ -90,14 +92,14 @@
 		margin-top: 25px;
 		overflow: hidden;
 	}
-	.vertical-middle{
+	.paypage .vertical-middle{
 		position: absolute;
 		width: 100%;
 		left: 0;
 		top: 50%;
 		transform: translateY(-50%);
 	}
-	.pay{
+	.paypage .pay{
 		position: fixed;
 		bottom: 0px;
 		left: 0px;
@@ -108,7 +110,7 @@
 		text-align: center;
 		color: white;
 	}
-	.corner{
+	.paypage .corner{
 		position: absolute;
 		width: 80px;
 		height: auto;
