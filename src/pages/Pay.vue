@@ -113,12 +113,12 @@
 	}
 	.paypage .corner{
 		position: absolute;
-		width: 80px;
+		width: 18vw;
 		height: auto;
 		background-color: #A135FF;
 		color: white;
-		font-size:5px ;
-		transform: rotate(315deg) translateX(-17px) translateY(-13px);
+		font-size:0.6vw ;
+		transform: rotate(315deg) translateX(-4.4vw) translateY(-3vw);
 		left: 0;
 		top: 0;
 		
