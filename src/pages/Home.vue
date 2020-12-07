@@ -57,6 +57,9 @@
 
 <script>
 import Footer from '../components/Footer.vue';
+import {productListApi} from '../api/product.js';
+import '../api/mock/index.js';
+
 export default {
 	name: 'Home',
 	data() {
@@ -67,6 +70,9 @@ export default {
 	},
 	components: {
 		Footer
+	},
+	mounted(){
+		productListApi()
 	},
 	methods:{
 		changeStyle (num) {
