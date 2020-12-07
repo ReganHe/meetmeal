@@ -56,7 +56,7 @@
 		</div>
 		
 		<!--充值按钮-->
-		<div class="pay"> 立即充值 </div>
+		<el-button class="pay">立即充值</el-button>
 	</div>
 </template>
 
@@ -104,6 +104,7 @@
 		bottom: 0px;
 		left: 0px;
 		right:0px;
+		width: 100%;
 		background-color: #A135FF;
 		font-size: 25px;
 		padding: 20px;
