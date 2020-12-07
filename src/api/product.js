@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 function productListApi(){
-	axios({
-		method: 'post',
-		url: '/rest/V1/product-list'
-	}).then(resp => {
-		console.log(resp)
+	return axios({
+		method: 'get',
+		url: '/rest/V1/product-list',
+		// params: {
+		// }
 	})
+	
 }
 
 export  {productListApi}

@@ -12,40 +12,48 @@
 				</div>
 			</div>
 			<div class="day">
-				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">全部</div>
+				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1);productListApi()">全部</div>
 				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2)">今天</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">明后天</div>
 				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">本周末</div>
 				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
 			</div>
 		</div>
-		<div class="content">
+		<div v-for="item in product" :key="product.id" class="content">
 			<div class="with-img">
-				<i class="el-icon-location-outline">1.8 Mile</i>
-				<div class="down">
-					<div class="status"></div>
+				<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+				<div v-if="item.online == 1" class="down">
+					<div  class="status"></div>
 					<span>在线</span>
-					<i class="el-icon-male gender-bg">18</i>
-					<div>上海刘亦菲</div>
+					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
+					<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+					<div>{{item.name}}</div>
+				</div>
+				<div v-if="item.online == 0" class="down">
+					<div  class="status" style="background: #999999;"></div>
+					<span>离线</span>
+					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
+					<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+					<div>{{item.name}}</div>
 				</div>
 			</div>
 			<div class="info">
 				<div class="dinner">
-					<span class="d1">今日晚餐</span>
-					<span class="d2">1.5小时</span>
+					<span class="d1">{{item.title}}</span>
+					<span class="d2">{{item.take}}小时</span>
 				</div>
 				<div class="time">
 					<i class="el-icon-timer"> 距结束</i>
-					<span class="count-down">12:30:59</span>
+					<span class="count-down">{{item.time}}</span>
 				</div>
 				<div class="local">
 					<i class="el-icon-location"></i>
-					<div>上海市</div>
+					<div>{{item.local}}</div>
 				</div>
 				<div class="price">
 					<span class="p1">当前价</span>
 					<span class="p2">$</span>
-					<span class="p3">60</span>
+					<span class="p3">{{item.price}}</span>
 					<span class="p4">(V00851)</span>
 				</div>
 				<el-button class="want-bid">我要竞拍</el-button>
@@ -66,13 +74,16 @@ export default {
 		return {
 			fin: true,
 			dayType: 1,
+			product: [],
 		};
 	},
 	components: {
 		Footer
 	},
 	mounted(){
-		productListApi()
+		productListApi().then(resp =>{
+			this.product = resp.data.data
+		})
 	},
 	methods:{
 		changeStyle (num) {
@@ -94,6 +105,7 @@ export default {
 	@import '../css/global.less';
 	.home {
 		padding-top: 26vw;
+		padding-bottom: 20vw;
 	}
 	
 	.home .header {
@@ -115,7 +127,7 @@ export default {
 				height: 0.9vw;
 				background-color: @base-color;
 				display: block;
-				margin-top: 3.86vw ;
+				margin-top: 2.8vw ;
 				border-radius: 10px;
 				margin-left: 30.5vw;
 			}
@@ -185,6 +197,7 @@ export default {
 		box-sizing: border-box;
 		overflow: hidden;
 		display: flex;
+		margin-bottom: 3vw;
 		.with-img {
 			width: 50%;
 			height: 46vw;
