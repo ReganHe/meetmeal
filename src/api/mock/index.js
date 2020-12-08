@@ -1,6 +1,9 @@
 import Mock from 'mockjs'
 
-export default Mock.mock( RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),"get",{
+
+export default Mock.mock(
+RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),
+"get",{
 	"code":0,
 	"data|4":[{
 		"id|+1":1,
