@@ -19,7 +19,7 @@
 				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
 			</div>
 		</div>
-		<div v-for="item in product" :key="product.id" class="content">
+		<div v-for="(item,index) in product" :key="index" class="content">
 			<div class="with-img">
 				<i class="el-icon-location-outline">{{item.distance}} Mile</i>
 				<div v-if="item.online == 1" class="down">
@@ -43,7 +43,7 @@
 					<span class="d2">{{item.take}}小时</span>
 				</div>
 				<div class="time">
-					<i class="el-icon-timer"> 距结束</i>
+					<i class="el-icon-timer">&nbsp;距结束</i>
 					<span class="count-down">{{item.time}}</span>
 				</div>
 				<div class="local">
@@ -56,7 +56,7 @@
 					<span class="p3">{{item.price}}</span>
 					<span class="p4">(V00851)</span>
 				</div>
-				<el-button class="want-bid">我要竞拍</el-button>
+				<el-button class="want-bid" @click="goTo(index)">我要竞拍</el-button>
 			</div>
 		</div>
 		<Footer/>
@@ -96,6 +96,9 @@ export default {
 		},
 		changeDay (num) {
 			this.dayType = num;
+		},
+		goTo (index) {
+			this.$router.push({ path: `/join-bidding?index=${index}`})
 		}
 	}
 };

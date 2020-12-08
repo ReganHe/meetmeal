@@ -81,8 +81,6 @@
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	max-width: 1500px;
-	min-width: 350px;
 	padding-top: 1.3vw;
 	background: url(../assets/footer_bg.png) no-repeat;
 	background-size: 100% 100%;
@@ -137,7 +135,7 @@
   height: 12.67vw;
   line-height: 1.2vw;
   li {
-	  width: 6.3vw;
+	  width: 7vw;
 	  height: 10vw;
 	  div {
 		white-space: nowrap;
