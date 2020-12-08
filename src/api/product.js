@@ -7,7 +7,16 @@ function productListApi(){
 		// params: {
 		// }
 	})
-	
 }
 
-export  {productListApi}
+function getProductInfo(data){
+	return axios({
+		method: 'get',
+		url: '/rest/V1/product-list',
+		// params: {
+		// 	...data
+		// }
+	})
+}
+
+export  {productListApi,getProductInfo}

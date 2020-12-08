@@ -81,6 +81,8 @@
 
 <script>
 	import Poster from '../components/Poster.vue'
+	import {getProductInfo} from '../api/product.js'
+	
 	export default {
 		components:{
 			Poster
@@ -88,8 +90,17 @@
 		data () {
 			return {
 				count: 0,
-				dialogVisible: false
+				dialogVisible: false,
+				index: 0,
+				info: [],
 			}
+		},
+		mounted () {
+			this.index = this.$route.query.index
+			getProductInfo().then(resp => {
+				this.info = resp.data.data[this.index]
+				console.log(this.info)
+			})
 		},
 		methods:{
 			plusCount () {
@@ -257,7 +268,7 @@
 		.pop-up {
 			.el-dialog {
 				border-radius: 4vw;
-				height: 93vw;
+				height: 98vw;
 				.el-dialog__body {
 					padding: 0;
 				}
