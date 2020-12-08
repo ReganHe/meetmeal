@@ -6,7 +6,14 @@
 		</div>
 		<div class="part-info">
 			<div class="user">
+				<div class="h-img">
+					<img src="../assets/999.jpg" alt="">
+				</div>
 				
+				<div class="detail">
+					<p>出价：80</p>
+					<p>2小时前</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -21,13 +28,12 @@
 	.participant {
 		width: 100%;
 		background-color: #F1F1F1;
-		height: 50vh;
+		min-height: 100vh;
 		.title {
 			background: #ffffff;
 			width: 100%;
 			position: fixed;
 			top: 0;
-			height: 8vw;
 			text-align: center;
 			font-size: 5.6vw;
 			padding: 3vw 0;
@@ -40,13 +46,28 @@
 			}
 		}
 		.part-info {
-			padding: 11vw 5vw 0 5vw;
+			padding: 14vw 3vw 0 3vw;
 			.user{
 				background-color: #FFFFFF;
 				width: 100%;
-				height: 19vw;
+				height: 20vw;
 				border-radius: 2vw;
 				margin: 3vw 0;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 4vw;
+				margin: 4vw 0;
+				box-sizing: border-box;
+				.h-img {
+					width: 16vw;
+					height: 16vw;
+					overflow: hidden;
+					border-radius: 50%;
+					img {
+						width: 100%;
+					}
+				}
 			}
 		}
 	}

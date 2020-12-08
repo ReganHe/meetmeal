@@ -86,7 +86,7 @@
 	background-size: 100% 100%;
 	.add {
 		div {
-			width: 15vw;
+			width: 15.5vw;
 			height: 15vw;
 			background: linear-gradient(-39deg, rgba(104, 2, 156, 0.26), rgba(206, 110, 226, 0.26));
 			border-radius: 50%;
