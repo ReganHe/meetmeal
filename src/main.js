@@ -7,7 +7,7 @@ import { Button, Input, Pagination, Menu,
 	Dialog, Form, FormItem, Select,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
-	Upload, Option} from 'element-ui';
+	Upload, Option, Drawer} from 'element-ui';
 
 Vue.use(Button)
 Vue.use(Input)
@@ -29,6 +29,7 @@ Vue.use(RadioButton)
 Vue.use(Radio)
 Vue.use(Upload)
 Vue.use(Option)
+Vue.use(Drawer)
 
 
 Vue.prototype.$message = Message
