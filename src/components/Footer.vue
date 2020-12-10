@@ -10,7 +10,7 @@
         <router-link to="/home" v-if="pageType == 1">
           <img src="../assets/home_active.jpg" alt="home">
 		  <div class="h1"></div>
-          <div calss="bar-title">首页</div>
+          <div class="bar-title">首页</div>
         </router-link>
       </li>
       <li>
@@ -22,7 +22,7 @@
 		<router-link to="/home" v-if="pageType == 2">
 			<img src="../assets/order_active.jpg" alt="home">
 			<div class="h1"></div>
-			<div calss="bar-title">订单</div>
+			<div class="bar-title">订单</div>
 		</router-link>
       </li>
       <li class="add">
@@ -38,7 +38,7 @@
         <router-link to="/home" v-if="pageType == 4">
         	<img src="../assets/home_active.jpg" alt="home">
 			<div class="h1"></div>
-        	<div calss="bar-title">消息</div>
+        	<div class="bar-title">消息</div>
         </router-link>
       </li>
       <li>
@@ -50,7 +50,7 @@
 		<router-link to="/home" v-if="pageType == 5">
 			<img src="../assets/me_icon.gif" alt="home">
 			<div class="h1"></div>
-			<div calss="bar-title">我的</div>
+			<div class="bar-title">我的</div>
 		</router-link>
       </li>
     </ul>
@@ -113,10 +113,10 @@
 .footer .icon {
   display: block;
 }
-.footer ul .bar-title {
+.footer .bar-title {
 	font-size: 2.93vw;
 	font-weight: 400;
-	color: #C5C5C5;
+	color: #701284;
 	line-height: 1.2vw;
 }
 
