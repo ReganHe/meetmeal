@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
 	<div class="home">
 		<div class="header">
@@ -21,6 +20,9 @@
 		</div>
 		<div v-for="(item,index) in product" :key="index" class="content">
 			<div class="with-img">
+				<div class="bg">
+					<img :src="item.img" alt="">
+				</div>
 				<i class="el-icon-location-outline">{{item.distance}} Mile</i>
 				<div v-if="item.online == 1" class="down">
 					<div  class="status"></div>
@@ -83,6 +85,7 @@ export default {
 	mounted(){
 		productListApi().then(resp =>{
 			this.product = resp.data.data
+			console.log(this.product[1].img)
 		})
 	},
 	methods:{
@@ -122,6 +125,8 @@ export default {
 		color:@unpick-color;
 		font-size: 3.73vw;
 		white-space: nowrap;
+		background-color: #FFFFFF;
+		z-index: 100;
 		.mm-width;
 		.auction {
 			width: 100%;
@@ -204,8 +209,7 @@ export default {
 		margin-bottom: 3vw;
 		.with-img {
 			width: 50%;
-			height: 46vw;
-			background: url(../assets/img.jpg) no-repeat scroll left center / 100% 46vw;	
+			height: 46vw;	
 			border-radius: 1.9vw 0px 0px 1.9vw;
 			display: flex;
 			flex-direction: column;
@@ -213,6 +217,20 @@ export default {
 			align-items: flex-end;
 			color: white;
 			border: none;
+			position: relative;
+			overflow: hidden;
+			.bg {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				position: absolute;
+				z-index: -10;
+				top: 0;
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
 			i {
 				font-size: 2.6vw;
 				margin: 1.6vw;

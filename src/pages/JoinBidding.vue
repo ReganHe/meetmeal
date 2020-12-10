@@ -1,6 +1,37 @@
 <template>
 	<div class="join-bidding">
-		<Poster/>
+		<div class="poster">
+			<div class="img">
+				<div class="back">
+					<i class="el-icon-arrow-left"></i>
+				</div>
+				<mt-swipe 
+				:auto="4000" 
+				:show-indicators="false"
+				@change="handleChange">
+					<mt-swipe-item v-for="item in imgList">
+						<div class="roll"><img :src="item" alt=""></div>
+					</mt-swipe-item>
+				</mt-swipe>
+				<div class="bottom">
+					<div class="page">{{perNum}}/{{total}}</div>
+					<div v-if="info.online == 1" class="down">
+						<div  class="status"></div>
+						<span>在线</span>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+						<div>{{info.name}}</div>
+					</div>
+					<div v-if="info.online == 0" class="down">
+						<div  class="status" style="background: #999999;"></div>
+						<span>离线</span>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+						<div>{{info.name}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="price">
 			<span>当前价: 
 				<span class="symbol">$</span>
@@ -80,26 +111,26 @@
 </template>
 
 <script>
-	import Poster from '../components/Poster.vue'
 	import {getProductInfo} from '../api/product.js'
 	
 	export default {
-		components:{
-			Poster
-		},
 		data () {
 			return {
 				count: 0,
 				dialogVisible: false,
 				index: 0,
 				info: [],
+				imgList:[],
+				perNum: '1',
+				total: '1',
 			}
 		},
 		mounted () {
 			this.index = this.$route.query.index
 			getProductInfo().then(resp => {
 				this.info = resp.data.data[this.index]
-				console.log(this.info)
+				this.imgList = this.info.imgList
+				this.total = this.imgList.length
 			})
 		},
 		methods:{
@@ -113,6 +144,9 @@
 					this.count-=1
 				}
 			},
+			handleChange (index) {
+				this.perNum = index + 1;
+			}
 		}
 	}
 </script>
@@ -121,6 +155,77 @@
 	@import '../css/global.less';
 	.join-bidding {
 		width: 100%;
+		.poster {
+			.img {
+				height: 54vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				position: relative;
+				.back {
+					margin: 7vw 3.33vw;
+					.el-icon-arrow-left {
+						padding: 2vw;
+						border-radius: 50%;
+						background-color:rgba(7,7,7,0.2);
+						font-size: 7vw;
+						color: white;
+					}
+				}
+				.bottom {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					color: white;
+					.down {
+						margin-right: auto;
+						font-size: 2.9vw;
+						white-space: nowrap;
+						display: flex;
+						align-items: center;
+						margin: 0.6vw 1.5vw;
+						margin-right: auto;
+						font-size: 3.67vw;
+						margin-bottom: 2vw;
+						.status {
+							height: 2vw;
+							width: 2vw;
+							background: #32EE13;
+							border-radius: 50%;
+						}
+						.gender-bg {
+							background: #FE6491;
+							padding: 0.6vw 0.8vw;
+							border-radius: 1.5vw;
+						}
+						* {
+							margin-left: 3vw;
+						}
+					}
+					.page {
+						padding: 1vw 3vw;
+						margin-right: 5vw;
+						margin-left: auto;
+						border-radius: 5vw;
+						background-color:rgba(7,7,7,0.2);
+					}
+				}
+				.mint-swipe {
+					text-align: center;
+					position: absolute;
+					top: 0;
+					height: 100%;
+					width: 100%;
+					top: 0;
+					z-index: -10;
+					.roll {
+						img {
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
 		.price {
 			height: 7vh;
 			white-space: nowrap;

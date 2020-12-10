@@ -4,13 +4,16 @@
 			<div class="back">
 				<i class="el-icon-arrow-left"></i>
 			</div>
-			<mt-swipe :auto="4000">
-			  <mt-swipe-item>1</mt-swipe-item>
-			  <mt-swipe-item>2</mt-swipe-item>
-			  <mt-swipe-item>3</mt-swipe-item>
+			<mt-swipe 
+			:auto="4000" 
+			:show-indicators="false"
+			@change="handleChange">
+				<mt-swipe-item v-for="item in imgList">
+					<div class="roll"><img src="../assets/999.jpg" alt=""></div>
+				</mt-swipe-item>
 			</mt-swipe>
 			<div class="bottom">
-				<div class="page">1/3</div>
+				<div class="page">{{perNum}}/{{total}}</div>
 				<div class="down">
 					<div class="status"></div>
 					<span>在线</span>
@@ -23,16 +26,31 @@
 </template>
 
 <script>
+	export default {
+		data () {
+			return {
+				imgList:[1,2,3],
+				perNum: '1',
+				total: '1',
+			}
+		},
+		methods:{
+			handleChange (index) {
+				this.perNum = index + 1;
+			}
+		}
+	}
 </script>
 
 <style lang='less'>
+	
 	.poster {
 		.img {
 			height: 54vh;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-			background: url(../assets/img.jpg) no-repeat scroll left center / 100% 100%;
+			position: relative;
 			.back {
 				margin: 7vw 3.33vw;
 				.el-icon-arrow-left {
@@ -79,6 +97,20 @@
 					margin-left: auto;
 					border-radius: 5vw;
 					background-color:rgba(7,7,7,0.2);
+				}
+			}
+			.mint-swipe {
+				text-align: center;
+				position: absolute;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				top: 0;
+				z-index: -10;
+				.roll {
+					img {
+						width: 100%;
+					}
 				}
 			}
 		}

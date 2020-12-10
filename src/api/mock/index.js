@@ -18,6 +18,8 @@ RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),
 		"local":"@province",
 		"price|1-100":1,
 		"time":"@time()",
+		"img":"@image(500x500,@color)",
+		"imgList":["@image(500x500,@color)","@image(500x500,@color)","@image(500x500,@color)"],
 	}],
 	"msg":"success,"
 })
