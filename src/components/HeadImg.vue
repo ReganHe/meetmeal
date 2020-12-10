@@ -13,15 +13,15 @@
 <style lang='less'>
 	.head-img {
 		width:100%;
-		height:38vw;
+		height:38vmin;
 		position: relative;
 		background:url('../assets/bg.jpg');
 		background-size: cover;
 		
 		.pic {
 			position: absolute;
-			width: 18.6vw;
-			height: 18.6vw;
+			width: 18.6vmin;
+			height: 18.6vmin;
 			overflow: hidden;
 			bottom: 0;
 			left: 50%;

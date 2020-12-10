@@ -29,12 +29,12 @@
 			justify-content: space-between;
 			background: url(../assets/img.jpg) no-repeat scroll left center / 100% 100%;
 			.back {
-				margin: 7vw 3.33vw;
+				margin: 7vmin 3.33vmin;
 				.el-icon-arrow-left {
-					padding: 2vw;
+					padding: 2vmin;
 					border-radius: 50%;
 					background-color:rgba(7,7,7,0.2);
-					font-size: 7vw;
+					font-size: 7vmin;
 					color: white;
 				}
 			}
@@ -45,34 +45,34 @@
 				color: white;
 				.down {
 					margin-right: auto;
-					font-size: 2.9vw;
+					font-size: 2.9vmin;
 					white-space: nowrap;
 					display: flex;
 					align-items: center;
-					margin: 0.6vw 1.5vw;
+					margin: 0.6vmin 1.5vmin;
 					margin-right: auto;
-					font-size: 3.67vw;
-					margin-bottom: 2vw;
+					font-size: 3.67vmin;
+					margin-bottom: 2vmin;
 					.status {
-						height: 2vw;
-						width: 2vw;
+						height: 2vmin;
+						width: 2vmin;
 						background: #32EE13;
 						border-radius: 50%;
 					}
 					.gender-bg {
 						background: #FE6491;
-						padding: 0.6vw 0.8vw;
-						border-radius: 1.5vw;
+						padding: 0.6vmin 0.8vmin;
+						border-radius: 1.5vmin;
 					}
 					* {
-						margin-left: 3vw;
+						margin-left: 3vmin;
 					}
 				}
 				.page {
-					padding: 1vw 3vw;
-					margin-right: 5vw;
+					padding: 1vmin 3vmin;
+					margin-right: 5vmin;
 					margin-left: auto;
-					border-radius: 5vw;
+					border-radius: 5vmin;
 					background-color:rgba(7,7,7,0.2);
 				}
 			}

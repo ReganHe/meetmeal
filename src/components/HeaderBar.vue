@@ -23,15 +23,15 @@
 		top: 0;
 		text-align: center;
 		height: @h-height;
-		font-size: 5.6vw;
+		font-size: 5.6vmin;
 		vertical-align: middle;
 		line-height: @h-height;
 		font-weight: 600;
 		.mm-width;
 		.el-icon-arrow-left{
 			position: absolute;
-			left:5vw;
-			top: 4.5vw;
+			left:5vmin;
+			top: 4.5vmin;
 			font-weight: 600;
 		}
 	}

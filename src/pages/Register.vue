@@ -9,7 +9,7 @@
 			:ref="ruleForm"
 			:model="ruleForm"
 			:rules="rules"
-			label-width="17vw"
+			label-width="17vmin"
 			hide-required-asterisk>
 				<el-form-item class="input-sty" 
 				label="用户名" prop="user">
@@ -113,64 +113,64 @@
 	.register {
 		.r-title {
 			text-align: center;
-			height: 4.1vw;
-			font-size: 4.2vw;
+			height: 4.1vmin;
+			font-size: 4.2vmin;
 			font-weight: bold;
 			color: #C12BE2;
-			margin-top: 4vw;
-			padding: 0 4vw;
+			margin-top: 4vmin;
+			padding: 0 4vmin;
 			p {
 				width: 100%;
-				padding: 4vw 0;
+				padding: 4vmin 0;
 				border-bottom: solid 1px #E4E4E4;
 			}
 		}
 		.reg {
-			margin: 17.3vw 7.3vw 0 7.3vw;
+			margin: 17.3vmin 7.3vmin 0 7.3vmin;
 			white-space: nowrap;
 			.el-form-item__label {
-				font-size: 3vw !important;
+				font-size: 3vmin !important;
 				font-weight: bold !important;
 				color: #333333 !important;
 			}
 			.input-sty {
 				background-color: #F2F2F2;
-				border-radius: 1.4vw;
+				border-radius: 1.4vmin;
 			}
 			.el-form-item__label {
-				line-height: 11.3vw;
+				line-height: 11.3vmin;
 				text-align: left;
-				padding-left: 1.4vw;
+				padding-left: 1.4vmin;
 			}
 			.el-form-item__content {
-				line-height: 11.3vw;
+				line-height: 11.3vmin;
 			}
 			.el-form-item__error {
-				font-size: 1.6vw;
+				font-size: 1.6vmin;
 			}
 			.el-input__inner {
 				border: none;
 				background-color:#F2F2F2;				
-				font-size: 3.5vw;
+				font-size: 3.5vmin;
 				font-weight: bold;
 				color: #BCBBC1;
 			}
 			.button {
 				width: 100%;	
-				height: 10.4vw;
-				margin-top: 8.6vw;
+				height: 10.4vmin;
+				margin-top: 8.6vmin;
 				background: #C12BE2;
-				border-radius: 1.4vw;
-				font-size: 4.1vw;
+				border-radius: 1.4vmin;
+				font-size: 4.1vmin;
 				font-weight: bold;
 				color: #FFFFFF;
 			}
 			.get-code {
-				width: 29.6vw;
+				width: 29.6vmin;
 				background: #C12BE2;
-				border-radius: 1.4vw;
-				height: 11.3vw;
-				font-size: 3.7vw;
+				border-radius: 1.4vmin;
+				height: 11.3vmin;
+				font-size: 3.7vmin;
 				font-weight: bold;
 				color: #FFFFFF;
 				width: 43%;

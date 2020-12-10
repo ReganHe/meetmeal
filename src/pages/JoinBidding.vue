@@ -124,23 +124,23 @@
 		.price {
 			height: 7vh;
 			white-space: nowrap;
-			padding: 2.5vw 3.5vw;
+			padding: 2.5vmin 3.5vmin;
 			border-bottom: 1px solid #F1F1F1;
 			color: @unpick-color;
-			font-size: 3.2vw;
+			font-size: 3.2vmin;
 			.symbol,.num {
 				color: @price-color;
-				font-size: 5vw;
+				font-size: 5vmin;
 				font-weight: 600;
-				margin-right: 1vw;
+				margin-right: 1vmin;
 			}
 			.num {
-				font-size: 8vw;
-				margin-right: 4vw;
+				font-size: 8vmin;
+				margin-right: 4vmin;
 			}
 			.user {
-				font-size: 3.6vw;
-				margin-left: 23vw;
+				font-size: 3.6vmin;
+				margin-left: 23vmin;
 				.account {
 					color: @bid-color;
 				}
@@ -149,8 +149,8 @@
 		.detail {
 			height: 27vh;
 			width: 100%;
-			padding: 3.4vw 3.4vw;
-			font-size: 5vw;
+			padding: 3.4vmin 3.4vmin;
+			font-size: 5vmin;
 			color: #333333;
 			display: flex;
 			flex-direction: column;
@@ -159,18 +159,18 @@
 			box-sizing: border-box;
 			.dinner {
 				.d1 {
-					margin-right: 2vw;
+					margin-right: 2vmin;
 					font-weight: 400;
 				}
 				.d2 {
-					font-size: 4vw;
+					font-size: 4vmin;
 					color: @unpick-color;
-					margin-right: 12vw;
+					margin-right: 12vmin;
 				}
 				.d3 {
-					padding: 1vw 2vw;
+					padding: 1vmin 2vmin;
 					background: @button-sty;
-					font-size: 3.33vw;
+					font-size: 3.33vmin;
 					color: white;
 					border-radius: 5px;
 					margin-left: auto;
@@ -178,31 +178,31 @@
 			}
 			.local {
 				display: flex;
-				font-size: 5vw;
+				font-size: 5vmin;
 				.el-icon-location {
-					line-height: 7vw;
+					line-height: 7vmin;
 				}
 				div {
 					font-weight: 400;
-					margin-left: 1vw;
+					margin-left: 1vmin;
 				}
 				span {
-					font-size: 4vw;
+					font-size: 4vmin;
 					color: @unpick-color;
 				}
 			}
 			.time {
-				line-height: 7vw;
+				line-height: 7vmin;
 				.el-icon-timer {
 					font-weight: 400;
 				}
 				.count-down {
 					color: @bid-color;
-					margin-left: 2vw;
+					margin-left: 2vmin;
 				}
 			}
 			.information {
-				font-size: 3.5vw;
+				font-size: 3.5vmin;
 				color: @unpick-color;
 			}
 		}
@@ -220,46 +220,46 @@
 				justify-content: center;
 				align-items: center;
 				color: @bid-color;
-				margin-left: 7vw;
+				margin-left: 7vmin;
 				.el-icon-alarm-clock {
-					font-size: 6vw;
+					font-size: 6vmin;
 				}
 				p {
 					margin: 0;
-					font-size: 3vw;
+					font-size: 3vmin;
 				}
 			}
 			.adjust {
 				display: flex;
 				align-items: center;
 				color: @unpick-color;
-				font-size: 4vw;
+				font-size: 4vmin;
 				.a1 {
-					margin-right: 2vw;
+					margin-right: 2vmin;
 				}
 				.adj-but {
 					color: white;
-					height: 7vw;
-					width: 7vw;
+					height: 7vmin;
+					width: 7vmin;
 					padding: 0;
 					background: @bid-color;
-					font-size: 6vw;
+					font-size: 6vmin;
 				}
 				.adj-num {
-					width: 10vw;
+					width: 10vmin;
 					text-align: center;
-					padding: 0.5vw 0;
+					padding: 0.5vmin 0;
 					border: 1px solid #F1F1F1;
 					border-radius: 5px;
-					margin: 0 1vw;
-					line-height: 6vw;
-					font-size: 6vw;
+					margin: 0 1vmin;
+					line-height: 6vmin;
+					font-size: 6vmin;
 					color: @bid-color;
 				}
 			}
 			.confirm {
 				color: white;
-				font-size: 5vw;
+				font-size: 5vmin;
 				border-radius: 0;
 				border: 1px solid @bid-color;
 				background-color: @bid-color;
@@ -267,103 +267,103 @@
 		}
 		.pop-up {
 			.el-dialog {
-				border-radius: 4vw;
-				height: 98vw;
+				border-radius: 4vmin;
+				height: 98vmin;
 				.el-dialog__body {
 					padding: 0;
 				}
 			.el-dialog__header {
 				.el-dialog__headerbtn {
-					right: 1.5vw;
-					top: 2vw;
+					right: 1.5vmin;
+					top: 2vmin;
 				}
 				.el-icon{
-					font-size: 7vw;
+					font-size: 7vmin;
 					font-weight: 400;
 					color: #111111;
 				}
 			}
 			.user-info {
 				color: @bid-color;
-				font-size: 4.3vw;
+				font-size: 4.3vmin;
 				text-align: center;
 				font-weight: 600;
 				width: 100%;
-				padding-bottom: 3vw;
+				padding-bottom: 3vmin;
 				border-bottom: 1px solid #E1E1E1;
 				.age {
-					padding: 0.5vw 1vw;
+					padding: 0.5vmin 1vmin;
 					background-color: #FE6491;
-					border-radius: 1vw;
-					font-size: 3.7vw;
+					border-radius: 1vmin;
+					font-size: 3.7vmin;
 					color: white;
-					margin-left: 3vw;
+					margin-left: 3vmin;
 				}
 			}
 			.price-info {
-					font-size: 3.2vw;
+					font-size: 3.2vmin;
 					color: @unpick-color;
 					text-align: center;
 					p {
-						margin: 2vw 0;
+						margin: 2vmin 0;
 					}
 					.i1 {
-						font-size: 7vw;
+						font-size: 7vmin;
 						color: @price-color;
-						margin: 0 1vw;
+						margin: 0 1vmin;
 						font-weight: 600;
 					}
 					.i2 {
-						font-size: 10vw;
+						font-size: 10vmin;
 						color: @price-color;
 						font-weight: 600;
 					}
 					.i3 {
-						font-size: 4.5vw;
+						font-size: 4.5vmin;
 						color: @price-color;
-						margin: 0 0.5vw;
+						margin: 0 0.5vmin;
 					}
 					.i4 {
-						font-size: 5vw;
+						font-size: 5vmin;
 						color: @price-color;
 					}
 					.i6 {
-						font-size: 4vw;
-						margin-left: 2vw;
+						font-size: 4vmin;
+						margin-left: 2vmin;
 					}
 					.i7 {
-						font-size: 5vw;
+						font-size: 5vmin;
 						color: @bid-color;
-						margin-left: 0.5vw;
+						margin-left: 0.5vmin;
 					}
 					.p-time {
-						font-size: 5.5vw;
-						margin: 5vw 0;
+						font-size: 5.5vmin;
+						margin: 5vmin 0;
 						.el-icon-timer {							
 							color: #333333;
 						}
 						.count-down {
 							color: @bid-color;
-							margin-left: 1vw;
+							margin-left: 1vmin;
 						}
 					}
 				}
 				.note {
-					font-size: 3vw;
+					font-size: 3vmin;
 					color: @unpick-color;
-					padding-left: 4vw;
-					margin: 4vw 0;
+					padding-left: 4vmin;
+					margin: 4vmin 0;
 					p {
-						margin: 2vw 0;
+						margin: 2vmin 0;
 					}
 				}
 				.pic {
 					display: flex;
 					justify-content: center;
-					height: 4vw;
+					height: 4vmin;
 					.img {
-						width: 20vw;
-						height: 20vw;
+						width: 20vmin;
+						height: 20vmin;
 						overflow: hidden;
 						border-radius: 50%;
 						transform: translateY(-90%);
@@ -375,13 +375,13 @@
 				}
 				.bid-but {
 					width: 91.5%;
-					margin: 0 3vw;
+					margin: 0 3vmin;
 					color: white;
 					background: @bid-color;
 					box-shadow: 0px 3px 9px 1px rgba(255, 184, 0, 0.23);
-					border-radius: 6vw;
-					padding: 3vw 0;
-					font-size: 4.3vw;
+					border-radius: 6vmin;
+					padding: 3vmin 0;
+					font-size: 4.3vmin;
 				}
 			}
 		}

@@ -218,70 +218,70 @@
 	.order-release {
 		.header {
 			position: fixed;
-			padding: 2.6vw;
+			padding: 2.6vmin;
 			box-sizing: border-box;
 			top: 0;
 			background-color: #FFFFFF;
 			height: 12vh;
 			width: 100%;
 			color:@unpick-color;
-			font-size: 3.73vw;
+			font-size: 3.73vmin;
 			white-space: nowrap;
 			.auction {
 				width: 100%;
 				&::after {
 					content: '';
-					width: 2.7vw;
-					height: 0.9vw;
+					width: 2.7vmin;
+					height: 0.9vmin;
 					background-color: @base-color;
 					display: block;
-					margin-top: 2.8vw ;
+					margin-top: 2.8vmin ;
 					border-radius: 10px;
-					margin-left: 32vw;
+					margin-left: 32vmin;
 				}
 				.sty {
 					display: flex;
 					align-items: center;
 					.on-sale {
-						font-size: 3.6vw;
+						font-size: 3.6vmin;
 					}
 					.fin {
-						margin-left: 10vw;
+						margin-left: 10vmin;
 						color: @base-color;
-						font-size: 4.5vw;
+						font-size: 4.5vmin;
 					}
 				}
 			}
 			.pick-up {
 				&::after {
-					margin-left: 7vw;
+					margin-left: 7vmin;
 				}
 				.sty {
 					.on-sale {
 						color: @base-color;
-						font-size: 4.5vw;
+						font-size: 4.5vmin;
 					}
 					.fin {
 						color: @unpick-color;
-						font-size: 3.6vw;
+						font-size: 3.6vmin;
 					}
 					.pic {
-						width: 5vw;
-						height: 5vw;
+						width: 5vmin;
+						height: 5vmin;
 					}
 				}
 			}
 			.day {
 				display: flex;
 				justify-content: flex-start;
-				margin-top: 2vw;
+				margin-top: 2vmin;
 				div {
 					margin-right: 10px;
-					padding: 1.6vw;
+					padding: 1.6vmin;
 				}
 				.day-sty {
 					background-color: #F1F1F1;
-					border-radius: 3vw;
+					border-radius: 3vmin;
 				}
 			}
 		}
@@ -292,15 +292,15 @@
 				display: flex;
 				flex-direction: column;
 				justify-content: space-between;
-				height: 42vw;
+				height: 42vmin;
 				background: #F1F1F1;
 				box-sizing: border-box;
-				margin: 3vh 3vw;
-				font-size: 3.7vw;
+				margin: 3vh 3vmin;
+				font-size: 3.7vmin;
 				font-weight: 400;
 				color: @unpick-color;
-				padding: 3vw;
-				border-radius: 2vw;
+				padding: 3vmin;
+				border-radius: 2vmin;
 				p {
 					margin: 0;
 					padding: 0;
@@ -313,10 +313,10 @@
 					justify-content: space-between;
 					.gender-bg {
 						background: @female-color;
-						padding: 0.5vw 0.5vw;
-						border-radius: 1vw;
+						padding: 0.5vmin 0.5vmin;
+						border-radius: 1vmin;
 						color: white;
-						margin-right: 2vw;
+						margin-right: 2vmin;
 					}
 				}
 				.l3 {
@@ -331,10 +331,10 @@
 					}
 					.gender-bg {
 						background: @female-color;
-						padding: 0.5vw 0.5vw;
-						border-radius: 1vw;
+						padding: 0.5vmin 0.5vmin;
+						border-radius: 1vmin;
 						color: white;
-						margin-right: 2vw;
+						margin-right: 2vmin;
 					}
 				}
 				.page2 {

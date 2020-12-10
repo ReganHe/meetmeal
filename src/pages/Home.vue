@@ -107,48 +107,48 @@ export default {
 <style lang='less' scoped>
 	@import '../css/global.less';
 	.home {
-		padding-top: 26vw;
-		padding-bottom: 20vw;
+		padding-top: 26vmin;
+		padding-bottom: 20vmin;
 	}
 	
 	.home .header {
 		position: fixed;
-		padding: 2.6vw;
+		padding: 2.6vmin;
 		box-sizing: border-box;
 		top: 0;
 		background-color: #FFFFFF;
-		height: 26vw;
+		height: 26vmin;
 		width: 100%;
 		color:@unpick-color;
-		font-size: 3.73vw;
+		font-size: 3.73vmin;
 		white-space: nowrap;
 		.mm-width;
 		.auction {
 			width: 100%;
 			&::after {
 				content: '';
-				width: 2.7vw;
-				height: 0.9vw;
+				width: 2.7vmin;
+				height: 0.9vmin;
 				background-color: @base-color;
 				display: block;
-				margin-top: 2.8vw ;
+				margin-top: 2.8vmin ;
 				border-radius: 10px;
-				margin-left: 30.5vw;
+				margin-left: 30.5vmin;
 			}
 			.sty {
 				display: flex;
 				align-items: center;
 				.on-sale {
-					font-size: 3.6vw;
+					font-size: 3.6vmin;
 				}
 				.fin {
-					margin-left: 10vw;
+					margin-left: 10vmin;
 					color: @base-color;
-					font-size: 4.5vw;
+					font-size: 4.5vmin;
 				}
 				.pic {
-					width: 4vw;
-					height: 4vw;
+					width: 4vmin;
+					height: 4vmin;
 					overflow: hidden;
 					img {
 						width: 100%;
@@ -162,51 +162,51 @@ export default {
 		}
 		.pick-up {
 			&::after {
-				margin-left: 10vw;
+				margin-left: 10vmin;
 			}
 			.sty {
 				.on-sale {
 					color: @base-color;
-					font-size: 4.5vw;
+					font-size: 4.5vmin;
 				}
 				.fin {
 					color: @unpick-color;
-					font-size: 3.6vw;
+					font-size: 3.6vmin;
 				}
 				.pic {
-					width: 5vw;
-					height: 5vw;
+					width: 5vmin;
+					height: 5vmin;
 				}
 			}
 		}
 		.day {
 			display: flex;
 			justify-content: flex-start;
-			margin-top: 2vw;
+			margin-top: 2vmin;
 			div {
 				margin-right: 10px;
-				padding: 1.6vw;
+				padding: 1.6vmin;
 			}
 			.day-sty {
 				background-color: #F1F1F1;
-				border-radius: 3vw;
+				border-radius: 3vmin;
 			}
 		}
 	}
 
 	.home .content {
 		width: 100%;
-		padding-left: 3vw;
-		padding-right: 3vw;
+		padding-left: 3vmin;
+		padding-right: 3vmin;
 		box-sizing: border-box;
 		overflow: hidden;
 		display: flex;
-		margin-bottom: 3vw;
+		margin-bottom: 3vmin;
 		.with-img {
 			width: 50%;
-			height: 46vw;
-			background: url(../assets/img.jpg) no-repeat scroll left center / 100% 46vw;	
-			border-radius: 1.9vw 0px 0px 1.9vw;
+			height: 46vmin;
+			background: url(../assets/img.jpg) no-repeat scroll left center / 100% 46vmin;	
+			border-radius: 1.9vmin 0px 0px 1.9vmin;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
@@ -214,65 +214,65 @@ export default {
 			color: white;
 			border: none;
 			i {
-				font-size: 2.6vw;
-				margin: 1.6vw;
+				font-size: 2.6vmin;
+				margin: 1.6vmin;
 			}
 			.down {
 				margin-right: auto;
-				font-size: 2.9vw;
+				font-size: 2.9vmin;
 				white-space: nowrap;
 				display: flex;
 				align-items: center;
-				margin: 0.6vw 1.5vw;
+				margin: 0.6vmin 1.5vmin;
 				margin-right: auto;
 				.status {
-					height: 1.6vw;
-					width: 1.6vw;
+					height: 1.6vmin;
+					width: 1.6vmin;
 					background: #32EE13;
 					border-radius: 50%;
 				}
 				.gender-bg {
 					background: #FE6491;
-					padding: 0.2vw 0.5vw;
-					border-radius: 0.5vw;
+					padding: 0.2vmin 0.5vmin;
+					border-radius: 0.5vmin;
 				}
 				* {
-					margin-left: 1vw;
+					margin-left: 1vmin;
 				}
 			}
 		}
 		.info {
 			width: 50%;
-			border-radius: 0px 1.9vw 1.9vw 0px;
+			border-radius: 0px 1.9vmin 1.9vmin 0px;
 			border: 1px solid @base-color;
 			border-left: none;
-			height: 46vw;
+			height: 46vmin;
 			display: flex;
 			flex-direction: column;
 			align-items: flex-end;
 			justify-content: space-between;
-			font-size: 3.2vw;
+			font-size: 3.2vmin;
 			color: @unpick-color;
-			padding: 3.6vw;
+			padding: 3.6vmin;
 			box-sizing: border-box;
 			.dinner {
 				.d1 {
-					font-size: 4vw;
+					font-size: 4vmin;
 					font-weight: 600;
 					color: #333333;
-					margin-right: 3.5vw;
+					margin-right: 3.5vmin;
 				}
 				.d2 {
-					padding: 1vw;
-					font-size: 2.9vw;
+					padding: 1vmin;
+					font-size: 2.9vmin;
 					color: white;
-					border-radius: 1vw;
+					border-radius: 1vmin;
 					background: @button-sty;
 				}
 			}
 			.time {
 				.el-icon-timer {
-					margin-right: 1vw;
+					margin-right: 1vmin;
 				}
 				.count-down {
 					color: #FA5353;
@@ -283,11 +283,11 @@ export default {
 				flex-direction: row;
 				align-items: center;
 				.el-icon-location {
-					font-size: 5.5vw;
+					font-size: 5.5vmin;
 					color: @unpick-color;
-					margin-right: 1vw;
+					margin-right: 1vmin;
 					span {
-						font-size: 4vw;
+						font-size: 4vmin;
 						color: @unpick-color;
 					}
 				}
@@ -296,24 +296,24 @@ export default {
 				white-space: nowrap;
 				.p2 {
 					color: #FA5353;
-					margin: 0 1.5vw;
+					margin: 0 1.5vmin;
 				}
 				.p3 {
 					color: #FA5353;
-					font-size: 6.8vw;
+					font-size: 6.8vmin;
 					font-weight: 600;
-					margin-right: 1.2vw;
+					margin-right: 1.2vmin;
 				}
 			}
 			.want-bid {
 				background: @button-sty;
-				width: 21.6vw;
-				height: 8.7vw;
+				width: 21.6vmin;
+				height: 8.7vmin;
 				border: none;
 				color: white;
-				font-size: 2.9vw;
-				padding: 1.6vw 2.6vw;
-				border-radius: 2vw;
+				font-size: 2.9vmin;
+				padding: 1.6vmin 2.6vmin;
+				border-radius: 2vmin;
 			}
 		}
 	}
