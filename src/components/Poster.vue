@@ -4,6 +4,11 @@
 			<div class="back">
 				<i class="el-icon-arrow-left"></i>
 			</div>
+			<mt-swipe :auto="4000">
+			  <mt-swipe-item>1</mt-swipe-item>
+			  <mt-swipe-item>2</mt-swipe-item>
+			  <mt-swipe-item>3</mt-swipe-item>
+			</mt-swipe>
 			<div class="bottom">
 				<div class="page">1/3</div>
 				<div class="down">

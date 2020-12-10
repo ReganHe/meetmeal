@@ -8,6 +8,11 @@ import { Button, Input, Pagination, Menu,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
 	Upload, Option, Drawer} from 'element-ui';
+	
+import { Swipe, SwipeItem } from 'mint-ui';
+
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 Vue.use(Button)
 Vue.use(Input)
