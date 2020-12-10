@@ -1,53 +1,44 @@
 <template>
 	<div class="profile">
-		<Poster/>
-		<div class="info-list">
+		<div class="poster">
+			<div class="img">
+				<div class="back" @click="goBack()">
+					<i class="el-icon-arrow-left"></i>
+				</div>
+				<mt-swipe 
+				:auto="4000" 
+				:show-indicators="false"
+				@change="handleChange">
+					<mt-swipe-item v-for="item in imgList">
+						<div class="roll"><img :src="item" alt=""></div>
+					</mt-swipe-item>
+				</mt-swipe>
+				<div class="bottom">
+					<div class="page">{{perNum}}/{{total}}</div>
+					<div v-if="info.online == 1" class="down">
+						<div  class="status"></div>
+						<span>在线</span>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+						<div>{{info.name}}</div>
+					</div>
+					<div v-if="info.online == 0" class="down">
+						<div  class="status" style="background: #999999;"></div>
+						<span>离线</span>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+						<div>{{info.name}}</div>
+					</div>
+				</div>
+			</div>
 			<div class="p-title">
 				详细信息
 			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
-			</div>
-			<div class="each">
-				<span class="option">城市</span>
-				<span>上海</span>
+		</div>
+		<div class="info-list">
+			<div v-for="item in info.info" :key="item.id" class="each">
+				<span class="option">{{item.name}}</span>
+				<span>{{item.value}}</span>
 			</div>
 		</div>
 		<div class="p-bottom">
@@ -71,36 +62,54 @@
 </template>
 
 <script>
-	import Poster from '../components/Poster.vue'
+	import {getPerson} from '../api/product.js';
 	
 	export default {
-		components:{
-			Poster
-		},
 		data () {
 			return {
-				dialogVisible: false
+				dialogVisible: false,
+				info:[],
+				perNum: 1,
+				total: 1,
+				imgList:[],
+			}
+		},
+		mounted () {
+			getPerson().then( resp => {
+				this.info = resp.data.data
+				this.imgList = this.info.imgList
+				this.total = this.imgList.length
+				console.log(resp.data.data)
+			})
+		},
+		methods:{
+			handleChange(index) {
+				this.perNum = index + 1 ;
 			}
 		}
 	}
 </script>
 
 <style lang='less'>
+	@import '../css/global.less';
+	
 	.profile {
 		width: 100%;
 		.poster {
-			.img {
-				height: 51vh;
-			}
-		}
-		.info-list {
-			padding: 0 4.6vmin;
+			.poster;
+			position: fixed;
+			width: 100%;
+			top:0;
+			background-color: #FFFFFF;
 			.p-title {
 				font-size: 3.2vmin;
 				font-weight: 400;
 				color: #B4B4B4;
-				margin: 2.5vmin 0;
+				margin: 2.5vmin 4.6vmin;
 			}
+		}
+		.info-list {
+			padding: 58vh 4.6vmin 10vh 4.6vmin;
 			.each {
 				padding: 2vmin 0;
 				border-bottom: 2px solid #F6F6F6;

@@ -2,7 +2,7 @@
 	<div class="join-bidding">
 		<div class="poster">
 			<div class="img">
-				<div class="back">
+				<div class="back" @click="goBack()">
 					<i class="el-icon-arrow-left"></i>
 				</div>
 				<mt-swipe 
@@ -35,9 +35,9 @@
 		<div class="price">
 			<span>当前价: 
 				<span class="symbol">$</span>
-				<span class="num">60</span>
+				<span class="num">{{info.price}}</span>
 			</span>
-			<span>起拍价:50</span>
+			<span>起拍价:{{info.staPrice}}</span>
 			<span class="user">
 				出价人:
 				<span class="account">V00851</span>
@@ -45,17 +45,17 @@
 		</div>
 		<div class="detail">
 			<div class="dinner">
-				<span class="d1">晚餐</span>
-				<span class="d2">(10/28/2019 21:00-23:00）</span>
-				<span class="d3">1.5小时</span>
+				<span class="d1">{{info.minTitle}}</span>
+				<span class="d2">({{info.fullTime}}）</span>
+				<span class="d3">{{info.take}}小时</span>
 			</div>
 			<div class="local">
 				<i class="el-icon-location"></i>
-				<div>上海市 <span>（具体地址成功竞拍后获得）</span></div>
+				<div>{{info.local}}&nbsp;<span>（具体地址成功竞拍后获得）</span></div>
 			</div>
 			<div class="time">
 				<i class="el-icon-timer"> 距结束</i>
-				<span class="count-down">12:30:59</span>
+				<span class="count-down">{{info.countdown}}</span>
 			</div>
 			<div class="information">参与竞拍并支付保证金，
 			保证金为竞拍价20% 竞拍失败保证金自动 退回
@@ -83,22 +83,25 @@
 			  <div class="img"><img src="../assets/img.jpg" alt=""></div>
 		  </div>
 		  <div class="user-info">
-			  <span>上海刘亦菲</span>
+			  <span>{{info.name}}</span>
 			  <span class="age">
-				  <i class="el-icon-male gender-bg">18</i>
+				  
+				  <i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
+				  <i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+				  
 			  </span>
 		  </div>
 		  <div class="price-info">
-				<p>起拍价: $50</p>
-				<p>当前价: <span class="i1">$</span><span class="i2">60</span></p>
+				<p>起拍价: ${{info.staPrice}}</p>
+				<p>当前价: <span class="i1">$</span><span class="i2">{{info.price}}</span></p>
 				<p>加价: <span class="i3">$</span>
-					<span class="i4">5</span>
+					<span class="i4">{{count}}</span>
 					<span class="i6">出价人:</span>
 					<span class="i7">V00866</span>
 				</p>
 				<div class="p-time">
 					<i class="el-icon-timer"> 距结束</i>
-					<span class="count-down">12:30:59</span>
+					<span class="count-down">{{info.countdown}}</span>
 				</div>
 		  </div>
 		  <div class="note">
@@ -118,7 +121,7 @@
 			return {
 				count: 0,
 				dialogVisible: false,
-				index: 0,
+				id: 0,
 				info: [],
 				imgList:[],
 				perNum: '1',
@@ -126,12 +129,17 @@
 			}
 		},
 		mounted () {
-			this.index = this.$route.query.index
+			this.id = this.$route.query.id
 			getProductInfo().then(resp => {
-				this.info = resp.data.data[this.index]
-				this.imgList = this.info.imgList
-				this.total = this.imgList.length
-			})
+				let data = resp.data.data
+				for ( let i in data ) {
+					if ( this.id == data[i].id) {
+						this.info = data[i]
+						this.imgList = this.info.imgList
+						this.total = this.imgList.length
+					}
+				}
+			});
 		},
 		methods:{
 			plusCount () {
@@ -146,6 +154,9 @@
 			},
 			handleChange (index) {
 				this.perNum = index + 1;
+			},
+			goBack () {
+				this.$router.go(-1)
 			}
 		}
 	}
@@ -263,6 +274,8 @@
 			align-items: flex-start;
 			box-sizing: border-box;
 			.dinner {
+				position: relative;
+				width: 100%;
 				.d1 {
 					margin-right: 2vmin;
 					font-weight: 400;
@@ -270,7 +283,6 @@
 				.d2 {
 					font-size: 4vmin;
 					color: @unpick-color;
-					margin-right: 12vmin;
 				}
 				.d3 {
 					padding: 1vmin 2vmin;
@@ -279,6 +291,8 @@
 					color: white;
 					border-radius: 5px;
 					margin-left: auto;
+					position: absolute;
+					right: 0;
 				}
 			}
 			.local {
@@ -398,11 +412,15 @@
 				border-bottom: 1px solid #E1E1E1;
 				.age {
 					padding: 0.5vmin 1vmin;
-					background-color: #FE6491;
 					border-radius: 1vmin;
 					font-size: 3.7vmin;
 					color: white;
 					margin-left: 3vmin;
+					.gender-bg {
+						background: #FE6491;
+						padding: 0.6vmin 0.8vmin;
+						border-radius: 1.5vmin;
+					}
 				}
 			}
 			.price-info {

@@ -18,7 +18,7 @@
 				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
 			</div>
 		</div>
-		<div v-for="(item,index) in product" :key="index" class="content">
+		<div v-for="item in product" :key="item.id" class="content">
 			<div class="with-img">
 				<div class="bg">
 					<img :src="item.img" alt="">
@@ -58,7 +58,7 @@
 					<span class="p3">{{item.price}}</span>
 					<span class="p4">(V00851)</span>
 				</div>
-				<el-button class="want-bid" @click="goTo(index)">我要竞拍</el-button>
+				<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
 			</div>
 		</div>
 		<Footer/>
@@ -100,8 +100,8 @@ export default {
 		changeDay (num) {
 			this.dayType = num;
 		},
-		goTo (index) {
-			this.$router.push({ path: `/join-bidding?index=${index}`})
+		goTo (id) {
+			this.$router.push({ path: `/join-bidding?id=${id}`})
 		}
 	}
 };
