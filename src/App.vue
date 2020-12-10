@@ -17,7 +17,8 @@
 
 <style>
 	body {
-		margin: 0;
-		padding: 0;
+		min-width: 320px;
+		max-width: 768px;
+		position: relative;
 	}
 </style>

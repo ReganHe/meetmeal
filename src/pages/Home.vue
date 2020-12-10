@@ -122,6 +122,7 @@ export default {
 		color:@unpick-color;
 		font-size: 3.73vw;
 		white-space: nowrap;
+		.mm-width;
 		.auction {
 			width: 100%;
 			&::after {
