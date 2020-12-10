@@ -19,6 +19,6 @@
 	body {
 		min-width: 320px;
 		max-width: 768px;
-		position: relative;
+		margin: 0;
 	}
 </style>
