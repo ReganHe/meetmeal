@@ -14,6 +14,8 @@
 </script>
 
 <style lang="less">
+	@import '../css/global.less';
+	
 	.title {
 		background: #ffffff;
 		width: 100%;
@@ -23,6 +25,7 @@
 		font-size: 5.6vw;
 		padding: 3vw 0;
 		font-weight: 600;
+		.mm-width;
 		.el-icon-arrow-left{
 			position: absolute;
 			left:5vw;

@@ -74,6 +74,7 @@
 </script>
 
 <style lang='less'>
+@import '../css/global.less';
 
 .footer {
 	margin: 0;
@@ -84,6 +85,7 @@
 	padding-top: 1.3vw;
 	background: url(../assets/footer_bg.png) no-repeat;
 	background-size: 100% 100%;
+	.mm-width;
 	.add {
 		div {
 			width: 15.5vw;
