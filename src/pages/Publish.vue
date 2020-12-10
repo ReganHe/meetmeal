@@ -71,6 +71,7 @@
 	.publish {
 		.p-header {
 			line-height: 15vw;
+			height: @h-height;
 			width: 100%;
 			background-color: #FFFFFF;
 			text-align: center;

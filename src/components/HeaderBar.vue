@@ -22,8 +22,10 @@
 		position: fixed;
 		top: 0;
 		text-align: center;
+		height: @h-height;
 		font-size: 5.6vw;
-		padding: 3vw 0;
+		vertical-align: middle;
+		line-height: @h-height;
 		font-weight: 600;
 		.mm-width;
 		.el-icon-arrow-left{

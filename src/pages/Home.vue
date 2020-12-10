@@ -293,6 +293,7 @@ export default {
 				}
 			}
 			.price {
+				white-space: nowrap;
 				.p2 {
 					color: #FA5353;
 					margin: 0 1.5vw;
