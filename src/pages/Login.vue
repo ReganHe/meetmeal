@@ -12,7 +12,7 @@
 				:ref="ruleForm"
 				:model="ruleForm"
 				:rules="rules"
-				label-width="15vw"
+				label-width="15vmin"
 				hide-required-asterisk>
 					<el-form-item class="input-sty" 
 					label="用户名" prop="user">
@@ -36,7 +36,7 @@
 				:ref="ruleForm"
 				:model="ruleForm"
 				:rules="rules"
-				label-width="15vw"
+				label-width="15vmin"
 				hide-required-asterisk>
 					<el-form-item class="input-sty" 
 					label="手机号" prop="user">
@@ -124,76 +124,76 @@
 		.ch-type {
 			display: flex;
 			text-align: center;
-			font-size: 3.7vw;
+			font-size: 3.7vmin;
 			font-weight: bold;
 			color: @unpick-color;
-			margin-top: 4.5vw;
-			padding: 0 4.5vw;
+			margin-top: 4.5vmin;
+			padding: 0 4.5vmin;
 			div {
 				width: 50%;
-				padding: 4.5vw 0;
+				padding: 4.5vmin 0;
 				border-bottom: solid 1px #E4E4E4;
 				cursor: pointer;
 			}
 			.active {
 				color: @base-color;
 				span {
-					    border-bottom: 0.67vw solid;
-					    padding-bottom: 3.34vw;
+					    border-bottom: 0.67vmin solid;
+					    padding-bottom: 3.34vmin;
 				}
 			}
 		}
 		.log-type {
-			margin: 8vw 7.34vw 0 7.34vw;
+			margin: 8vmin 7.34vmin 0 7.34vmin;
 			.el-form-item__label {
-				font-size: 3vw !important;
+				font-size: 3vmin !important;
 				font-weight: bold !important;
 				color: #333333 !important;
 			}
 			.input-sty {
 				background-color: #F2F2F2;
-				border-radius: 1vw;
+				border-radius: 1vmin;
 			}
 			.el-form-item__label {
-				line-height: 11.3vw;
+				line-height: 11.3vmin;
 				text-align: left;
-				padding-left: 1.3vw;
+				padding-left: 1.3vmin;
 			}
 			.el-form-item__content {
-				line-height: 11.3vw;
+				line-height: 11.3vmin;
 			}
 			.el-input {
 				width: 90%;
 				.el-form-item__error {
-					font-size: 1.6vw;
+					font-size: 1.6vmin;
 				}
 			}
 			.el-input__inner {
 				border: none;
 				background-color:#F2F2F2;				
-				font-size: 2.4vw;
+				font-size: 2.4vmin;
 				color: #BCBBC1;
-				height: 5.4vw;
-				line-height: 5.4vw;
+				height: 5.4vmin;
+				line-height: 5.4vmin;
 			}
 			.button {
 				width: 100%;	
-				height: 10.4vw;
-				margin-top: 8.67vw;
+				height: 10.4vmin;
+				margin-top: 8.67vmin;
 				background: @base-color;
-				border-radius: 1.34vw;
-				font-size: 4vw;
+				border-radius: 1.34vmin;
+				font-size: 4vmin;
 				font-weight: bold;
 				color: #FFFFFF;
 				border: @base-color;
 			}
 			.get-code {
-				width: 29.5vw;
+				width: 29.5vmin;
 				background: @base-color;
-				border-radius: 1.34vw;
+				border-radius: 1.34vmin;
 				border: @base-color;
-				height: 11.34vw;
-				font-size: 3.73vw;
+				height: 11.34vmin;
+				font-size: 3.73vmin;
 				font-weight: bold;
 				color: #FFFFFF;
 				width: 43%;
@@ -203,12 +203,12 @@
 			}
 		}
 		.forget-pass {
-			margin-top: 2.93vw;
+			margin-top: 2.93vmin;
 			display: flex;
 			justify-content: space-between;
-			padding: 0 7.34vw;
+			padding: 0 7.34vmin;
 			a {
-				font-size: 3.73vw;
+				font-size: 3.73vmin;
 				font-weight: bold;
 				text-decoration: underline;
 				color: @base-color;

@@ -82,26 +82,26 @@
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	padding-top: 1.3vw;
+	padding-top: 1.3vmin;
 	background: url(../assets/footer_bg.png) no-repeat;
 	background-size: 100% 100%;
 	.mm-width;
 	.add {
 		div {
-			width: 15.5vw;
-			height: 15vw;
+			width: 15.5vmin;
+			height: 15vmin;
 			background: linear-gradient(-39deg, rgba(104, 2, 156, 0.26), rgba(206, 110, 226, 0.26));
 			border-radius: 50%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			.but {
-				width: 11.7vw;
-				height: 11.7vw;
+				width: 11.7vmin;
+				height: 11.7vmin;
 				background: linear-gradient(-39deg, #68029C, #CE6EE2);
 				border-radius: 50%;
 				color: white;
-				font-size: 9.6vw;
+				font-size: 9.6vmin;
 				padding: 0;
 			}
 		}
@@ -114,38 +114,38 @@
   display: block;
 }
 .footer .bar-title {
-	font-size: 2.93vw;
+	font-size: 2.93vmin;
 	font-weight: 400;
 	color: #701284;
-	line-height: 1.2vw;
+	line-height: 1.2vmin;
 }
 
 .footer ul .h1 {
-	height: 1.6vw;
+	height: 1.6vmin;
 }
 
 .footer ul {
-	padding: 0 6.66vw;
+	padding: 0 6.66vmin;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   text-align: center;
   list-style-type:none;
-  font-size: 2.93vw;
+  font-size: 2.93vmin;
   font-weight: 400;
   color: #C5C5C5;
-  height: 12.67vw;
-  line-height: 1.2vw;
+  height: 12.67vmin;
+  line-height: 1.2vmin;
   li {
-	  width: 7vw;
-	  height: 10vw;
+	  width: 7vmin;
+	  height: 10vmin;
 	  div {
 		white-space: nowrap;
 	  }
   }
   .add {
-	  width: 15vw;
-	  height: 15vw;
+	  width: 15vmin;
+	  height: 15vmin;
   }
   a {
   	text-decoration: none;

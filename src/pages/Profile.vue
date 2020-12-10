@@ -51,7 +51,7 @@
 			</div>
 		</div>
 		<div class="p-bottom">
-			<el-button class="chat" @click="dialogVisible = true"><p>文字聊天</p><p style="font-size: 2.4vw;margin-top: 1vw;">0.1 $/条</p></el-button>
+			<el-button class="chat" @click="dialogVisible = true"><p>文字聊天</p><p style="font-size: 2.4vmin;margin-top: 1vmin;">0.1 $/条</p></el-button>
 			<el-button class="join">参与竞拍</el-button>
 		</div>
 		<el-button class="float">
@@ -94,21 +94,21 @@
 			}
 		}
 		.info-list {
-			padding: 0 4.6vw;
+			padding: 0 4.6vmin;
 			.p-title {
-				font-size: 3.2vw;
+				font-size: 3.2vmin;
 				font-weight: 400;
 				color: #B4B4B4;
-				margin: 2.5vw 0;
+				margin: 2.5vmin 0;
 			}
 			.each {
-				padding: 2vw 0;
+				padding: 2vmin 0;
 				border-bottom: 2px solid #F6F6F6;
-				font-size: 4vw;
+				font-size: 4vmin;
 				color: #434343;
 				.option {
 					color: #858585;
-					margin-right: 9vw;
+					margin-right: 9vmin;
 				}
 			}
 		}
@@ -123,32 +123,32 @@
 			background: white;
 			.chat {
 				background: #63BD37;
-				margin-right: 12vw;
+				margin-right: 12vmin;
 			}
 			.join {
 				background: #B629FF;
 			}
 			.el-button {
 				color: white;
-				font-size: 3.7vw;
+				font-size: 3.7vmin;
 				padding: 0;
-				height: 11vw;
-				width: 27vw;
-				border-radius: 7vw;
+				height: 11vmin;
+				width: 27vmin;
+				border-radius: 7vmin;
 			}
 		}
 		.float {
-			width: 14vw;
-			height: 14vw;
+			width: 14vmin;
+			height: 14vmin;
 			border-radius: 50%;
 			color: white;
 			background: #4CA4FF;
 			position: fixed;
 			bottom: 15vh;
-			right: 5vw;
+			right: 5vmin;
 			padding: 0;
 			.el-icon-chat-line-round {
-				font-size: 6vw;
+				font-size: 6vmin;
 			}
 		}
 		p {
@@ -158,39 +158,39 @@
 		.pop-up {
 			text-align: center;
 			.el-dialog {
-				border-radius: 4vw;
-				height: 60vw;
+				border-radius: 4vmin;
+				height: 60vmin;
 				.el-dialog__body {
 					padding: 0;
 				}
 			.el-dialog__header {
 				.el-dialog__headerbtn {
-					right: 1.5vw;
-					top: 2vw;
+					right: 1.5vmin;
+					top: 2vmin;
 				}
 				.el-icon{
-					font-size: 7vw;
+					font-size: 7vmin;
 					font-weight: 400;
 					color: #111111;
 					}
 				}
 			}
 			.el-icon-error {
-				font-size: 12.5vw;
+				font-size: 12.5vmin;
 				color: #FF5767;
 			}
 			p {
-				margin: 10vw 0;
-				font-size: 3.7vw;
+				margin: 10vmin 0;
+				font-size: 3.7vmin;
 				font-weight: normal;
 				color: #666666;
 			}
 			.el-button {
-				width: 33vw;
-				height: 10vw;
+				width: 33vmin;
+				height: 10vmin;
 				color: white;
 				background: #B629FF;
-				border-radius: 5vw;
+				border-radius: 5vmin;
 			}
 		}
 	}

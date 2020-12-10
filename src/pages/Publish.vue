@@ -70,48 +70,48 @@
 	
 	.publish {
 		.p-header {
-			line-height: 15vw;
+			line-height: 15vmin;
 			height: @h-height;
 			width: 100%;
 			background-color: #FFFFFF;
 			text-align: center;
 			vertical-align: middle;
 			display: inline-block;
-			font-size: 4.5vw;
+			font-size: 4.5vmin;
 			color: @base-color;
 			position: fixed;
 			.el-icon-question {
 				position: absolute;
-				right: 5vw;
-				top: 5vw;
-				font-size: 5.5vw;
+				right: 5vmin;
+				top: 5vmin;
+				font-size: 5.5vmin;
 			}
 		}
 		.p-cont {
-			padding: 16vw 10vw 0 5vw;
+			padding: 16vmin 10vmin 0 5vmin;
 			.but-sty {
-				width: 38vw;
+				width: 38vmin;
 				position: relative;
-				padding: 3vw 0 3vw 2vw;
+				padding: 3vmin 0 3vmin 2vmin;
 				text-align: left;
 				background-color: #B72BFE;
 				color: #FFFFFF;
 				border: none;
-				font-size: 3.5vw;
+				font-size: 3.5vmin;
 				.el-icon-caret-bottom {
 					position: absolute;
-					right: 2vw;
+					right: 2vmin;
 				}
 			}
 			.el-input {
 				.el-input__icon {
 					color: #B72BFE;
-					font-size: 6vw;
+					font-size: 6vmin;
 				}
 			}
 			.but-sty,.el-input {
-				border-radius: 1.5vw;
-				margin-bottom: 3vw;
+				border-radius: 1.5vmin;
+				margin-bottom: 3vmin;
 			}
 		}
 	}
