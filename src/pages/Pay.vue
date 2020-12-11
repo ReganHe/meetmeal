@@ -1,5 +1,6 @@
 <template>
 	<div class="paypage">
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<!--余额显示-->
 		<div class="bal" >
 			<p style="font-size: 20px; padding-top: 20px;">账户余额</p>
@@ -61,8 +62,21 @@
 </template>
 
 <script>
-	export default{
-		name:'Pay'
+	import HeaderBar from '../components/HeaderBar.vue';
+	export default {
+		data () {
+			return{
+				'titleName':'充值中心',
+			}
+		},
+		components:{
+			HeaderBar
+		},
+		methods:{
+			back () {
+				this.$router.go(-1)
+			}
+		}
 	}
 </script>
 
@@ -75,6 +89,7 @@
 			text-align: center;
 			background-color: #a135ff;
 			color: white;
+			margin-top: 16vmin;
 	}
 	.paypage .num{
 		position: relative;
@@ -113,14 +128,14 @@
 	}
 	.paypage .corner{
 		position: absolute;
-		width: 18vmin;
+		width: 37vmin;
 		height: auto;
 		background-color: #A135FF;
 		color: white;
-		font-size:0.6vmin ;
-		transform: rotate(315deg) translateX(-4.4vmin) translateY(-3vmin);
-		left: 0;
-		top: 0;
-		
+		font-size: 3vmin;
+		transform: scale(1.5);
+		transform: rotate(315deg) translateX(-4.4vmin) translateY(-3vmin) scale(0.5);
+		left: -36px;
+		top: -8px;
 	}
 </style>

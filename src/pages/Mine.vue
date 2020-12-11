@@ -4,11 +4,135 @@
 			<div class="my-info">我的</div>
 			<i class="el-icon-setting"></i>
 		</div>
+		<div class="con">
+			<div class="h-img">
+				<p>上海刘亦菲</p>
+				<p>我的拍卖号:V00001</p>
+				<div class="head">
+					<img src="" alt="">
+				</div>
+			</div>
+			<div class="list">
+				<div class="left">
+					<i class="el-icon-user-solid"></i>
+					<p>编辑资料</p>
+				</div>
+				<div class="right">
+					<i class="el-icon-s-finance"></i>
+					<p>我的钱包</p>
+				</div>
+			</div>
+			<div class="list">
+				<div class="left">
+					<i class="el-icon-map-location"></i>
+					<p>收藏的地址</p>
+				</div>
+				<div class="right">
+					<i class="el-icon-question"></i>
+					<p>帮助</p>
+				</div>
+			</div>
+			<div class="list">
+				<div class="left">
+					<i class="el-icon-s-order"></i>
+					<p>反馈</p>
+				</div>
+				<div class="right">
+					<i class="el-icon-circle-plus"></i>
+					<p>发布空闲时间</p>
+				</div>
+			</div>
+		</div>
 	</div>
 </template>
 
 <script>
 </script>
 
-<style>
+<style lang="less">
+	@import '../css/global.less';
+	
+	.mine {
+		.mm-width;
+		width: 100%;
+		.m-header {
+			.mm-width;
+			box-sizing: border-box;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0 4vmin;
+			height: @h-height;
+			line-height: @h-height;
+			color: @base-color;
+			font-size: 4.6vmin;
+			position: fixed;
+			top: 0;
+			background-color: #FFFFFF;
+			.el-icon-setting {
+				font-size: 5vmin;
+			}
+		}
+		.con {
+			margin-top: @h-height;
+			.h-img{
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-end;
+				align-items: flex-start;
+				padding-left: 18vmin;
+				padding-top: 14vmin;
+				background: url('../assets/m-bg.jpg') no-repeat;
+				background-size: 100% 100%;
+				font-size: 4.8vmin;
+				color: white;
+				p {
+					margin: 2vmin 0;
+					padding: 0;
+				}
+				.head {
+					height: 22vmin;
+					width: 22vmin;
+					border-radius: 50%;
+					overflow: hidden;
+					background-image: url(../assets/999.jpg);
+					background-size: cover;
+					img {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			.list {
+				padding: 0 5vmin;
+				display: flex;
+				justify-content: space-between;
+				font-size: 3.8vmin;
+				font-weight: normal;
+				color: #333333;
+				p {
+					margin: 2.5vmin 0;
+					padding: 0;
+				}
+				i {
+					font-weight: 600;
+					font-size: 8.5vw;
+					background: linear-gradient(-39deg, #68029C, #CE6EE2);
+					-webkit-background-clip: text;
+					color: transparent;
+				}
+				.left , .right {
+					width: 50%;
+					height: 36vmin;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+				}
+				.right {
+				}
+			}
+		}
+	}
 </style>
