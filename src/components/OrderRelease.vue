@@ -177,12 +177,10 @@
 				</div>
 			</div>
 		</div>
-		<Footer/>
 	</div>	
 </template>
 
 <script>
-	import Footer from '../components/Footer.vue';
 	export default {
 		name: 'Home',
 		data() {
@@ -191,9 +189,6 @@
 				dayType: 1,
 				
 			};
-		},
-		components: {
-			Footer
 		},
 		methods:{
 			changeStyle (num) {
