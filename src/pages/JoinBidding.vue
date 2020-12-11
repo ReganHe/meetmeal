@@ -167,75 +167,7 @@
 	.join-bidding {
 		width: 100%;
 		.poster {
-			.img {
-				height: 54vh;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				position: relative;
-				.back {
-					margin: 7vmin 3.33vmin;
-					.el-icon-arrow-left {
-						padding: 2vmin;
-						border-radius: 50%;
-						background-color:rgba(7,7,7,0.2);
-						font-size: 7vmin;
-						color: white;
-					}
-				}
-				.bottom {
-					display: flex;
-					flex-direction: column;
-					justify-content: space-between;
-					color: white;
-					.down {
-						margin-right: auto;
-						font-size: 2.9vmin;
-						white-space: nowrap;
-						display: flex;
-						align-items: center;
-						margin: 0.6vmin 1.5vmin;
-						margin-right: auto;
-						font-size: 3.67vmin;
-						margin-bottom: 2vmin;
-						.status {
-							height: 2vmin;
-							width: 2vmin;
-							background: #32EE13;
-							border-radius: 50%;
-						}
-						.gender-bg {
-							background: #FE6491;
-							padding: 0.6vmin 0.8vmin;
-							border-radius: 1.5vmin;
-						}
-						* {
-							margin-left: 3vmin;
-						}
-					}
-					.page {
-						padding: 1vmin 3vmin;
-						margin-right: 5vmin;
-						margin-left: auto;
-						border-radius: 5vmin;
-						background-color:rgba(7,7,7,0.2);
-					}
-				}
-				.mint-swipe {
-					text-align: center;
-					position: absolute;
-					top: 0;
-					height: 100%;
-					width: 100%;
-					top: 0;
-					z-index: -10;
-					.roll {
-						img {
-							width: 100%;
-						}
-					}
-				}
-			}
+			.poster;
 		}
 		.price {
 			height: 7vh;
@@ -244,6 +176,7 @@
 			border-bottom: 1px solid #F1F1F1;
 			color: @unpick-color;
 			font-size: 3.2vmin;
+			.mm-width;
 			.symbol,.num {
 				color: @price-color;
 				font-size: 5vmin;
@@ -276,6 +209,7 @@
 			.dinner {
 				position: relative;
 				width: 100%;
+				margin-bottom: 2vw;
 				.d1 {
 					margin-right: 2vmin;
 					font-weight: 400;
@@ -298,6 +232,8 @@
 			.local {
 				display: flex;
 				font-size: 5vmin;
+				margin-bottom: 1vw;
+				white-space: nowrap;
 				.el-icon-location {
 					line-height: 7vmin;
 				}
@@ -312,12 +248,13 @@
 			}
 			.time {
 				line-height: 7vmin;
+				margin-bottom: 1vw;
 				.el-icon-timer {
 					font-weight: 400;
 				}
 				.count-down {
 					color: @bid-color;
-					margin-left: 2vmin;
+					margin-left: 1vmin;
 				}
 			}
 			.information {
@@ -333,6 +270,8 @@
 			position: fixed;
 			bottom: 0;
 			border-top: 1px solid #F1F1F1;
+			background-color: #FFFFFF;
+			.mm-width;
 			.alert {
 				display: flex;
 				flex-direction: column;

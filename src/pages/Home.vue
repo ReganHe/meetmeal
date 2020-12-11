@@ -4,8 +4,10 @@
 			<mt-tab-container-item id="t1">
 				<Home/>
 			</mt-tab-container-item>
-			<mt-tab-container-item id="t2">
-				<OrderRelease/>
+			<mt-tab-container-item id="t2" timeout="3000">
+				<lazy-comonent >
+					<OrderRelease/>
+				</lazy-comonent>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="t3">
 				tab3
@@ -13,7 +15,7 @@
 			<mt-tab-container-item id="t4">
 				tab4
 			</mt-tab-container-item>
-			<mt-tab-container-item id="t5">
+			<mt-tab-container-item id="t5" timeout="5000">
 				<Mine/>
 			</mt-tab-container-item>
 		</mt-tab-container>

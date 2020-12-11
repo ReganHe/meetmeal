@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import VueLazyComponent from 'vue-lazyload'
 import 'element-ui/lib/theme-chalk/index.css';
 import { Button, Input, Pagination, Menu,
 	Submenu, MenuItem, Carousel, CarouselItem,
@@ -8,7 +9,6 @@ import { Button, Input, Pagination, Menu,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
 	Upload, Option, Drawer} from 'element-ui';
-import "mint-ui/lib/style.css";
 	
 import { Swipe, SwipeItem,Lazyload, Tabbar, TabItem, TabContainer, TabContainerItem} from 'mint-ui';
 
@@ -41,6 +41,7 @@ Vue.use(Radio)
 Vue.use(Upload)
 Vue.use(Option)
 Vue.use(Drawer)
+Vue.use(VueLazyComponent)
 
 
 Vue.prototype.$message = Message

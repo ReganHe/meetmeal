@@ -76,6 +76,7 @@
 		}
 		.con {
 			margin-top: @h-height;
+			margin-bottom: 10vmin;
 			.h-img{
 				display: flex;
 				flex-direction: column;
@@ -86,6 +87,7 @@
 				background: url('../assets/m-bg.jpg') no-repeat;
 				background-size: 100% 100%;
 				font-size: 4.8vmin;
+				margin-bottom: 10vmin;
 				color: white;
 				p {
 					margin: 2vmin 0;
@@ -129,8 +131,10 @@
 					flex-direction: column;
 					justify-content: center;
 					align-items: center;
+					border-bottom: 2px solid #E7E9F8;
 				}
 				.right {
+					border-left: 2px solid #E7E9F8;
 				}
 			}
 		}
