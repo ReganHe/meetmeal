@@ -10,11 +10,15 @@ import { Button, Input, Pagination, Menu,
 	Upload, Option, Drawer} from 'element-ui';
 import "mint-ui/lib/style.css";
 	
-import { Swipe, SwipeItem,Lazyload } from 'mint-ui';
+import { Swipe, SwipeItem,Lazyload, Tabbar, TabItem, TabContainer, TabContainerItem} from 'mint-ui';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-Vue.use(Lazyload)
+Vue.use(Lazyload);
+Vue.component(Tabbar.name, Tabbar);
+Vue.component(TabItem.name, TabItem);
+Vue.component(TabContainer.name, TabContainer);
+Vue.component(TabContainerItem.name, TabContainerItem);
 
 Vue.use(Button)
 Vue.use(Input)
