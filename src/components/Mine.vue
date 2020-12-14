@@ -2,7 +2,14 @@
 	<div class="mine">
 		<div class="m-header">
 			<div class="my-info">我的</div>
-			<i class="el-icon-setting"></i>
+			<el-dropdown trigger="click">
+				<i class="el-icon-setting"></i>
+				<el-dropdown-menu slot="dropdown">
+				    <el-dropdown-item>消息通知</el-dropdown-item>
+				    <el-dropdown-item>服务条款</el-dropdown-item>
+				    <el-dropdown-item>退出登录</el-dropdown-item>
+				  </el-dropdown-menu>
+			</el-dropdown>
 		</div>
 		<div class="con">
 			<div class="h-img">

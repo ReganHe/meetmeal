@@ -5,9 +5,9 @@
 				<Home/>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="t2" timeout="3000">
-				<lazy-comonent >
+				<vue-lazy-component>
 					<OrderRelease/>
-				</lazy-comonent>
+				</vue-lazy-component>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="t3">
 				tab3
@@ -16,7 +16,9 @@
 				tab4
 			</mt-tab-container-item>
 			<mt-tab-container-item id="t5" timeout="5000">
+				<vue-lazy-component>
 				<Mine/>
+				</vue-lazy-component>
 			</mt-tab-container-item>
 		</mt-tab-container>
 		

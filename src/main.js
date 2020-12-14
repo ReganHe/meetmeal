@@ -1,28 +1,28 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import VueLazyComponent from 'vue-lazyload'
+import VueLazyComponent from '@xunlei/vue-lazy-component'
 import 'element-ui/lib/theme-chalk/index.css';
 import { Button, Input, Pagination, Menu,
 	Submenu, MenuItem, Carousel, CarouselItem,
 	Dialog, Form, FormItem, Select,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
-	Upload, Option, Drawer} from 'element-ui';
+	Upload, Option, Dropdown, DropdownMenu,DropdownItem} from 'element-ui';
 	
 import { Swipe, SwipeItem,Lazyload,
 		Tabbar, TabItem, TabContainer, 
-		TabContainerItem, Popup, Picker} from 'mint-ui';
+		TabContainerItem, Popup, Picker, Switch} from 'mint-ui';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
-Vue.use(Lazyload);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);
 Vue.component(TabContainer.name, TabContainer);
 Vue.component(TabContainerItem.name, TabContainerItem);
 Vue.component(Popup.name, Popup);
 Vue.component(Picker.name, Picker);
+Vue.component(Switch.name, Switch);
 
 Vue.use(Button)
 Vue.use(Input)
@@ -44,7 +44,9 @@ Vue.use(RadioButton)
 Vue.use(Radio)
 Vue.use(Upload)
 Vue.use(Option)
-Vue.use(Drawer)
+Vue.use(Dropdown)
+Vue.use(DropdownMenu)
+Vue.use(DropdownItem)
 Vue.use(VueLazyComponent)
 
 
