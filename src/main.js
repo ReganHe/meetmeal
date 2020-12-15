@@ -8,12 +8,13 @@ import { Button, Input, Pagination, Menu,
 	Dialog, Form, FormItem, Select,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
-	Upload, Option, Dropdown, DropdownMenu,DropdownItem} from 'element-ui';
+	Upload, Option, Dropdown, DropdownMenu,
+	DropdownItem} from 'element-ui';
 	
 import { Swipe, SwipeItem,Lazyload,
 		Tabbar, TabItem, TabContainer, 
 		TabContainerItem, Popup, Picker, 
-		Switch, Field} from 'mint-ui';
+		Switch, Field,Checklist} from 'mint-ui';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
@@ -25,6 +26,7 @@ Vue.component(Popup.name, Popup);
 Vue.component(Picker.name, Picker);
 Vue.component(Switch.name, Switch);
 Vue.component(Field.name, Field);
+Vue.component(Checklist.name, Checklist);
 
 Vue.use(Button)
 Vue.use(Input)

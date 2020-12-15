@@ -1,10 +1,12 @@
 <template>
 	<div class="safe-cert">
 		<HeaderBar :titleName="titleName"></HeaderBar>
-		<div v-for="item in safetyType" class="safe-list">
-			<div class="s-name">{{item.name}}</div>
-			<div v-if="item.value == 1" class="s-stat">已认证</div>
-			<div v-if="item.value == 0" class="s-stat">未认证</div>
+		<div class="list" style="margin-top: 18vmin;">
+			<div v-for="item in safetyType" class="safe-list">
+				<div class="s-name">{{item.name}}</div>
+				<div v-if="item.value == 1" class="s-stat">已认证</div>
+				<div v-if="item.value == 0" class="active">未认证</div>
+			</div>
 		</div>
 	</div>
 </template>
@@ -18,9 +20,17 @@
 		data () {
 			return{
 				'titleName':'安全认证',
-				'safetyType':[{"name":"手机号码认证","value":'0'},{'name':'手机号码认证','value':'0'},{'name':'手机号码认证','value':'1'}],
+				'safetyType':[{"name":"手机号码认证","value":'0'},
+				{'name':'手机号码认证','value':'0'},
+				{'name':'手机号码认证','value':'1'},
+				{'name':'手机号码认证','value':'1'}],
 			}
 		},
+		methods: {
+			back () {
+				this.$router.go(-1)
+			}
+		}
 	}
 </script>
 
@@ -31,7 +41,6 @@
 		background-color: #F5F5F5;
 		overflow: hidden;
 		.safe-list {
-			margin-top:18vmin;
 			width: 100%;
 			height: 12vmin;
 			margin-bottom: 2px;

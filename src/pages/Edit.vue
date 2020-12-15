@@ -13,9 +13,6 @@
 			  :on-remove="handleRemove">
 			  <i class="el-icon-plus"></i>
 			</el-upload>
-			<el-dialog :visible.sync="dialogVisible">
-			  <img width="100%" :src="dialogImageUrl" alt="">
-			</el-dialog>
 		</div>
 		<div class="list-info">
 			<div class="t2">基本资料(必填)</div>
@@ -28,7 +25,11 @@
 			<mt-field 
 				label="生活年代" 
 				placeholder="请添加你的生活年代" 
-				type="text">
+				type="text"
+				:value="s_years"
+				:readonly="true"
+				:disableClear="true"
+				@click.native="popupVisible = true">
 				<i class="el-icon-arrow-right"></i></mt-field>
 			<mt-field 
 				label="身高"
@@ -73,6 +74,16 @@
 				placeholder="请添加你的慈善捐助">
 				<i class="el-icon-arrow-right"></i></mt-field>
 		</div>
+		<mt-popup
+		  v-model="popupVisible"
+		  :visibleItemCount= 5
+		  position="bottom">
+		  <div class="pop-title">
+			<span @click="popupVisible = false" style="color: #8A8989;">取消</span>
+			<span @click="setYear()" style="color: #C12BE2;">确认</span>
+		  </div>
+		  <mt-picker :slots="year" @change="selectYear" ></mt-picker>
+		</mt-popup>
 	</div>
 </template>
 
@@ -81,21 +92,34 @@
 		data() {
 		  return {
 			dialogImageUrl: '',
-			dialogVisible: false,
+			popupVisible: false,
 			pic_num: 6,
+			c_years: "",
+			s_years: "",
+			year:[{
+				flex: 1,
+				values:['70后','75后','80后','85后','90后','95后','00后'],
+				className:'chYear',
+				textAlign:'center',
+				}],
+			years:"",
 		  };
 		},
 		methods: {
 		  handleRemove(file, fileList) {
-			console.log(file, fileList);
 		  },
 		  handlePictureCardPreview(file) {
-			this.dialogImageUrl = file.url;
-			this.dialogVisible = true;
 		  },
 		  back () {
 			  this.$router.go(-1)
-		  }
+		  },
+		  selectYear(picker,values){
+			this.c_years = picker.getValues()[0]
+		  },
+		  setYear(){
+		  	this.s_years = this.c_years
+			this.popupVisible = false
+			}
 		}
 	}
 </script>
@@ -105,6 +129,16 @@
 	
 	.edit {
 		padding-top: 15vmin;
+		.mint-popup {
+			width: 100%;
+			border-radius: 2.7vmin 2.7vmin 0px 0px;
+			.pop-title {
+				display: flex;
+				justify-content: space-between;
+				padding: 3vmin 4vmin;
+				margin-bottom: 3vmin;
+			}
+		}
 		.title {
 			background: #ffffff;
 			width: 100%;
@@ -135,6 +169,7 @@
 		.upload-img {
 			.pic1 {
 				float: left;
+				overflow: hidden;
 				.el-upload {
 					width: calc(100vmin / 3 * 2);
 					height: calc(100vmin / 3 * 2);
@@ -147,6 +182,7 @@
 				}
 			}
 			.pic {
+				overflow: hidden;
 				float: right;
 				.el-upload {
 					width: calc(100vmin / 3);
@@ -172,6 +208,7 @@
 				}
 				.mint-cell-wrapper {
 					padding-left: 4vmin;
+					font-size: 3.8vmin;
 				}
 			}
 			.t2 {
