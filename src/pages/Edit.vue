@@ -5,15 +5,20 @@
 			编辑资料
 			<div class="save">保存</div>
 		</div>
+		
 		<div class="upload-img">
-			<el-upload  v-for="count in pic_num" :class="{pic1 : count == 1 , pic : count !== 1}"
-			  action="https://jsonplaceholder.typicode.com/posts/"
-			  list-type="picture-card"
-			  :on-preview="handlePictureCardPreview"
-			  :on-remove="handleRemove">
-			  <i class="el-icon-plus"></i>
-			</el-upload>
+			<div 
+			@click="sheetVisible = true"
+			v-for="count in pic_num" 
+			:class="{pic1 : count == 1 , pic : count !== 1}">
+				<i class="el-icon-plus"></i>
+			</div>
+			<mt-actionsheet
+			  :actions="actions"
+			  v-model="sheetVisible">
+			</mt-actionsheet>
 		</div>
+		
 		<div class="list-info">
 			<div class="t2">基本资料(必填)</div>
 			<mt-field 
@@ -96,6 +101,12 @@
 			pic_num: 6,
 			c_years: "",
 			s_years: "",
+			sheetVisible:false,
+			actions:[{
+				name:"从相册中挑选",
+				},{
+				name:"拍照"
+			}],
 			year:[{
 				flex: 1,
 				values:['70后','75后','80后','85后','90后','95后','00后'],
@@ -167,37 +178,33 @@
 			}
 		}
 		.upload-img {
-			.pic1 {
+			height: 100vmin;
+			.pic1 , .pic {
 				float: left;
 				overflow: hidden;
-				.el-upload {
-					width: calc(100vmin / 3 * 2);
-					height: calc(100vmin / 3 * 2);
-					border: 1px solid #ffffff;
-					border-radius: 0;
-				}
+				width: calc(100vmin / 3 * 2);
+				height: calc(100vmin / 3 * 2);
+				border: 1px solid #ffffff;
+				border-radius: 0;
+				text-align: center;
+				background: #f0f0f0;
+				box-sizing: border-box;
 				.el-icon-plus {
 					line-height: calc(100vmin / 3 *2);
-					transform: translateY(-2vmin);
 				}
 			}
 			.pic {
-				overflow: hidden;
 				float: right;
-				.el-upload {
-					width: calc(100vmin / 3);
-					height: calc(100vmin / 3);
-					border: 1px solid #ffffff;
-					border-radius: 0;
-				}
+				width: calc(100vmin / 3);
+				height: calc(100vmin / 3);
 				.el-icon-plus {
 					line-height: calc(100vmin / 3);
-					transform: translateY(-2vmin);
 				}
 			}
 		}
 		.list-info{
 			width: 100%;
+			margin-top: 1vmin;
 			.mint-field {
 				width: 100%;
 				height: 13vmin;

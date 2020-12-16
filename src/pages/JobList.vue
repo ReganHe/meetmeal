@@ -1,10 +1,12 @@
 <template>
 	<div class="job-list">
 		<HeaderBar :titleName="titleName"></HeaderBar>
-		<mt-checklist
-		  title="复选框列表"
+		<mt-checklist class="job"
 		  v-model="job"
-		  :options="options">
+		  align="right"
+		  @change="chJob"
+		  :options="options"
+		  :max="1">
 		</mt-checklist>
 	</div>
 </template>
@@ -20,17 +22,16 @@
 				'titleName':'职业',
 				options:[
 				  {
-					label: '选中禁用',
-					value: '选中禁用的值',
-					disabled: true
+					label: '学生',
+					value: '1',
 				  },
 				  {
-					label: '选项A',
-					value: '值A'
+					label: '收银员',
+					value: '2'
 				  },
 				  {
-					label: '选项B',
-					value: '值B'
+					label: '服务员',
+					value: '3'
 				  }
 				],
 				job: [],
@@ -39,6 +40,9 @@
 		methods: {
 			back () {
 				this.$router.go(-1)
+			},
+			chJob() {
+				console.log(this.job)
 			}
 		}
 	}
@@ -47,9 +51,21 @@
 <style lang="less">
 	@import "../css/global.less";
 	.job-list {
+		width: 100%;
+		.mm-width;
 		height: 100vh;
 		background-color: #F5F5F5;
 		overflow: hidden;
-		
+		.job {
+			width: 100%;
+			margin-top: 20vmin;
+			.mint-checkbox-core {
+				border-radius: 0;
+			}
+			.mint-cell-wrapper {
+				background-image: none;
+				border-bottom: 2px solid #F5F5F5;
+			}
+		}
 	}
 </style>

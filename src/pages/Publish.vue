@@ -5,12 +5,34 @@
 			<i class="el-icon-question"></i>
 		</div>
 
+		<div class="s-type">
+			<carousel
+			class="type"
+			:pullDrag= "true"
+			:items="1"
+			:nav="false"
+			:stagePadding="25"
+			:dots="false"
+			@changed="chImg(index)"
+			>
+			<div class="img-options">
+				<img src="../assets/999.jpg" alt="">
+				<p class="s-cn">早餐时间</p>
+				<p class="s-en">Breakfast Time</p>
+				</div>
+			<div class="img-options">
+				<img src="../assets/bg.jpg" alt="">
+				<p class="s-cn">午餐时间</p>
+				<p class="s-en">Lunch Time</p>
+				</div>
+			<div class="img-options">
+				<img src="../assets/m-bg.jpg" alt="">
+				<p class="s-cn">晚餐时间</p>
+				<p class="s-en">Dinner Time</p>
+				</div>
+			</carousel>
+		</div>
 		<div class="p-cont">
-			<el-carousel :interval="4000" type="card" height="200px" >
-				<el-carousel-item v-for="item in 3" :key="item">
-				<h3 class="medium">{{ item }}</h3>
-				</el-carousel-item>
-			</el-carousel>
 			<el-button 
 			class="but-sty" 
 			icon="el-icon-caret-bottom"
@@ -89,6 +111,8 @@
 </template>
 
 <script>
+	import carousel from 'vue-owl-carousel';
+	
 	export default {
 		data () {
 			return {
@@ -164,6 +188,9 @@
 				}],
 			};
 		},
+		components: {
+			carousel
+		},
 		methods:{
 			addZero(num, n) {
 			    return (Array(n).join(0) + num).slice(-n);
@@ -201,6 +228,9 @@
 			setPrice() {
 				this.input3 = "$" + this.s_price;
 				this.pricePop = false;
+			},
+			chImg(index) {
+				console.log(111)
 			}
 		}
 	}
@@ -208,23 +238,7 @@
 
 <style lang="less">
 	@import '../css/global.less';
-	
-	.el-carousel__item h3 {
-	    color: #475669;
-	    font-size: 14px;
-	    opacity: 0.75;
-	    line-height: 200px;
-	    margin: 0;
-	  }
-	  
-	  .el-carousel__item:nth-child(2n) {
-	    background-color: #99a9bf;
-	  }
-	  
-	  .el-carousel__item:nth-child(2n+1) {
-	    background-color: #d3dce6;
-	  }
-	
+
 	.publish {
 		.p-header {
 			line-height: 15vmin;
@@ -244,8 +258,40 @@
 				font-size: 5.5vmin;
 			}
 		}
-		.p-cont {
-			padding: 16vmin 10vmin 0 5vmin;
+		.s-type {
+			padding: 18vmin 0 4vmin 0;
+			.type {
+				.img-options{
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					height: 38vmin;
+					overflow: hidden;
+					margin: 0 1vmin;
+					border-radius: 2vmin;
+					.s-cn, .s-en {
+						margin: 1.5vmin 0;
+						font-size: 6.7vmin;
+						font-family: FZLanTingHeiS-UL-GB;
+						font-weight: 400;
+						color: #FFFFFF;
+					}
+					.s-en {
+						font-size: 4vmin;
+					}
+					img {
+						width: 100%;
+						position: absolute;
+						top: 0;
+						z-index: -10;
+					}
+				}
+			}
+		}
+		.p-cont{
+			padding: 0 5vmin;
 			.but-sty {
 				width: 38vmin;
 				position: relative;
