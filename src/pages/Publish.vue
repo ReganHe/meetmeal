@@ -13,7 +13,7 @@
 			:nav="false"
 			:stagePadding="25"
 			:dots="false"
-			@changed="chImg(index)"
+			@changed="chImg()"
 			>
 			<div class="img-options">
 				<img src="../assets/999.jpg" alt="">
@@ -57,6 +57,12 @@
 			    placeholder="请选择起拍价"
 			    v-model="input3">
 			</el-input>
+			<div class="tip">
+				拍卖结束时间为见面时间前3个小时，距离结束11:59:59
+			</div>
+			<div class="but-pub" >
+				<el-button @click="publishPop = true" class="but-sty" style="text-align: center;" >发布</el-button>
+			</div>
 		</div>
 		<mt-popup
 			class="select-time"
@@ -107,6 +113,22 @@
 		  :visibleItemCount = 5
 		  @change="selectPrice"></mt-picker>
 		</mt-popup>
+		<mt-popup
+		  v-model="publishPop"
+		  class="publish-pop">
+			<div class="pic">
+				<i class="el-icon-position"></i>
+			</div>
+			<p class="pub-title">发布订单</p>
+			<div class="pub-con">
+				<p>日期：10/28/2019 (星期一)</p>
+				<p>时长：2小时（21:00-23:00)</p>
+				<p>城市：San Jose</p>
+				<p>起拍价：$30</p>
+				<el-button class="but">确认发布</el-button>
+			</div>
+			<div class="close" @click="publishPop = false"><i class="el-icon-circle-close"></i></div>
+		</mt-popup>
 	</div>
 </template>
 
@@ -119,6 +141,7 @@
 				timePop: false,
 				localPop: false,
 				pricePop: false,
+				publishPop: false,
 				input1: "",
 				input2: "",
 				input3:"",
@@ -229,7 +252,7 @@
 				this.input3 = "$" + this.s_price;
 				this.pricePop = false;
 			},
-			chImg(index) {
+			chImg() {
 				console.log(111)
 			}
 		}
@@ -316,6 +339,17 @@
 				border-radius: 1.5vmin;
 				margin-bottom: 3vmin;
 			}
+			.tip {
+				margin-top: 6.8vmin;
+				font-size: 3.4vmin;
+				font-family: PingFang SC;
+				font-weight: 400;
+				color: #999999;
+			}
+			.but-pub {
+				text-align: center;
+				margin-top: 7.5vmin;
+			}
 		}
 		.select-time , .select-local , .select-price{
 			width: 100%;
@@ -372,6 +406,43 @@
 			.picker-items {
 				width: 23vmin;
 				margin: 0 auto;
+			}
+		}
+		.publish-pop {
+			border-radius: 1.5vmin;
+			text-align: center;
+			width: 75vmin;
+			height: 91vmin;
+			.pic {
+				font-size: 20vmin;
+			}
+			.pub-title {
+				font-size: 4.5vmin;
+				font-weight: normal;
+				color: #B928FD;
+			}
+			.pub-con {
+				padding: 0 10vmin;
+				text-align: left;
+				font-size: 3.7vmin;
+				font-family: Adobe Heiti Std;
+				font-weight: normal;
+				color: #333333;
+				line-height: 3.7vmin;
+				.but {
+					width: 100%;
+					height: 10.6vmin;
+					background: #B928FD;
+					border-radius: 1.5vmin;
+					color: #FFFFFF;
+				}
+			}
+			.close {
+				position: absolute;
+				bottom: -13vmin;
+				font-size: 8.7vmin;
+				color: #ffffff;
+				left: 33vmin;
 			}
 		}
 	}
