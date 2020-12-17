@@ -278,6 +278,7 @@
 	@import '../css/global.less';
 
 	.publish {
+		padding-bottom: 20vmin;
 		.p-header {
 			line-height: 15vmin;
 			height: @h-height;
@@ -289,6 +290,8 @@
 			font-size: 4.5vmin;
 			color: @base-color;
 			position: fixed;
+			background-color: #FFFFFF;
+			z-index: 10;
 			.el-icon-question {
 				position: absolute;
 				right: 5vmin;
@@ -462,7 +465,7 @@
 		}
 		.deposit-pop {
 			padding: 2.5vmin;
-			width: 90vmin;
+			width: 85vmin;
 			height: 127vmin;
 			font-size: 4.3vmin;
 			text-align: center;

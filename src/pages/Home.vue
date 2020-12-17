@@ -10,7 +10,9 @@
 				</vue-lazy-component>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="t3">
-				tab3
+				<vue-lazy-component>
+					<Publish/>
+				</vue-lazy-component>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="t4">
 				tab4
@@ -57,6 +59,7 @@
 <script>
 	import Home from '../components/Home.vue';
 	import OrderRelease from '../components/OrderRelease.vue';
+	import Publish from '../components/Publish.vue'
 	import Mine from '../components/Mine.vue';
 	export default {
 		data() {
@@ -67,6 +70,7 @@
 		},
 		components:{
 			Home,
+			Publish,
 			OrderRelease,
 			Mine,
 		},

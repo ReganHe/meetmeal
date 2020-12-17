@@ -29,4 +29,14 @@ function getPerson(data){
 	})
 }
 
-export  {productListApi,getProductInfo,getPerson}
+function getOrder(data){
+	return axios({
+		method: 'get',
+		url: '/rest/order',
+		// params: {
+		// 	...data
+		// }
+	})
+}
+
+export  {productListApi,getProductInfo,getPerson,getOrder}

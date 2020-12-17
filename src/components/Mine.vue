@@ -79,6 +79,7 @@
 			background-color: #FFFFFF;
 			.el-icon-setting {
 				font-size: 5vmin;
+				color: @base-color;
 			}
 		}
 		.con {
