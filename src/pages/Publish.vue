@@ -129,6 +129,20 @@
 			</div>
 			<div class="close" @click="publishPop = false"><i class="el-icon-circle-close"></i></div>
 		</mt-popup>
+		<mt-popup
+		  v-model="depositPop"
+		  class="deposit-pop">
+			<p class="dep-title">为保证竞拍真实性和双方利益<br>竞拍人和参拍人均需支付竞拍保证金</p>
+			<p class="sub-title">参拍保证金<span style="color:#13A500;">退还规则</span></p>
+			<p class="p-con">1.参拍后没有最终胜出，在参拍倒计时结束后48小 时之内退还给参拍人。<br>
+			 2.参拍后能够按时见面并完成订单，此保证金可以 在支付</p>
+			<p class="sub-title">参拍保证金<span style="color:#D31515;">扣除规则</span></p>
+			<p class="p-con">1.参拍胜出后，强制取消订单。或没有在约定的时 间与竞拍人见面，经核实后扣除竞拍保证金。</p>
+			<p class="p-con" style="text-align: center;">参拍保证金为：$12/次/人</p>
+			<p class="p-con">成为餐遇VIP ，则不需要每次支付参拍保证金祥见VIP 规则。</p>
+			<el-button class="but b-left" @click="depositPop = false">取消</el-button>
+			<el-button class="but b-right">支付参拍保证金</el-button>
+			</mt-popup>
 	</div>
 </template>
 
@@ -142,6 +156,7 @@
 				localPop: false,
 				pricePop: false,
 				publishPop: false,
+				depositPop: true,
 				input1: "",
 				input2: "",
 				input3:"",
@@ -443,6 +458,45 @@
 				font-size: 8.7vmin;
 				color: #ffffff;
 				left: 33vmin;
+			}
+		}
+		.deposit-pop {
+			padding: 2.5vmin;
+			width: 90vmin;
+			height: 127vmin;
+			font-size: 4.3vmin;
+			text-align: center;
+			border-radius: 2vmin;
+			p {
+				margin: 0 0 5vmin 0;
+			}
+			.dep-title {
+				color: #BF28FE;
+				font-weight: 600;
+			}
+			.sub-title {
+				color: #333333;
+			}
+			.p-con {
+				font-size: 3.8vmin;
+				font-weight: 400;
+				color: #666666;
+				text-align: left;
+				line-height: 6vmin;
+			}
+			.but {
+				width: 35.5vmin;
+				height: 13vmin;
+				border-radius: 7vmin;
+			}
+			.b-left {
+				border: 1px solid #BA2CEF;
+				color: #BA2CEF;
+			}
+			.b-right {
+				background: #B928FD;
+				border: 1px solid #BA2CEF;
+				color: #FFFFFF;
 			}
 		}
 	}
