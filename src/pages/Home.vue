@@ -27,12 +27,12 @@
 		<div class="f-bg">
 			<mt-tabbar v-model="selected" >
 				<mt-tab-item id="t1" @click.native="ch_page(1)">
-					<img v-if="pageType !== 1" slot="icon" src="../assets/home.png">
+					<img v-if="pageType != 1" slot="icon" src="../assets/home.png">
 					<img v-if="pageType == 1" slot="icon" src="../assets/home_active.jpg">
 					首页
 				</mt-tab-item>
 				<mt-tab-item id="t2" @click.native="ch_page(2)">
-					<img v-if="pageType !== 2" slot="icon" src="../assets/order_icon.gif">
+					<img v-if="pageType != 2" slot="icon" src="../assets/order_icon.gif">
 					<img v-if="pageType == 2" slot="icon" src="../assets/order_active.jpg">
 					订单
 				</mt-tab-item>
@@ -42,12 +42,12 @@
 				</div>
 			  </mt-tab-item>
 			  <mt-tab-item id="t4" @click.native="ch_page(4)">
-				<img v-if="pageType !== 4" slot="icon" src="../assets/message_icon.gif">
+				<img v-if="pageType != 4" slot="icon" src="../assets/message_icon.gif">
 				<img v-if="pageType == 4" slot="icon" src="../assets/message_icon.gif">
 				消息
 			  </mt-tab-item>
 			  <mt-tab-item id="t5" @click.native="ch_page(5)">
-				<img v-if="pageType !== 5" slot="icon" src="../assets/me_icon.gif">
+				<img v-if="pageType != 5" slot="icon" src="../assets/me_icon.gif">
 				<img v-if="pageType == 5" slot="icon" src="../assets/me_icon.gif">
 				我的
 			  </mt-tab-item>
@@ -74,17 +74,15 @@
 			OrderRelease,
 			Mine,
 		},
-		// created(){
-		// 	let page = this.$route.query.page
-		// 	if (page == "undefined" || page.length == 0){
-		// 		console.log(page)
-		// 		this.pageType = 1
-		// 	}else {
-		// 		this.ch_page(page)
-		// 		this.selected = "t" + this.pageType
-		// 		console.log(this.pageType,this.selected)
-		// 	}
-		// },
+		mounted(){
+			let page = this.$route.query.page
+			if (!page){
+				this.pageType = 1
+			}else {
+				this.ch_page(page)
+				this.selected = "t" + this.pageType
+			}
+		},
 		methods:{
 			ch_page (num) {
 				this.pageType = num;
