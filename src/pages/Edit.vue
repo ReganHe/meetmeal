@@ -11,7 +11,7 @@
 			@click="sheetVisible = true"
 			v-for="count in pic_num" 
 			:class="{pic1 : count == 1 , pic : count !== 1}">
-				<i class="el-icon-plus"></i>
+				<i class="el-icon-circle-plus-outline"></i>
 			</div>
 			<mt-actionsheet
 			  :actions="actions"
@@ -21,12 +21,17 @@
 		
 		<div class="list-info">
 			<div class="t2">基本资料(必填)</div>
-			<mt-field 
-				label="用户名" 
-				placeholder="请添加你的用户名" 
-				type="text">
-				<i class="el-icon-arrow-right"></i>
-			</mt-field>
+			<router-link to="edit-username">
+				<mt-field 
+					label="用户名" 
+					placeholder="请添加你的用户名"
+					:readonly="true"
+					:disableClear="true"
+					:value="username"
+					type="text">
+					<i class="el-icon-arrow-right"></i>
+				</mt-field>
+			</router-link>
 			<mt-field 
 				label="生活年代" 
 				placeholder="请添加你的生活年代" 
@@ -57,21 +62,31 @@
 				type="text"
 				placeholder="请添加你的声音">
 				<i class="el-icon-arrow-right"></i></mt-field>
-			<mt-field 
-				label="职业"
-				type="text"
-				placeholder="请添加你的职业">
-				<i class="el-icon-arrow-right"></i></mt-field>
+			<router-link to="/job-list">
+				<mt-field 
+					label="职业"
+					:readonly="true"
+					:disableClear="true"
+					type="text"
+					placeholder="请添加你的职业">
+					<i class="el-icon-arrow-right"></i>
+				</mt-field>
+			</router-link>
 			<mt-field 
 				label="爱好"
 				type="text"
 				placeholder="请添加你的爱好">
 				<i class="el-icon-arrow-right"></i></mt-field>
-			<mt-field 
-				label="我的安全认证"
-				type="text"
-				placeholder="请添加你的安全认证">
-				<i class="el-icon-arrow-right"></i></mt-field>
+			<router-link to="/safety-certificate">
+				<mt-field 
+					label="我的安全认证"
+					:readonly="true"
+					:disableClear="true"
+					type="text"
+					placeholder="请添加你的安全认证">
+					<i class="el-icon-arrow-right"></i>
+				</mt-field>
+			</router-link>
 			<mt-field 
 				label="慈善捐助"
 				:disabled="false" 
@@ -96,12 +111,12 @@
 	export default {
 		data() {
 		  return {
-			dialogImageUrl: '',
 			popupVisible: false,
+			sheetVisible:false,
 			pic_num: 6,
+			username:"",
 			c_years: "",
 			s_years: "",
-			sheetVisible:false,
 			actions:[{
 				name:"从相册中挑选",
 				},{
@@ -139,7 +154,8 @@
 	@import '../css/global.less';
 	
 	.edit {
-		padding-top: 15vmin;
+		padding: 15vmin 0;
+		background-color: #F5F5F5;
 		.mint-popup {
 			width: 100%;
 			border-radius: 2.7vmin 2.7vmin 0px 0px;
@@ -189,16 +205,20 @@
 				text-align: center;
 				background: #f0f0f0;
 				box-sizing: border-box;
-				.el-icon-plus {
+				.el-icon-circle-plus-outline {
 					line-height: calc(100vmin / 3 *2);
+					font-size: 7vmin;
+					color: #D1D1D1;
 				}
 			}
 			.pic {
 				float: right;
 				width: calc(100vmin / 3);
 				height: calc(100vmin / 3);
-				.el-icon-plus {
+				.el-icon-circle-plus-outline {
 					line-height: calc(100vmin / 3);
+					font-size: 7vmin;
+					color:#D1D1D1;
 				}
 			}
 		}
@@ -214,12 +234,17 @@
 					color: #999999;
 				}
 				.mint-cell-wrapper {
-					padding-left: 4vmin;
+					padding: 0 6vmin;
 					font-size: 3.8vmin;
+					background-image: none;
+					border-bottom: 1px solid #F5F5F5;
+					.mint-cell-title {
+						text-align: left;
+					}
 				}
 			}
 			.t2 {
-				padding: 3vmin 4vmin;
+				padding: 3vmin 6vmin;
 				color: #666666;
 			}
 		}

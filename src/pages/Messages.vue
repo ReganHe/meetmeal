@@ -1,39 +1,47 @@
 <template>
 	<div class="message">
-		<HeaderBar :titleName="titleName"></HeaderBar>
+		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
 		<div class="type">
 			<div class="push">
-				推送消息<mt-switch v-model="value">
-			</mt-switch>
+				推送消息
+				<mt-switch v-model="value1">
+				</mt-switch>
 			</div>
 			<div>订单或聊天消息</div>
 			<div class="e-mail">
-				电子邮箱<mt-switch v-model="value">
-			</mt-switch></div>
+				电子邮箱
+				<mt-switch v-model="value2">
+				</mt-switch>
+			</div>
 			<div class="phone">
-				手机短信<mt-switch v-model="value">
-			</mt-switch></div>
+				手机短信
+				<mt-switch v-model="value3">
+				</mt-switch>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
 	import HeaderBar from '../components/HeaderBar.vue';
+	
 	export default {
 		data () {
 			return{
 				titleName:'消息通知',
-				value:"",
+				value1:"",
+				value2:"",
+				value3:"",
 			}
 		},
 		components:{
 			HeaderBar
 		},
-		methods:{
+		methods: {
 			back () {
 				this.$router.go(-1)
-			}
-		}
+			},
+		},
 	}
 </script>
 

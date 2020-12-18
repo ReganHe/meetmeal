@@ -1,6 +1,6 @@
 <template>
 	<div class="title">
-		<i class="el-icon-arrow-left" @click="back()"></i>
+		<i class="el-icon-arrow-left" @click=""></i>
 		{{titleName}}
 	</div>
 </template>
@@ -9,7 +9,7 @@
 	export default {
 		props: {
 			'titleName': {default:''},
-		}
+		},
 	}
 </script>
 

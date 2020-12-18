@@ -107,7 +107,7 @@ export default {
 <style lang='less' scoped>
 	@import '../css/global.less';
 	.home {
-		padding-top: 26vmin;
+		padding-top: 27vmin;
 		padding-bottom: 20vmin;
 	}
 	

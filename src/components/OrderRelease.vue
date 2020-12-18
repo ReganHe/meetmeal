@@ -291,7 +291,7 @@
 			}
 		}
 		.body{
-			margin-top: 14vh;
+			margin-top: 25vmin;
 			width: 100%;
 			.list {
 				display: flex;

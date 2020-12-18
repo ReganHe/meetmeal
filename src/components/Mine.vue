@@ -5,7 +5,9 @@
 			<el-dropdown trigger="click">
 				<i class="el-icon-setting"></i>
 				<el-dropdown-menu slot="dropdown">
-				    <el-dropdown-item>消息通知</el-dropdown-item>
+				    <el-dropdown-item>
+						<router-link to="messages">消息通知</router-link>
+					</el-dropdown-item>
 				    <el-dropdown-item>服务条款</el-dropdown-item>
 				    <el-dropdown-item>退出登录</el-dropdown-item>
 				  </el-dropdown-menu>
@@ -20,10 +22,14 @@
 				</div>
 			</div>
 			<div class="list">
+				
 				<div class="left">
+					<router-link to="/edit">
 					<i class="el-icon-user-solid"></i>
 					<p>编辑资料</p>
+					</router-link>
 				</div>
+				
 				<div class="right">
 					<i class="el-icon-s-finance"></i>
 					<p>我的钱包</p>
@@ -58,6 +64,32 @@
 
 <style lang="less">
 	@import '../css/global.less';
+	body {
+		a {
+			text-align: center;
+			text-decoration: none;
+			color: #333333;
+		}
+		.el-popper[x-placement^=bottom] {
+			margin: 0;
+		}
+		.el-popper{
+			width: 30vmin;
+			margin: 0;
+			padding: 0;
+			left: 70vmin !important;
+			.popper__arrow {
+				display: none !important;
+			}
+			.el-dropdown-menu__item {
+				font-size: 3.8vmin;
+				font-weight: 400;
+				color: #333333;
+				border-bottom: 1px solid #D9D8D8;
+				text-align: center;
+			}
+		}
+	}
 	
 	.mine {
 		.mm-width;
@@ -120,7 +152,6 @@
 				justify-content: space-between;
 				font-size: 3.8vmin;
 				font-weight: normal;
-				color: #333333;
 				p {
 					margin: 2.5vmin 0;
 					padding: 0;

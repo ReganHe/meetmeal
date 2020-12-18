@@ -1,6 +1,6 @@
 <template>
 	<div class="edit-user">
-		<HeaderBar :titleName="titleName"></HeaderBar>
+		<HeaderBar :titleName="titleName" @click.native='back()'></HeaderBar>
 		<mt-field 
 		class="username"
 		label="用户名"
@@ -21,7 +21,7 @@
 			}
 		},
 		methods: {
-			goback () {
+			back () {
 				this.$router.go(-1)
 			}
 		}
