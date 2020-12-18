@@ -74,15 +74,21 @@
 			OrderRelease,
 			Mine,
 		},
+		// created(){
+		// 	let page = this.$route.query.page
+		// 	if (page == "undefined" || page.length == 0){
+		// 		console.log(page)
+		// 		this.pageType = 1
+		// 	}else {
+		// 		this.ch_page(page)
+		// 		this.selected = "t" + this.pageType
+		// 		console.log(this.pageType,this.selected)
+		// 	}
+		// },
 		methods:{
 			ch_page (num) {
 				this.pageType = num;
 			},
-			// go (num,page) {
-			// 	if ( page != "/home") {
-			// 		this.$router.push(page)
-			// 	}
-			// }
 		}
 	}
 </script>

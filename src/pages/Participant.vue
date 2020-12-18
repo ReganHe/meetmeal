@@ -1,6 +1,6 @@
 <template>
 	<div class="participant">
-		<HeaderBar :titleName="titleName"></HeaderBar>
+		<HeaderBar :titleName="titleName" @click.native='back()'></HeaderBar>
 		<div class="part-info">
 			<div v-show="true" class="user">
 				<div class="user-info">
@@ -25,7 +25,7 @@
 				<p>暂无参与人</p>
 			</div>
 		</div>
-		<div v-show="true" class="p-bottom">
+		<div v-show="true" class="p-bottom" @click="back()">
 			<p>无合适参与人，放弃餐遇</p>
 		</div>
 	</div>
@@ -44,7 +44,7 @@
 		},
 		methods:{
 			back () {
-				this.$router.go(-1)
+				this.$router.push({ path: `/home?page=2`})
 			}
  		}
 	}

@@ -106,9 +106,11 @@
 						<div class="last-price">
 							当前价：<span class="sty-color">$60</span>
 						</div>
-						<div class="check-person sty-color" >
-							查看参与人
-						</div>
+						<router-link to="/participant">
+							<div class="check-person sty-color" >
+								查看参与人
+							</div>
+						</router-link>
 					</div>
 				</div>
 			</div>
@@ -196,7 +198,6 @@
 		mounted(){
 			getOrder().then(resp => {
 				this.order = resp.data.data
-				console.log(this.order)
 			})
 		},
 		methods:{

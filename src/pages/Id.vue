@@ -86,6 +86,9 @@
 				.mint-cell-wrapper {
 					padding-left: 4vmin;
 					font-size: 3.8vmin;
+					.mint-cell-title{
+						text-align: left;
+					}
 				}
 			}
 		}
@@ -95,6 +98,10 @@
 			font-weight: 400;
 			color: #333333;
 			line-height: 7.3vmin;
+			a {
+				color: #387EF5;
+				text-decoration: underline;
+			}
 		}
 	}
 	

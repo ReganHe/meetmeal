@@ -79,7 +79,6 @@
 				this.info = resp.data.data
 				this.imgList = this.info.imgList
 				this.total = this.imgList.length
-				console.log(resp.data.data)
 			})
 		},
 		methods:{

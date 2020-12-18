@@ -1,10 +1,11 @@
 <template>
 	<div class="job-list">
-		<HeaderBar :titleName="titleName"></HeaderBar>
+		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
 		<el-checkbox-group 
 		v-model="checkedJobs"
 		:min="0"
-		:max="1">
+		:max="1"
+		@change="chJobs()">
 			<el-checkbox v-for="job in options" :label="job" :key="job.value">
 				{{job.label}}
 			</el-checkbox>
@@ -36,15 +37,14 @@
 					value: '3'
 				  }
 				],
-				job: [],
 			}
 		},
 		methods: {
 			back () {
 				this.$router.go(-1)
 			},
-			checkJobs() {
-				console.log(this.job)
+			chJobs() {
+				console.log(this.checkedJobs)
 			}
 		}
 	}

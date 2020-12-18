@@ -51,11 +51,14 @@
 				placeholder="请添加你的生活城市"
 				type="text">
 				<i class="el-icon-arrow-right"></i></mt-field>
-			<mt-field 
-				label="身份认证"
-				type="text"
-				placeholder="请添加你的身份认证">
-				<i class="el-icon-arrow-right"></i></mt-field>
+			<router-link to="id">
+				<mt-field 
+					label="身份认证"
+					type="text"
+					placeholder="请添加你的身份认证">
+					<i class="el-icon-arrow-right"></i>
+				</mt-field>
+			</router-link>
 			<div class="t2">更多资料</div>
 			<mt-field 
 				label="我的声音"

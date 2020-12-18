@@ -82,7 +82,6 @@ export default {
 	mounted(){
 		productListApi().then(resp =>{
 			this.product = resp.data.data
-			console.log(this.product[1].img)
 		})
 	},
 	methods:{
