@@ -46,7 +46,11 @@
 				</div>
 				<div class="time">
 					<i class="el-icon-timer">&nbsp;距结束</i>
-					<span class="count-down">{{item.time}}</span>
+					<span class="count-down">
+						<CountDown
+							:endTime="endTime"
+						></CountDown>
+					</span>
 				</div>
 				<div class="local">
 					<i class="el-icon-location"></i>
@@ -67,6 +71,7 @@
 <script>
 import {productListApi} from '../api/product.js';
 import '../api/mock/index.js';
+import CountDown from './CountDown.vue'
 
 export default {
 	name: 'Home',
@@ -75,9 +80,11 @@ export default {
 			fin: true,
 			dayType: 1,
 			product: [],
+			endTime:"2020-12-19",
 		};
 	},
 	components: {
+		CountDown,
 	},
 	mounted(){
 		productListApi().then(resp =>{
