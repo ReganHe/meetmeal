@@ -156,7 +156,7 @@
 				this.perNum = index + 1;
 			},
 			goBack () {
-				this.$router.go(-1)
+				this.$router.push({path:'/',query:{'page':'home','day':'1'}})
 			}
 		}
 	}

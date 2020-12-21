@@ -196,6 +196,12 @@
 			};
 		},
 		mounted(){
+			if(this.$route.query.fin == 1) {
+				this.fin = true;			
+			} else {
+				this.fin = false;
+			}
+			
 			getOrder().then(resp => {
 				this.order = resp.data.data
 			})

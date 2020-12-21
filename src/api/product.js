@@ -39,4 +39,14 @@ function getOrder(data){
 	})
 }
 
-export  {productListApi,getProductInfo,getPerson,getOrder}
+function TodayListApi(data){
+	return axios({
+		method: 'get',
+		url: '/rest/today',
+		// params: {
+		// 	...data
+		// }
+	})
+}
+
+export  {productListApi,getProductInfo,getPerson,getOrder,TodayListApi}

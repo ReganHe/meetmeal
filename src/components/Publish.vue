@@ -268,7 +268,6 @@
 				this.pricePop = false;
 			},
 			chImg() {
-				console.log(111)
 			}
 		}
 	}

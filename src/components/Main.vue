@@ -11,8 +11,8 @@
 				</div>
 			</div>
 			<div class="day">
-				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1);productListApi()">全部</div>
-				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2)">今天</div>
+				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1);getProductList()">全部</div>
+				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getTodayList()">今天</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">明后天</div>
 				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">本周末</div>
 				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import {productListApi} from '../api/product.js';
+import {productListApi,TodayListApi} from '../api/product.js';
 import '../api/mock/index.js';
 import CountDown from './CountDown.vue'
 
@@ -78,15 +78,20 @@ export default {
 	data() {
 		return {
 			fin: true,
-			dayType: 1,
+			dayType: '1',
 			product: [],
-			endTime:"2020-12-19",
+			endTime:"2021-03-31",
 		};
 	},
 	components: {
 		CountDown,
 	},
 	mounted(){
+		if (this.$route.query.day) {
+			this.dayType = this.$route.query.day
+		} else {
+			this.dayType = '1'
+		}
 		productListApi().then(resp =>{
 			this.product = resp.data.data
 		})
@@ -95,13 +100,25 @@ export default {
 		changeStyle (num) {
 			if (num == 1) {
 				this.fin = true;
+				this.dayType = '1'
 			}
 			if (num == 2) {
 				this.fin = false;
+				this.dayType = '1'
 			}
 		},
 		changeDay (num) {
 			this.dayType = num;
+		},
+		getProductList () {
+			productListApi().then(resp =>{
+				this.product = resp.data.data
+			})
+		},
+		getTodayList () {
+			TodayListApi().then(resp =>{
+				this.product = resp.data.data
+			})
 		},
 		goTo (id) {
 			this.$router.push({ path: `/join-bidding?id=${id}`})

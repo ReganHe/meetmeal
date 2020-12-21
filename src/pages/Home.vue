@@ -1,23 +1,23 @@
 <template>
 	<div class="mint-footer">
 		<mt-tab-container class="page-tabbar-container" v-model="selected">
-			<mt-tab-container-item id="t1">
-				<Home/>
+			<mt-tab-container-item id="home">
+				<Main/>
 			</mt-tab-container-item>
-			<mt-tab-container-item id="t2" timeout="3000">
+			<mt-tab-container-item id="order-release" timeout="3000">
 				<vue-lazy-component>
 					<OrderRelease/>
 				</vue-lazy-component>
 			</mt-tab-container-item>
-			<mt-tab-container-item id="t3">
+			<mt-tab-container-item id="publish">
 				<vue-lazy-component>
 					<Publish/>
 				</vue-lazy-component>
 			</mt-tab-container-item>
-			<mt-tab-container-item id="t4">
-				tab4
+			<mt-tab-container-item id="msg">
+				暂无页面设计
 			</mt-tab-container-item>
-			<mt-tab-container-item id="t5" timeout="5000">
+			<mt-tab-container-item id="mine" timeout="5000">
 				<vue-lazy-component>
 				<Mine/>
 				</vue-lazy-component>
@@ -26,27 +26,27 @@
 		
 		<div class="f-bg">
 			<mt-tabbar v-model="selected" >
-				<mt-tab-item id="t1" @click.native="ch_page(1)">
-					<img v-if="pageType != 1" slot="icon" src="../assets/home.png">
-					<img v-if="pageType == 1" slot="icon" src="../assets/home_active.jpg">
+				<mt-tab-item id="home" @click.native="ch_page('home')">
+					<img v-if="pageType != 'home'" slot="icon" src="../assets/home.png">
+					<img v-if="pageType == 'home'" slot="icon" src="../assets/home_active.jpg">
 					首页
 				</mt-tab-item>
-				<mt-tab-item id="t2" @click.native="ch_page(2)">
-					<img v-if="pageType != 2" slot="icon" src="../assets/order_icon.gif">
-					<img v-if="pageType == 2" slot="icon" src="../assets/order_active.jpg">
+				<mt-tab-item id="order-release" @click.native="ch_page('order-release')">
+					<img v-if="pageType != 'order-release'" slot="icon" src="../assets/order_icon.gif">
+					<img v-if="pageType == 'order-release'" slot="icon" src="../assets/order_active.jpg">
 					订单
 				</mt-tab-item>
-			  <mt-tab-item class="add" id="t3" @click.native="ch_page(3)">
+			  <mt-tab-item class="add" id="publish" @click.native="ch_page('publish')">
 				<div>
 					<el-button class="but">+</el-button>
 				</div>
 			  </mt-tab-item>
-			  <mt-tab-item id="t4" @click.native="ch_page(4)">
+			  <mt-tab-item id="msg" @click.native="ch_page('msg')">
 				<img v-if="pageType != 4" slot="icon" src="../assets/message_icon.gif">
 				<img v-if="pageType == 4" slot="icon" src="../assets/message_icon.gif">
 				消息
 			  </mt-tab-item>
-			  <mt-tab-item id="t5" @click.native="ch_page(5)">
+			  <mt-tab-item id="mine" @click.native="ch_page('mine')">
 				<img v-if="pageType != 5" slot="icon" src="../assets/me_icon.gif">
 				<img v-if="pageType == 5" slot="icon" src="../assets/me_icon.gif">
 				我的
@@ -57,19 +57,19 @@
 </template>
 
 <script>
-	import Home from '../components/Home.vue';
+	import Main from '../components/Main.vue';
 	import OrderRelease from '../components/OrderRelease.vue';
 	import Publish from '../components/Publish.vue'
 	import Mine from '../components/Mine.vue';
 	export default {
 		data() {
 		  return {
-			selected: 't1',
-			pageType: 1,
+			selected: 'home',
+			pageType: 'home',
 		  };
 		},
 		components:{
-			Home,
+			Main,
 			Publish,
 			OrderRelease,
 			Mine,
@@ -77,15 +77,16 @@
 		mounted(){
 			let page = this.$route.query.page
 			if (!page){
-				this.pageType = 1
+				this.pageType = 'home'
 			}else {
 				this.ch_page(page)
-				this.selected = "t" + this.pageType
+				this.selected = page
 			}
 		},
 		methods:{
-			ch_page (num) {
-				this.pageType = num;
+			ch_page (page) {
+				this.pageType = page
+				this.selected = page
 			},
 		}
 	}

@@ -14,7 +14,8 @@ import { Button, Input, Pagination, Menu,
 import { Swipe, SwipeItem,Lazyload,
 		Tabbar, TabItem, TabContainer, 
 		TabContainerItem, Popup, Picker, 
-		Switch, Field,Checklist, Actionsheet} from 'mint-ui';
+		Switch, Field,Checklist, Actionsheet,
+		Navbar} from 'mint-ui';
 
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
@@ -28,6 +29,7 @@ Vue.component(Switch.name, Switch);
 Vue.component(Field.name, Field);
 Vue.component(Checklist.name, Checklist);
 Vue.component(Actionsheet.name, Actionsheet);
+Vue.component(Navbar.name, Navbar);
 
 Vue.use(Button)
 Vue.use(Input)

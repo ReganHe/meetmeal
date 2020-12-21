@@ -70,8 +70,33 @@ let order = Mock.mock({
 	"msg":"success,"
 })
 
+let todayList = Mock.mock({
+	"code":0,
+	"data|4":[{
+		"id|+1":1,
+		"distance|1-10.1":1,
+		"age|1-80":1,
+		"name":"@cname",
+		"gender|1":["0","1"],
+		"online|1":["0","1"],
+		"title|1":["今日早餐","今日午餐","今日晚餐"],
+		"minTitle|1":["早餐","午餐","晚餐"],
+		"take":"@float(0.5,2,1,1)",
+		"countdown":"12:34:43",
+		"local":"@province",
+		"price|1-100":1,
+		"staPrice|1-50":1,
+		"time":"@time()",
+		"fullTime":"@datetime(MM/dd/yyyy hh:mm-hh:mm)",
+		"img":"@image(500x500,@color)",
+		"imgList":["@image(500x500,@color)","@image(500x800,@color)","@image(200x500,@color)"],
+	}],
+	"msg":"success,"
+})
+
 let d1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),"get", homeList)
 let d2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/person' + ".*"),"get", person)
 let d3 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/order' + ".*"),"get", order)
+let d4 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/today' + ".*"),"get", todayList)
 
-export default {d1,d2,d3}
+export default {d1,d2,d3,d4}

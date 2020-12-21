@@ -44,7 +44,7 @@
 		},
 		methods:{
 			back () {
-				this.$router.push({ path: `/home?page=2`})
+				this.$router.push({ path: '/home', query:{'page':'order-release','fin':'2'}})
 			}
  		}
 	}
