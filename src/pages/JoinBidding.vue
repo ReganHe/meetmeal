@@ -1,6 +1,6 @@
 <template>
 	<div class="join-bidding">
-		<div class="poster">
+		<router-link :to="{path:'profile?uid=' + info.uid}" class="poster">
 			<div class="img">
 				<div class="back" @click="goBack()">
 					<i class="el-icon-arrow-left"></i>
@@ -31,7 +31,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</router-link>
 		<div class="price">
 			<span>当前价: 
 				<span class="symbol">$</span>
@@ -121,7 +121,7 @@
 			return {
 				count: 0,
 				dialogVisible: false,
-				id: 0,
+				uid: 0,
 				info: [],
 				imgList:[],
 				perNum: '1',

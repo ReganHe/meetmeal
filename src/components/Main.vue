@@ -18,8 +18,8 @@
 				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
 			</div>
 		</div>
-		<div v-for="item in product" :key="item.id" class="content">
-			<div class="with-img">
+		<div v-for="item in product" :key="item.uid" class="content">
+			<router-link :to="{path:'profile?uid=' + item.uid}" class="with-img">
 				<div class="bg">
 					<img :src="item.img" alt="">
 				</div>
@@ -38,7 +38,7 @@
 					<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
 					<div>{{item.name}}</div>
 				</div>
-			</div>
+			</router-link>
 			<div class="info">
 				<div class="dinner">
 					<span class="d1">{{item.title}}</span>
@@ -71,14 +71,17 @@
 <script>
 import {productListApi,TodayListApi} from '../api/product.js';
 import '../api/mock/index.js';
-import CountDown from './CountDown.vue'
+import CountDown from './CountDown.vue';
+import {mapState} from 'vuex';
 
 export default {
 	name: 'Home',
+	computed:mapState({
+				dayType: state => state.dayType
+			}),
 	data() {
 		return {
 			fin: true,
-			dayType: '1',
 			product: [],
 			endTime:"2021-03-31",
 		};
@@ -87,11 +90,6 @@ export default {
 		CountDown,
 	},
 	mounted(){
-		if (this.$route.query.day) {
-			this.dayType = this.$route.query.day
-		} else {
-			this.dayType = '1'
-		}
 		productListApi().then(resp =>{
 			this.product = resp.data.data
 		})
@@ -108,7 +106,7 @@ export default {
 			}
 		},
 		changeDay (num) {
-			this.dayType = num;
+			this.$store.commit('changeDay',num)
 		},
 		getProductList () {
 			productListApi().then(resp =>{

@@ -4,6 +4,7 @@ let homeList = Mock.mock({
 	"code":0,
 	"data|4":[{
 		"id|+1":1,
+		"uid|+1":1,
 		"distance|1-10.1":1,
 		"age|1-80":1,
 		"name":"@cname",
@@ -26,8 +27,8 @@ let homeList = Mock.mock({
 
 let person  = Mock.mock({
 	"code":0,
-	"data|1":[{
-		"id|+1":1,
+	"data|4":[{
+		"uid|+1":1,
 		"age|1-80":1,
 		"name":"@cname",
 		"gender|1":["0","1"],
@@ -49,7 +50,7 @@ let person  = Mock.mock({
 let order = Mock.mock({
 	"code":0,
 	"data|4":[{
-		"id|+1":1,
+		"uid|+1":1,
 		"distance|1-10.1":1,
 		"age|1-80":1,
 		"name":"@cname",
@@ -73,7 +74,7 @@ let order = Mock.mock({
 let todayList = Mock.mock({
 	"code":0,
 	"data|4":[{
-		"id|+1":1,
+		"uid|+1":1,
 		"distance|1-10.1":1,
 		"age|1-80":1,
 		"name":"@cname",

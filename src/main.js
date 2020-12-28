@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store'
 import VueLazyComponent from '@xunlei/vue-lazy-component'
 import 'element-ui/lib/theme-chalk/index.css';
 import { Button, Input, Pagination, Menu,
@@ -64,4 +65,5 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
   router,
+  store,
 }).$mount('#app')

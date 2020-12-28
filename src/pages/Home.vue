@@ -42,13 +42,13 @@
 				</div>
 			  </mt-tab-item>
 			  <mt-tab-item id="msg" @click.native="ch_page('msg')">
-				<img v-if="pageType != 4" slot="icon" src="../assets/message_icon.gif">
-				<img v-if="pageType == 4" slot="icon" src="../assets/message_icon.gif">
+				<img v-if="pageType != 'msg'" slot="icon" src="../assets/message_icon.gif">
+				<img v-if="pageType == 'msg'" slot="icon" src="../assets/message_icon.gif">
 				消息
 			  </mt-tab-item>
 			  <mt-tab-item id="mine" @click.native="ch_page('mine')">
-				<img v-if="pageType != 5" slot="icon" src="../assets/me_icon.gif">
-				<img v-if="pageType == 5" slot="icon" src="../assets/me_icon.gif">
+				<img v-if="pageType != 'mine'" slot="icon" src="../assets/me_icon.gif">
+				<img v-if="pageType == 'mine'" slot="icon" src="../assets/me_icon.gif">
 				我的
 			  </mt-tab-item>
 			</mt-tabbar>
@@ -85,6 +85,7 @@
 		},
 		methods:{
 			ch_page (page) {
+				this.$store.commit('changePage',page)
 				this.pageType = page
 				this.selected = page
 			},

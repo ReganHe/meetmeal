@@ -72,19 +72,29 @@
 				perNum: 1,
 				total: 1,
 				imgList:[],
+				uid:"",
 			}
 		},
 		mounted () {
+			this.uid = this.$route.query.uid
 			getPerson().then( resp => {
-				this.info = resp.data.data
-				this.imgList = this.info.imgList
-				this.total = this.imgList.length
+				this.all_info = resp.data.data
+				for (var p of this.all_info) {
+					if (this.uid == p.uid) {
+						this.info = p
+						this.imgList = p.imgList
+						this.total = p.imgList.length
+					}
+				}
 			})
 		},
 		methods:{
 			handleChange(index) {
 				this.perNum = index + 1 ;
-			}
+			},
+			goBack(){
+				this.$router.go(-1)
+			} 
 		}
 	}
 </script>
@@ -95,6 +105,7 @@
 	.profile {
 		width: 100%;
 		.poster {
+			.mm-width;
 			.poster;
 			position: fixed;
 			width: 100%;
@@ -108,7 +119,7 @@
 			}
 		}
 		.info-list {
-			padding: 58vh 4.6vmin 10vh 4.6vmin;
+			padding: 108vmin 4.6vmin 10vh 4.6vmin;
 			.each {
 				padding: 2vmin 0;
 				border-bottom: 2px solid #F6F6F6;
