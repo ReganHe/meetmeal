@@ -155,8 +155,7 @@
 				s_price: "",
 				slot1 : [{
 					flex: 3,
-					values: ['03月19日 星期二','03月20日 星期三', '03月21日 星期四',
-					  '03月22日 星期五', '03月23日 星期六', '03月24日 星期日'],
+					values: [],
 					className: 'slot1',
 					textAlign: 'left'
 				},{
@@ -213,6 +212,25 @@
 		},
 		components: {
 			carousel
+		},
+		mounted() {
+			var nowDate = new Date().getTime(),
+				week = new Array("日", "一", "二", "三", "四", "五", "六"),
+				nextDate,
+				nextMonth,
+				nextDay,
+				nextWeekDay,
+				time;
+				
+			
+			for (let d = 1;d<=7;d++) {
+				nextDate = new Date(nowDate + 24*3600*1000*d)
+				nextMonth = nextDate.getMonth()
+				nextDay = nextDate.getDate()
+				nextWeekDay = nextDate.getDay()
+				time = (nextMonth + 1) + "月"+ nextDay + "日" + " 星期" + week[nextWeekDay]
+				this.slot1[0].values.push(time)
+			}
 		},
 		methods:{
 			addZero(num, n) {
