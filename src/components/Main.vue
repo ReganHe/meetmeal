@@ -1,9 +1,9 @@
 <template>
 	<div class="home">
 		<div class="header">
-			<div class="auction" :class="{'pick-up':fin}">
+			<div class="auction" :class="{'pick-up':finType}">
 				<div class='sty'>
-					<div v-if="fin" class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
+					<div v-if="finType" class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div v-else class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div class="on-sale" @click="changeStyle(1)">拍卖中</div>
 					<div class="fin" @click="changeStyle(2)">已结束</div>
@@ -77,11 +77,12 @@ import {mapState} from 'vuex';
 export default {
 	name: 'Home',
 	computed:mapState({
-				dayType: state => state.dayType
+				dayType: state => state.dayType,
+				pageType: state => state.pageType,
+				finType: state => state.finType,
 			}),
 	data() {
 		return {
-			fin: true,
 			product: [],
 			endTime:"2021-03-31",
 		};
@@ -97,12 +98,12 @@ export default {
 	methods:{
 		changeStyle (num) {
 			if (num == 1) {
-				this.fin = true;
-				this.dayType = '1'
+				this.$store.commit('changeStyle', true)
+				this.$store.commit('changeDay',1)
 			}
 			if (num == 2) {
-				this.fin = false;
-				this.dayType = '1'
+				this.$store.commit('changeStyle', false)
+				this.$store.commit('changeDay',1)
 			}
 		},
 		changeDay (num) {
@@ -119,7 +120,8 @@ export default {
 			})
 		},
 		goTo (id) {
-			this.$router.push({ path: `/join-bidding?id=${id}`})
+			this.$store.commit('changePage','home')
+			this.$router.push({ path: `/join-bidding?id=${id}&status=0`})
 		}
 	}
 };

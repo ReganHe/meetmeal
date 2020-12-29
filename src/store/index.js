@@ -11,13 +11,18 @@ const store = new Vuex.Store({
 		mainPage:"home",
 		//首页，今天、明天、明后天、日期类型		
 		dayType:"1",
+		pageType:"home",
+		finType: "true"
     },
 	mutations: {
 		changePage(state,newVal) {
 			state.pageType = newVal
 		},
 		changeDay(state,newVal) {
-			state.dayType = newVal    
+			state.dayType = newVal
+		},
+		changeStyle(state,newVal) {
+			state.finType = newVal
 		}
 	}
 })

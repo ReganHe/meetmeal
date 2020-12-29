@@ -61,11 +61,14 @@
 	import OrderRelease from '../components/OrderRelease.vue';
 	import Publish from '../components/Publish.vue'
 	import Mine from '../components/Mine.vue';
+	import {mapState} from 'vuex';
 	export default {
+		computed:mapState({
+					pageType: state => state.pageType,
+				}),
 		data() {
 		  return {
 			selected: 'home',
-			pageType: 'home',
 		  };
 		},
 		components:{
@@ -75,7 +78,7 @@
 			Mine,
 		},
 		mounted(){
-			let page = this.$route.query.page
+			let page = this.pageType
 			if (!page){
 				this.pageType = 'home'
 			}else {
@@ -86,7 +89,6 @@
 		methods:{
 			ch_page (page) {
 				this.$store.commit('changePage',page)
-				this.pageType = page
 				this.selected = page
 			},
 		}

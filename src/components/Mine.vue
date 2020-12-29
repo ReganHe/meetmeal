@@ -23,11 +23,9 @@
 			</div>
 			<div class="list">
 				
-				<div class="left">
-					<router-link to="/edit">
+				<div class="left" @click="goEdit()">
 					<i class="el-icon-user-solid"></i>
 					<p>编辑资料</p>
-					</router-link>
 				</div>
 				
 				<div class="right">
@@ -60,6 +58,21 @@
 </template>
 
 <script>
+	
+	export default {
+		data () {
+			return{
+				
+			}
+		},
+		methods:{
+			goEdit(){
+				this.$store.commit('changePage','mine')
+				this.$router.push({path:'/edit'})
+			}
+		}
+	}
+	
 </script>
 
 <style lang="less">

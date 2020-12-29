@@ -72,11 +72,11 @@
 				<div class="adj-num">{{count}}</div>
 				<el-button class="adj-but" @click="plusCount()">+</el-button>
 			</div>
-			<el-button class="confirm"  @click="dialogVisible = true">确认出价</el-button>
+			<el-button class="confirm"  @click="popup()">确认出价</el-button>
 		</div>
 		<el-dialog
 			class="pop-up"
-			:visible.sync="dialogVisible"
+			:visible.sync="Visible1"
 			width="70%"
 			top="24vh">
 		  <div class="pic">
@@ -110,6 +110,31 @@
 		  </div>
 		  <el-button class="bid-but">确认参与竞拍</el-button>
 		</el-dialog>
+		<el-dialog
+		class="pop-no-log"
+		:visible.sync="Visible2"
+		width="70%"
+		top="24vh">
+			<p style="text-align: center;font-size: 10vmin;color: #C12BE2"><i class="el-icon-document-delete"></i></p>
+			<p style="color: red;text-align: center;">暂未登录，请去登录</p>
+			<el-button class="bid-but" @click="goLogIn()">去登陆</el-button>
+		</el-dialog>
+		<!-- 用户状态为已登录，非会员 -->
+		<mt-popup
+		  v-model="depositPop"
+		  class="deposit-pop">
+			<p class="dep-title">为保证竞拍真实性和双方利益<br>竞拍人和参拍人均需支付竞拍保证金</p>
+			<p class="sub-title">参拍保证金<span style="color:#13A500;">退还规则</span></p>
+			<p class="p-con">1.参拍后没有最终胜出，在参拍倒计时结束后48小 时之内退还给参拍人。<br>
+			 2.参拍后能够按时见面并完成订单，此保证金可以 在支付</p>
+			<p class="sub-title">参拍保证金<span style="color:#D31515;">扣除规则</span></p>
+			<p class="p-con">1.参拍胜出后，强制取消订单。或没有在约定的时 间与竞拍人见面，经核实后扣除竞拍保证金。</p>
+			<p class="p-con" style="text-align: center;">参拍保证金为：$12/次/人</p>
+			<p class="p-con">成为餐遇VIP ，则不需要每次支付参拍保证金祥见VIP 规则。</p>
+			<el-button class="but b-left" @click="depositPop = false">取消</el-button>
+			<el-button class="but b-right">支付参拍保证金</el-button>
+		</mt-popup>
+
 	</div>
 </template>
 
@@ -120,7 +145,10 @@
 		data () {
 			return {
 				count: 0,
-				dialogVisible: false,
+				userStatus:'',
+				Visible1: false,
+				Visible2: false,
+				depositPop: false,
 				uid: 0,
 				info: [],
 				imgList:[],
@@ -129,6 +157,7 @@
 			}
 		},
 		mounted () {
+			this.userStatus = this.$route.query.status
 			this.id = this.$route.query.id
 			getProductInfo().then(resp => {
 				let data = resp.data.data
@@ -155,8 +184,24 @@
 			handleChange (index) {
 				this.perNum = index + 1;
 			},
+			popup(){
+				if (this.userStatus) {
+					if (this.userStatus == 0) {
+						this.Visible1 = true
+					}
+					if (this.userStatus == 1) {
+						this.Visible2 = true
+					}
+					if (this.userStatus == 2) {
+						this.depositPop = true
+					}
+				}
+			},
 			goBack () {
-				this.$router.push({path:'/',query:{'page':'home','day':'1'}})
+				this.$router.go(-1)
+			},
+			goLogIn() {
+				this.$router.push({path:'/login'})
 			}
 		}
 	}
@@ -445,6 +490,75 @@
 					padding: 3vmin 0;
 					font-size: 4.3vmin;
 				}
+			}
+		}
+		.pop-no-log {
+			.el-dialog {
+				border-radius: 4vmin;
+				height: 65vmin;
+				.el-dialog__body {
+					padding: 0;
+				}
+			.el-dialog__header {
+				.el-dialog__headerbtn {
+					right: 1.5vmin;
+					top: 2vmin;
+				}
+				.el-icon{
+					font-size: 7vmin;
+					font-weight: 400;
+					color: #111111;
+					}
+				}
+			}
+			.bid-but {
+				width: 91.5%;
+				margin: 0 3vmin;
+				color: white;
+				background: @bid-color;
+				box-shadow: 0px 3px 9px 1px rgba(255, 184, 0, 0.23);
+				border-radius: 6vmin;
+				padding: 3vmin 0;
+				font-size: 4.3vmin;
+			}
+		}
+		.deposit-pop {
+			padding: 2.5vmin;
+			width: 85vmin;
+			height: 127vmin;
+			font-size: 4.3vmin;
+			text-align: center;
+			border-radius: 2vmin;
+			p {
+				margin: 0 0 5vmin 0;
+			}
+			.dep-title {
+				color: #BF28FE;
+				font-weight: 600;
+			}
+			.sub-title {
+				color: #333333;
+			}
+			.p-con {
+				font-size: 3.8vmin;
+				font-weight: 400;
+				color: #666666;
+				text-align: left;
+				line-height: 6vmin;
+			}
+			.but {
+				width: 35.5vmin;
+				height: 13vmin;
+				border-radius: 7vmin;
+			}
+			.b-left {
+				border: 1px solid #BA2CEF;
+				color: #BA2CEF;
+			}
+			.b-right {
+				background: #B928FD;
+				border: 1px solid #BA2CEF;
+				color: #FFFFFF;
 			}
 		}
 	}

@@ -106,11 +106,9 @@
 						<div class="last-price">
 							当前价：<span class="sty-color">$60</span>
 						</div>
-						<router-link to="/participant">
-							<div class="check-person sty-color" >
-								查看参与人
-							</div>
-						</router-link>
+						<div class="check-person sty-color" @click="goPart()">
+							查看参与人
+						</div>
 					</div>
 				</div>
 			</div>
@@ -219,6 +217,10 @@
 			},
 			changeDay (num) {
 				this.dayType = num;
+			},
+			goPart() {
+				this.$store.commit('changePage','order-release')
+				this.$router.push({path:'participant'})
 			}
 		}
 	}

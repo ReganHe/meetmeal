@@ -140,7 +140,7 @@
 		  handlePictureCardPreview(file) {
 		  },
 		  back () {
-			  this.$router.push({path:'/home' + '?page=mine'})
+			  this.$router.go(-1)
 		  },
 		  selectYear(picker,values){
 			this.c_years = picker.getValues()[0]
