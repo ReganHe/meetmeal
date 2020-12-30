@@ -18,4 +18,13 @@ function getPart(){
 	})
 }
 
-export  {getPublish,getPart}
+function getToMeet(){
+	return axios({
+		method: 'get',
+		url: '/rest/toMeet',
+		// params: {
+		// }
+	})
+}
+
+export  {getPublish,getPart,getToMeet}

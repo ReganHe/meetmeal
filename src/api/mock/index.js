@@ -39,6 +39,7 @@ let person  = Mock.mock({
 		"info":[
 			{"name":"身高","value|150-200":1},
 			{"name":"体重","value|40-80":1},
+			{"name":"年龄","value|1":["70后","75后","80后","85后","90后","95后","00后","05后"]},
 			{"name":"城市","value":"@province"},
 			{"name":"职业","value":"@cword(2,4)"},
 			{"name":"抽烟","value|1":["抽烟","不抽烟"]},
@@ -100,13 +101,14 @@ let publish = Mock.mock({
 	"code":0,
 	"data|4":[{
 		"oid|+1":1,
+		"age|19-80":1,
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"take":"@float(0.5,2,1,1)",
 		"countdown":"12:34:43",
 		"price|1-100":1,
 		"staPrice|1-50":1,
-		"timeZone":"@datetime(hh:mm-hh:mm)",
+		"timeZone":"@datetime(hh:mm) - @datetime(hh:mm)",
 		"time":"@time()",
 		"fullTime":"@datetime(MM/dd/yyyy hh:mm-hh:mm)",
 		"img":"@image(500x500,@color)",
@@ -127,6 +129,25 @@ let partPerson = Mock.mock({
 		"time|1-24":1,
 		"job":"@cword(2,4)",
 		"img":"@image(100x100,@color)",
+		"take":"@float(0.5,2,1,1)",
+	}],
+	"msg":"success,"
+})
+
+let toMeet = Mock.mock({
+	"code":0,
+	"data|4":[{
+		"id|+1":1,
+		"oid|+1":1,
+		"age|10-80":1,
+		"name":"@cname",
+		"gender|1":["0","1"],
+		"price|1-100":1,
+		"finPrice|50-100":1,
+		"time|1-24":1,
+		"job":"@cword(2,4)",
+		"address":'@city',
+		"timeZone":"@datetime(hh:mm) - @datetime(hh:mm)",
 	}],
 	"msg":"success,"
 })
@@ -137,5 +158,6 @@ let d3 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/order' + ".*"),"g
 let d4 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/today' + ".*"),"get", todayList)
 let d5 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/publish' + ".*"),"get", publish)
 let d6 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/partPerson' + ".*"),"get", partPerson)
+let d7 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/toMeet' + ".*"),"get", toMeet)
 
-export default {d1,d2,d3,d4,d5,d6}
+export default {d1,d2,d3,d4,d5,d6,d7}

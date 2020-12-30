@@ -41,7 +41,7 @@
 	export default {
 		data () {
 			return{
-				'titleName':'参与人',
+				titleName:'参与人',
 				partList:[],
 				show: true,
 			}

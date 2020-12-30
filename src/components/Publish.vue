@@ -127,7 +127,9 @@
 				<p>起拍价：${{s_price}}</p>
 				<el-button class="but">确认发布</el-button>
 			</div>
-			<div class="close" @click="publishPop = false"><i class="el-icon-circle-close"></i></div>
+			<div class="close" @click="publishPop = false">
+				<i class="el-icon-circle-close"></i>
+			</div>
 		</mt-popup>
 	</div>
 </template>
