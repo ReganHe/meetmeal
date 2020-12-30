@@ -4,7 +4,7 @@
 			<div class="auction" :class="{'pick-up':orderType}">
 				<div class='sty'>
 					<div class="on-sale" @click="changeStyle(1)">参与订单</div>
-					<div class="fin" @click="changeStyle(2)">发布订单</div>
+					<div class="fin" @click="changeStyle(2);getPublishOrder()">发布订单</div>
 				</div>
 			</div>
 			<div v-if="orderType" class="day">
@@ -92,21 +92,28 @@
 		</div>
 		<div v-if="!orderType" class="body">
 			<div v-if="dayType == 1" >
-				<div class="list">
+				<div v-for="item in publish" class="list">
 					<div class="l1">
 						<div class="info">
-							<i class="el-icon-male gender-bg">18</i>
-							<span style="color:black;">上海刘亦菲</span>
+							<i class="el-icon-male gender-bg"></i>
+							<span style="color:black;">{{item.name}}</span>
 						</div>
-						<div class="l-time">距结束:<span class="sty-color">12:21:21</span></div>
+						<div class="l-time">距结束:
+							<span class="sty-color">
+								<CountDown
+									:endTime="endTime"
+								>
+								</CountDown>
+							</span>
+						</div>
 					</div>
-					<p>时间：（21:00-23:00）2小时</p>
-					<p>起拍价：$30</p>
+					<p>时间：（{{item.timeZone}}）{{item.take}}小时</p>
+					<p>起拍价：${{item.staPrice}}</p>
 					<div class="l4">
 						<div class="last-price">
-							当前价：<span class="sty-color">$60</span>
+							当前价：<span class="sty-color">${{item.price}}</span>
 						</div>
-						<div class="check-person sty-color" @click="goPart()">
+						<div class="check-person sty-color" @click="goPart(item.oid)">
 							查看参与人
 						</div>
 					</div>
@@ -184,20 +191,30 @@
 <script>
 	import {getOrder} from '../api/product.js';
 	import {mapState} from 'vuex';
+	import CountDown from './CountDown.vue';
+	import {getPublish} from '../api/order.js';
 	
 	export default {
 		computed:mapState({
 				orderType: state => state.orderType,
 			}),
+		components:{
+			CountDown,
+		},
 		data() {
 			return {
 				dayType: 1,
 				order: [],
+				publish:[],
+				endTime:"2021-03-31",
 			};
 		},
 		mounted(){
 			getOrder().then(resp => {
 				this.order = resp.data.data
+			})
+			getPublish().then( resp => {
+				this.publish = resp.data.data
 			})
 		},
 		methods:{
@@ -214,9 +231,14 @@
 			changeDay (num) {
 				this.dayType = num;
 			},
-			goPart() {
+			goPart(oid) {
 				this.$store.commit('changePage','order-release')
-				this.$router.push({path:'participant'})
+				this.$router.push({path:`/participant?oid=${oid}`})
+			},
+			getPublishOrder() {
+				getPublish().then( resp => {
+					this.publish = resp.data.data
+				})
 			}
 		}
 	}

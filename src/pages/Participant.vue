@@ -1,31 +1,34 @@
 <template>
 	<div class="participant">
 		<HeaderBar :titleName="titleName" @click.native='back()'></HeaderBar>
-		<div class="part-info">
-			<div v-show="true" class="user">
-				<div class="user-info">
-					<div class="h-img">
-						<img src="../assets/999.jpg" alt="">
-					</div>
-					<div class="info">
-						<div class="name">
-							<span>开心麻花</span>
-							<i class="el-icon-male">18</i>
+		<div v-for="item in partList">		
+			<div class="part-info">
+				<div v-show="partList.length != 0" class="user">
+					<div class="user-info">
+						<div class="h-img">
+							<img :src="item.img" alt="">
 						</div>
-						<div class="type">投资人</div>
+						<div class="info">
+							<div class="name">
+								<span>{{item.name}}</span>
+								<i v-if="item.gender == 0" class="el-icon-female gender">{{item.age}}</i>
+								<i v-if="item.gender == 1" class="el-icon-male gender" style="background: #3182FD;">{{item.age}}</i>
+							</div>
+							<div class="type">{{item.job}}</div>
+						</div>
+					</div>
+					<div class="detail">
+						<p class="sty">出价：{{item.price}}</p>
+						<p>{{item.time}}小时前</p>
 					</div>
 				</div>
-				<div class="detail">
-					<p class="sty">出价：80</p>
-					<p>2小时前</p>
+				<div v-show="false" class="no-part">
+					<i class="el-icon-warning-outline" style="font-size: 21vmin;"></i>
+					<p>暂无参与人</p>
 				</div>
-			</div>
-			<div v-show="false" class="no-part">
-				<i class="el-icon-warning-outline" style="font-size: 21vmin;"></i>
-				<p>暂无参与人</p>
 			</div>
 		</div>
-		<div v-show="true" class="p-bottom" @click="back()">
+		<div v-show="partList.length = 0" class="p-bottom" @click="back()">
 			<p>无合适参与人，放弃餐遇</p>
 		</div>
 	</div>
@@ -33,18 +36,27 @@
 
 <script>
 	import HeaderBar from '../components/HeaderBar.vue';
+	import {getPart} from '../api/order.js';
+	
 	export default {
 		data () {
 			return{
 				'titleName':'参与人',
+				partList:[],
+				show: true,
 			}
 		},
 		components:{
 			HeaderBar
 		},
+		mounted(){
+			getPart().then( resp => {
+				this.partList = resp.data.data
+			})
+		},
 		methods:{
-			back () {
-				this.$router.push({ path: '/home', query:{'page':'order-release','fin':'2'}})
+			back() {
+				this.$router.go(-1)
 			}
  		}
 	}
@@ -57,18 +69,19 @@
 		width: 100%;
 		background-color: #F1F1F1;
 		min-height: 100vh;
+		padding-top: 15vmin;
+		box-sizing: border-box;
 		p {
 			margin: 0;
 			padding: 0;
 		} 
 		.part-info {
-			padding: 14vmin 3vmin 0 3vmin;
+			padding: 0 3vmin;
 			.user{
 				background-color: #FFFFFF;
 				width: 100%;
 				height: 20vmin;
 				border-radius: 2vmin;
-				margin: 3vmin 0;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -97,7 +110,7 @@
 						.name {
 							font-weight: 500;
 							color: #333333;
-							.el-icon-male,el-icom.female{
+							.el-icon-male, .el-icon-female{
 								padding: 0.5vmin;
 								background-color: #3182FD;
 								color: #FFFFFF;
@@ -107,11 +120,19 @@
 							.el-icom.female {
 								background-color: #FE6491;
 							}
+							.gender {
+								background: #FE6491;
+								padding: 0.6vmin 0.8vmin;
+								border-radius: 1.5vmin;
+							}
 						}
 					}
 				}
 				.detail {
-					padding: 1.5vmin 0;
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
 					text-align: right;
 					.sty {
 						color: @base-color;
