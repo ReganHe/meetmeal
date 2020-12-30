@@ -18,6 +18,7 @@ let homeList = Mock.mock({
 		"price|1-100":1,
 		"staPrice|1-50":1,
 		"time":"@time()",
+		"job":"@cword(2,4)",
 		"fullTime":"@datetime(MM/dd/yyyy hh:mm-hh:mm)",
 		"img":"@image(500x500,@color)",
 		"imgList":["@image(500x500,@color)","@image(500x800,@color)","@image(200x500,@color)"],

@@ -2,8 +2,11 @@
 	<div class="join-bidding">
 		<router-link :to="{path:'profile?uid=' + info.uid}" class="poster">
 			<div class="img">
-				<div class="back" @click="goBack()">
-					<i class="el-icon-arrow-left"></i>
+				<div style="display: flex;align-items: center;color: #FFFFFF;font-size: 3.67vmin;">
+					<div class="back" @click="goBack()">
+						<i class="el-icon-arrow-left"></i>
+					</div>
+					<p>{{info.job}}</p>
 				</div>
 				<mt-swipe 
 				:auto="4000" 

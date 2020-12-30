@@ -1,25 +1,25 @@
 <template>
 	<div class="order-release">
 		<div class="header">
-			<div class="auction" :class="{'pick-up':fin}">
+			<div class="auction" :class="{'pick-up':orderType}">
 				<div class='sty'>
 					<div class="on-sale" @click="changeStyle(1)">参与订单</div>
 					<div class="fin" @click="changeStyle(2)">发布订单</div>
 				</div>
 			</div>
-			<div v-if="fin" class="day">
+			<div v-if="orderType" class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">参拍中</div>
 				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2)">待见面</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">已结束</div>
 			</div>
-			<div v-if="!fin" class="day">
+			<div v-if="!orderType" class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">发布中</div>
 				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2)">待见面</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">见面中</div>
 				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">已结束</div>
 			</div>
 		</div>
-		<div v-if="fin" class="body">
+		<div v-if="orderType" class="body">
 			<div v-if="dayType == 1" >
 				<div v-for="item in order" class="list">
 					<div class="l1">
@@ -90,7 +90,7 @@
 				</div>
 			</div>
 		</div>
-		<div v-if="!fin" class="body">
+		<div v-if="!orderType" class="body">
 			<div v-if="dayType == 1" >
 				<div class="list">
 					<div class="l1">
@@ -183,23 +183,19 @@
 
 <script>
 	import {getOrder} from '../api/product.js';
+	import {mapState} from 'vuex';
 	
 	export default {
-		name: 'Home',
+		computed:mapState({
+				orderType: state => state.orderType,
+			}),
 		data() {
 			return {
-				fin: true,
 				dayType: 1,
 				order: [],
 			};
 		},
 		mounted(){
-			if(this.$route.query.fin == 1) {
-				this.fin = true;			
-			} else {
-				this.fin = false;
-			}
-			
 			getOrder().then(resp => {
 				this.order = resp.data.data
 			})
@@ -207,11 +203,11 @@
 		methods:{
 			changeStyle (num) {
 				if (num == 1) {
-					this.fin = true;
+					this.$store.commit('changeOrder',true)
 					this.dayType = 1;
 				}
 				if (num == 2) {
-					this.fin = false;
+					this.$store.commit('changeOrder',false)
 					this.dayType = 1;
 				}
 			},

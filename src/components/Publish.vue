@@ -121,10 +121,10 @@
 			</div>
 			<p class="pub-title">发布订单</p>
 			<div class="pub-con">
-				<p>日期：10/28/2019 (星期一)</p>
-				<p>时长：2小时（21:00-23:00)</p>
-				<p>城市：San Jose</p>
-				<p>起拍价：$30</p>
+				<p>日期：{{s_day}} {{fin_hour}}:{{fin_min}}</p>
+				<p>时长：{{s_long}}小时（21:00-23:00)</p>
+				<p>城市：{{s_local}}</p>
+				<p>起拍价：${{s_price}}</p>
 				<el-button class="but">确认发布</el-button>
 			</div>
 			<div class="close" @click="publishPop = false"><i class="el-icon-circle-close"></i></div>
@@ -234,7 +234,7 @@
 		},
 		methods:{
 			addZero(num, n) {
-			    return (Array(n).join(0) + num).slice(-n);
+				return (Array(n).join(0) + num).slice(-n);
 			},
 			selectTime (picker,values) {
 				this.s_day = picker.getValues()[0];
