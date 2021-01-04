@@ -6,7 +6,7 @@ let homeList = Mock.mock({
 		"id|+1":1,
 		"uid|+1":1,
 		"distance|1-10.1":1,
-		"age|1-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"online|1":["0","1"],
@@ -30,7 +30,7 @@ let person  = Mock.mock({
 	"code":0,
 	"data|4":[{
 		"uid|+1":1,
-		"age|1-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"online|1":["0","1"],
@@ -39,7 +39,7 @@ let person  = Mock.mock({
 		"info":[
 			{"name":"身高","value|150-200":1},
 			{"name":"体重","value|40-80":1},
-			{"name":"年龄","value|1":["70后","75后","80后","85后","90后","95后","00后","05后"]},
+			{"name":"年龄","value|20-70":1},
 			{"name":"城市","value":"@province"},
 			{"name":"职业","value":"@cword(2,4)"},
 			{"name":"抽烟","value|1":["抽烟","不抽烟"]},
@@ -54,7 +54,7 @@ let order = Mock.mock({
 	"data|4":[{
 		"uid|+1":1,
 		"distance|1-10.1":1,
-		"age|1-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"online|1":["0","1"],
@@ -78,7 +78,7 @@ let todayList = Mock.mock({
 	"data|4":[{
 		"uid|+1":1,
 		"distance|1-10.1":1,
-		"age|1-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"online|1":["0","1"],
@@ -101,7 +101,7 @@ let publish = Mock.mock({
 	"code":0,
 	"data|4":[{
 		"oid|+1":1,
-		"age|19-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"take":"@float(0.5,2,1,1)",
@@ -122,7 +122,7 @@ let partPerson = Mock.mock({
 	"data|4":[{
 		"id|+1":1,
 		"oid|+1":1,
-		"age|10-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"price|1-100":1,
@@ -139,7 +139,7 @@ let toMeet = Mock.mock({
 	"data|4":[{
 		"id|+1":1,
 		"oid|+1":1,
-		"age|10-80":1,
+		"age":"@datetime(yyyy)",
 		"name":"@cname",
 		"gender|1":["0","1"],
 		"price|1-100":1,

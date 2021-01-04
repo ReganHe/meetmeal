@@ -27,15 +27,19 @@
 				<div v-if="item.online == 1" class="down">
 					<div  class="status"></div>
 					<span>在线</span>
-					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
-					<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
+					<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+						style="background: #3182FD;">{{convert(item.age)}}
+					</i>
 					<div>{{item.name}}</div>
 				</div>
 				<div v-if="item.online == 0" class="down">
 					<div  class="status" style="background: #999999;"></div>
 					<span>离线</span>
-					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
-					<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
+					<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+						style="background: #3182FD;">{{convert(item.age)}}
+					</i>
 					<div>{{item.name}}</div>
 				</div>
 			</router-link>
@@ -73,6 +77,7 @@ import {productListApi,TodayListApi} from '../api/product.js';
 import '../api/mock/index.js';
 import CountDown from './CountDown.vue';
 import {mapState} from 'vuex';
+import {convertYear} from '../util/time.js';
 
 export default {
 	name: 'Home',
@@ -118,6 +123,9 @@ export default {
 			TodayListApi().then(resp =>{
 				this.product = resp.data.data
 			})
+		},
+		convert(year) {
+			return convertYear(year)
 		},
 		goTo (id) {
 			this.$store.commit('changePage','home')

@@ -18,15 +18,15 @@
 					<div v-if="info.online == 1" class="down">
 						<div  class="status"></div>
 						<span>在线</span>
-						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
-						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{convertAge(info.age)}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(info.age)}}</i>
 						<div>{{info.name}}</div>
 					</div>
 					<div v-if="info.online == 0" class="down">
 						<div  class="status" style="background: #999999;"></div>
 						<span>离线</span>
-						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{info.age}}</i>
-						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{info.age}}</i>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{convertAge(info.age)}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(info.age)}}</i>
 						<div>{{info.name}}</div>
 					</div>
 				</div>
@@ -63,6 +63,7 @@
 
 <script>
 	import {getPerson} from '../api/product.js';
+	import {convertYear} from '../util/time.js';
 	
 	export default {
 		data () {
@@ -91,6 +92,9 @@
 		methods:{
 			handleChange(index) {
 				this.perNum = index + 1 ;
+			},
+			convertAge(year) {
+				return convertYear(year)
 			},
 			goBack(){
 				this.$router.go(-1)
