@@ -224,7 +224,6 @@
 				nextWeekDay,
 				time;
 				
-			
 			for (let d = 1;d<=7;d++) {
 				nextDate = new Date(nowDate + 24*3600*1000*d)
 				nextMonth = nextDate.getMonth()

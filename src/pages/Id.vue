@@ -13,8 +13,10 @@
 				<i class="el-icon-arrow-right"></i>
 			</mt-field>
 			<mt-field 
+				v-model="birthday"
 				label="生日"
-				placeholder="请添加你的生日"
+				placeholder="请添加你的生日,例如:19900101"
+				@blur.native.capture="checkBirth"
 				type="number">
 				<i class="el-icon-arrow-right"></i></mt-field>
 			<mt-field 
@@ -22,19 +24,63 @@
 		<div class="tips">为保证平台社区的安全和个人信息安全，
 		需至少 上传一份政府颁发的驾照/护照/身份证/签证照片 
 		<a href="">了解更多</a></div>
+		<el-dialog
+		class="popUp"
+		:visible.sync="Visible2"
+		width="70%"
+		top="35vh">
+			<p style="color: red;text-align: center;font-size: 5vmin;">{{this.msg}}</p>
+		</el-dialog>
 	</div>
 </template>
 
 <script>
 	export default {
 		data() {
-		  return {
-		  };
+			return {
+				birthday:"",
+				Visible2:false,
+				msg:""
+			};
 		},
 		methods: {
-		  back () {
-			  this.$router.go(-1)
-		  },
+			//格式化补0,类型为字符串
+			addZero(num, n) {
+				return (Array(n).join(0) + num).slice(-n);
+			},
+			//校验日期
+			checkBirth() {
+				var nowYear = new Date().getFullYear() - 19,
+					nowMonth = new Date().getMonth() + 1,
+					nowDay = new Date().getDate(),
+					fullTime = nowYear + this.addZero(nowMonth,2) + this.addZero(nowDay,2);
+					if (this.birthday.length == 8) {
+						if (this.birthday.slice(4,6) <= 12) {
+							if (this.birthday.slice(6,8) <= 31) {
+								if (this.birthday >= fullTime) {
+									this.msg = "年龄小于19岁，无法认证"
+									this.birthday = ""
+									this.Visible2 = true
+								}
+							} else {
+								this.msg = "日期格式错误"
+								this.birthday = ""
+								this.Visible2 = true
+							}
+						}else{
+							this.msg = "月份格式错误"
+							this.birthday = ""
+							this.Visible2 = true
+						}
+					} else {
+						this.msg = "格式错误"
+						this.birthday = ""
+						this.Visible2 = true
+					}
+			},
+			back () {
+				this.$router.go(-1)
+			},
 		}
 	}
 </script>
@@ -101,6 +147,26 @@
 			a {
 				color: #387EF5;
 				text-decoration: underline;
+			}
+		}
+		.popUp{
+			.el-dialog {
+				border-radius: 4vmin;
+				height: 30vmin;
+				.el-dialog__body {
+					padding: 0;
+				}
+			.el-dialog__header {
+				.el-dialog__headerbtn {
+					right: 1.5vmin;
+					top: 2vmin;
+				}
+				.el-icon{
+					font-size: 7vmin;
+					font-weight: 400;
+					color: #111111;
+					}
+				}
 			}
 		}
 	}
