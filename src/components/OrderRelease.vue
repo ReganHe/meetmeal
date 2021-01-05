@@ -9,7 +9,7 @@
 			</div>
 			<div v-if="orderType" class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">参拍中</div>
-				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2)">待见面</div>
+				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getMeetList()">待见面</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">已结束</div>
 			</div>
 			<div v-if="!orderType" class="day">
@@ -24,8 +24,8 @@
 				<div v-for="item in order" class="list">
 					<div class="l1">
 						<div class="info">
-							<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
-							<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+							<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
+							<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
 							<span style="color:black;">{{item.name}}</span>
 						</div>
 						<div class="l-time">距结束:
@@ -52,28 +52,34 @@
 				</div>
 			</div>
 			<div v-if="dayType == 2">
-				<div class="list">
-					<div class="l1">
-						<div class="info">
-							<i class="el-icon-male gender-bg">18</i>
-							<span style="color:black;">上海刘亦菲</span>
+				<div v-for="item in toMeet">
+					<div class="list">
+						<div class="l1">
+							<div class="info">
+								<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
+								<span style="color:black;">{{item.name}}</span>
+							</div>
+							<div class="l-time">距见面:
+								<span class="sty-color">
+									<CountDown
+										:endTime="endTime">
+									</CountDown>
+								</span>
+							</div>
 						</div>
-						<div class="l-time">距见面:
-							<span class="sty-color">
-								<CountDown
-									:endTime="endTime">
-								</CountDown>
-							</span>
+						<p>时间：（{{item.timeZone}}）{{item.time}}小时</p>
+						<div class="page2">
+							<p>地址：{{item.address}}</p>
+							<span>最终价：<span class="sty-color">${{item.finPrice}}</span></span>
 						</div>
-					</div>
-					<p>时间：（21:00-23:00）2小时</p>
-					<p>地址：Trump Tower at Century City</p>
-					<div class="l4">
-						<div class="last-price">
-							当前价：<span class="sty-color">$60</span>
-						</div>
-						<div class="check-person sty-color" style="text-decoration: none;" >
-							最终价：<span class="sty-color">$85</span>
+						<div class="l4">
+							<div class="last-price">
+								当前价：<span class="sty-color">${{item.price}}</span>
+							</div>
+							<div class="check-person sty-color" @click="confirm(item.oid)">
+								开始见面
+							</div>
 						</div>
 					</div>
 				</div>
@@ -107,8 +113,8 @@
 				<div v-for="item in publish" class="list">
 					<div class="l1">
 						<div class="info">
-							<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
-							<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+							<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
+							<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
 							<span style="color:black;">{{item.name}}</span>
 						</div>
 						<div class="l-time">距结束:
@@ -136,8 +142,8 @@
 					<div class="list">
 						<div class="l1">
 							<div class="info">
-								<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{item.age}}</i>
-								<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{item.age}}</i>
+								<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
 								<span style="color:black;">{{item.name}}</span>
 							</div>
 							<div class="l-time">距见面:
@@ -234,6 +240,7 @@
 	import {mapState} from 'vuex';
 	import CountDown from './CountDown.vue';
 	import {getPublish,getToMeet} from '../api/order.js';
+	import {convertYear} from '../util/time.js'
 	
 	export default {
 		computed:mapState({
@@ -303,7 +310,10 @@
 						this.meetpop = info
 					}
 				}
-			} 
+			},
+			convertAge(year){
+				return convertYear(year)
+			}
 		}
 	}
 </script>

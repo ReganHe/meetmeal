@@ -17,6 +17,8 @@ const store = new Vuex.Store({
 		orderType:"true",
 		joinType: "1",
 		publishType: "1",
+		//消息数量
+		msgNum:2,
     },
 	mutations: {
 		changePage(state,newVal) {
@@ -39,6 +41,9 @@ const store = new Vuex.Store({
 		changepublish(state,newVal) {
 			state.publishType = newVal
 		},
+		changeMsgNum(state,newVal) {
+			state.msgNum = newVal
+		}
 	}
 })
 

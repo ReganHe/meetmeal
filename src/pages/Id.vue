@@ -29,7 +29,7 @@
 		:visible.sync="Visible2"
 		width="70%"
 		top="35vh">
-			<p style="color: red;text-align: center;font-size: 5vmin;">{{this.msg}}</p>
+			<p style="color: #C12BE2;text-align: center;font-size: 5vmin;">{{this.msg}}</p>
 		</el-dialog>
 	</div>
 </template>

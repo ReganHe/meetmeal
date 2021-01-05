@@ -45,6 +45,7 @@
 				<img v-if="pageType != 'msg'" slot="icon" src="../assets/message_icon.gif">
 				<img v-if="pageType == 'msg'" slot="icon" src="../assets/message_icon.gif">
 				消息
+				<div class="msg-pop">{{msgNum}}</div>
 			  </mt-tab-item>
 			  <mt-tab-item id="mine" @click.native="ch_page('mine')">
 				<img v-if="pageType != 'mine'" slot="icon" src="../assets/me_icon.gif">
@@ -65,10 +66,12 @@
 	export default {
 		computed:mapState({
 					pageType: state => state.pageType,
+					msgNum: state => state.msgNum,
 				}),
 		data() {
 		  return {
 			selected: 'home',
+			show: false,
 		  };
 		},
 		components:{
@@ -84,6 +87,11 @@
 			}else {
 				this.ch_page(page)
 				this.selected = page
+			}
+			if (this.msgNum < 10) {
+				
+			} else {
+				this.msgNum = ""
 			}
 		},
 		methods:{
@@ -161,6 +169,21 @@
 							padding: 0;
 						}
 					}
+				}
+			}
+			.mint-tab-item{
+				.msg-pop {
+					background-color: red;
+					border-radius: 50%;
+					width: 4vmin;
+					height: 4vmin;
+					position: absolute;
+					top: -14vmin;
+					right: 23vmin;
+					line-height: 4vmin;
+					vertical-align: middle;
+					text-align: center;
+					color: white;
 				}
 			}
 		}
