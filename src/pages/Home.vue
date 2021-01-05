@@ -15,7 +15,9 @@
 				</vue-lazy-component>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="msg">
-				暂无页面设计
+				<vue-lazy-component>
+					<msg-info/>
+				</vue-lazy-component>
 			</mt-tab-container-item>
 			<mt-tab-container-item id="mine" timeout="5000">
 				<vue-lazy-component>
@@ -62,6 +64,7 @@
 	import OrderRelease from '../components/OrderRelease.vue';
 	import Publish from '../components/Publish.vue'
 	import Mine from '../components/Mine.vue';
+	import MsgInfo from '../components/MsgInfo.vue'
 	import {mapState} from 'vuex';
 	export default {
 		computed:mapState({
@@ -79,6 +82,7 @@
 			Publish,
 			OrderRelease,
 			Mine,
+			MsgInfo,
 		},
 		mounted(){
 			let page = this.pageType
