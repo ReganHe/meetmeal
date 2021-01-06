@@ -20,7 +20,7 @@
 			<div v-for="item in chatList.Msg" class="con">
 				<div v-if="item.id == 1" class="firend">
 					<div class="h-img">
-						<img src="../assets/999.jpg" alt="">
+						<img :src=chatList.img alt="">
 					</div>
 					<div class="status"></div>
 					<div class="info">
@@ -32,7 +32,7 @@
 				</div>
 				<div v-if="item.id == 2" class="mine">
 					<div class="h-img">
-						<img src="../assets/999.jpg" alt="">
+						<img :src=chatList.mineImg alt="">
 					</div>
 					<div class="info">
 						<div class="time">{{item.time}}</div>
@@ -100,7 +100,7 @@
 			background-color: #FFFFFF;
 			z-index: 10;
 			.name {
-				font-size: 3.7vmin;
+				font-size: 4.7vmin;
 				font-weight: 400;
 				color: #1D1E2C;
 			}
