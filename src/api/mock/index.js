@@ -152,6 +152,42 @@ let toMeet = Mock.mock({
 	"msg":"success,"
 })
 
+//消息列表数据
+let msgList = Mock.mock({
+	"code":0,
+	"data|5":[{
+		"id|+1":1,
+		"mid|+1":1,
+		"img":"@image(100x100,@color)",
+		"name":"@cname",
+		"lastMsg":"@cword(3,40)",
+		"time":"@datetime(MM-dd)",
+		"unread|1-9":1,
+	}],
+	"msg":"success,"
+})
+
+let chatList = Mock.mock({
+	"code":0,
+	"data|5":[{
+		"id|+1":1,
+		"mid|+1":1,
+		"img":"@image(100x100,@color)",
+		"mineImg":"@image(100x100,@color)",
+		"name":"@cname",
+		"Msg":[
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			{"id|1-2":1,"time":"@datetime(MM-dd)","msg":"@cword(3,40)",},
+			],
+	}],
+	"msg":"success,"
+})
+
 let d1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),"get", homeList)
 let d2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/person' + ".*"),"get", person)
 let d3 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/order' + ".*"),"get", order)
@@ -160,4 +196,7 @@ let d5 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/publish' + ".*"),
 let d6 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/partPerson' + ".*"),"get", partPerson)
 let d7 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/toMeet' + ".*"),"get", toMeet)
 
-export default {d1,d2,d3,d4,d5,d6,d7}
+let m1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/msgList' + ".*"),"get", msgList)
+let m2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/chatList' + ".*"),"get", chatList)
+
+export default {d1,d2,d3,d4,d5,d6,d7,m1,m2}

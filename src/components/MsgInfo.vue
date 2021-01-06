@@ -3,25 +3,45 @@
 		<div class="msg-header">
 			<span>消息</span>
 		</div>
-		<div class="msg-list">
+		<div v-for="item in msgList" class="msg-list" :key=item.id @click="goChat(item.mid)">
 			<div class="detail">
 				<div class="h-img">
-					<img src="../assets/999.jpg" alt="">
+					<img :src=item.img alt="">
 				</div>
 			</div>
 			<div class="content">
-				<div class="name">系统消息</div>
-				<div class="msg">您充值的120钻石已经到账</div>
+				<div class="name">{{item.name}}</div>
+				<div class="msg">{{item.lastMsg}}</div>
 			</div>
 			<div class="info">
-				<div class="time">11-12</div>
-				<div class="msg-num"><div>2</div></div>
+				<div class="time">{{item.time}}</div>
+				<div class="msg-num"><div>{{item.unread}}</div></div>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import {getMsgList} from "../api/msg.js";
+	
+	export default {
+		data(){
+			return {
+				msgList:[],
+			}
+		},
+		mounted() {
+			getMsgList().then( resp =>{
+				this.msgList = resp.data.data
+			})
+		},
+		methods:{
+			goChat(mid) {
+				this.$router.push({path:`/chat?mid=${mid}`})
+				this.$store.commit('changePage','msg')
+			}
+		}
+	}
 </script>
 
 <style lang="less">
@@ -30,6 +50,8 @@
 	.msg-info {
 		padding-top: @h-height;
 		.msg-header {
+			.mm-width;
+			width: 100%;
 			box-sizing: border-box;
 			width: 100%;
 			display: flex;
@@ -46,6 +68,7 @@
 		.msg-list {
 			display: flex;
 			padding: 3.5vmin;
+			align-items: center;
 			.detail {
 				justify-content: space-between;
 				.h-img {
@@ -78,6 +101,7 @@
 				justify-content: space-between;
 				align-items: center;
 				padding: 2.5vmin 0;
+				height: 11vmin;
 				.time {
 					font-size: 3.2vmin;
 					color: #6A6A6A;

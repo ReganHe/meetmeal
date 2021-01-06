@@ -87,10 +87,10 @@
 			margin: 0;
 		}
 		.el-popper{
-			width: 30vmin;
+			width: 35vmin;
 			margin: 0;
 			padding: 0;
-			left: 70vmin !important;
+			left: 65vmin !important;
 			.popper__arrow {
 				display: none !important;
 			}
