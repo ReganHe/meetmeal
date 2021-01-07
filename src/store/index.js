@@ -11,7 +11,7 @@ const store = new Vuex.Store({
 		dayType:"1",
 		//底边栏切换页面的状态
 		pageType:"home",
-		//已结束
+		//是否是已结束页面
 		finType: "true",
 		//订单页，切换状态
 		orderType:"true",

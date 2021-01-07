@@ -5,7 +5,7 @@
 				<div class='sty'>
 					<div v-if="finType" class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div v-else class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
-					<div class="on-sale" @click="changeStyle(1)">拍卖中</div>
+					<div class="on-sale" @click="changeStyle(1);getProductList()">拍卖中</div>
 					<div class="fin" @click="changeStyle(2)">已结束</div>
 					<div class="search"><i class="el-icon-search"></i></div>
 				</div>
@@ -18,55 +18,110 @@
 				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
 			</div>
 		</div>
-		<div v-for="item in product" :key="item.uid" class="content">
-			<router-link :to="{path:'profile?uid=' + item.uid}" class="with-img">
-				<div class="bg">
-					<img :src="item.img" alt="">
+		<div v-if="finType == true && dayType == 1">
+			<div v-for="item in product" :key="item.uid" class="content">
+				<router-link :to="{path:'profile?uid=' + item.uid}" class="with-img">
+					<div class="bg">
+						<img :src="item.img" alt="">
+					</div>
+					<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					<div v-if="item.online == 1" class="down">
+						<div  class="status"></div>
+						<span>在线</span>
+						<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
+						<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convert(item.age)}}
+						</i>
+						<div>{{item.name}}</div>
+					</div>
+					<div v-if="item.online == 0" class="down">
+						<div  class="status" style="background: #999999;"></div>
+						<span>离线</span>
+						<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
+						<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convert(item.age)}}
+						</i>
+						<div>{{item.name}}</div>
+					</div>
+				</router-link>
+				<div class="info">
+					<div class="dinner">
+						<span class="d1">{{item.title}}</span>
+						<span class="d2">{{item.take}}小时</span>
+					</div>
+					<div class="time">
+						<i class="el-icon-timer">&nbsp;距结束</i>
+						<span class="count-down">
+							<CountDown
+								:endTime="endTime"
+							></CountDown>
+						</span>
+					</div>
+					<div class="local">
+						<i class="el-icon-location"></i>
+						<div>{{item.local}}</div>
+					</div>
+					<div class="price">
+						<span class="p1">当前价</span>
+						<span class="p2">$</span>
+						<span class="p3">{{item.price}}</span>
+						<span class="p4">(V00851)</span>
+					</div>
+					<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
 				</div>
-				<i class="el-icon-location-outline">{{item.distance}} Mile</i>
-				<div v-if="item.online == 1" class="down">
-					<div  class="status"></div>
-					<span>在线</span>
-					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
-					<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
-						style="background: #3182FD;">{{convert(item.age)}}
-					</i>
-					<div>{{item.name}}</div>
+			</div>
+		</div>
+		<div v-if="finType == true && dayType == 2">
+			<div v-for="item in product" :key="item.uid" class="content">
+				<router-link :to="{path:'profile?uid=' + item.uid}" class="with-img">
+					<div class="bg">
+						<img :src="item.img" alt="">
+					</div>
+					<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					<div v-if="item.online == 1" class="down">
+						<div  class="status"></div>
+						<span>在线</span>
+						<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
+						<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convert(item.age)}}
+						</i>
+						<div>{{item.name}}</div>
+					</div>
+					<div v-if="item.online == 0" class="down">
+						<div  class="status" style="background: #999999;"></div>
+						<span>离线</span>
+						<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
+						<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convert(item.age)}}
+						</i>
+						<div>{{item.name}}</div>
+					</div>
+				</router-link>
+				<div class="info">
+					<div class="dinner">
+						<span class="d1">{{item.title}}</span>
+						<span class="d2">{{item.take}}小时</span>
+					</div>
+					<div class="time">
+						<i class="el-icon-timer">&nbsp;距结束</i>
+						<span class="count-down">
+							<CountDown
+								:endTime="endTime"
+							></CountDown>
+						</span>
+					</div>
+					<div class="local">
+						<i class="el-icon-location"></i>
+						<div>{{item.local}}</div>
+					</div>
+					<div class="price">
+						<span class="p1">当前价</span>
+						<span class="p2">$</span>
+						<span class="p3">{{item.price}}</span>
+						<span class="p4">(V00851)</span>
+					</div>
+					<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
 				</div>
-				<div v-if="item.online == 0" class="down">
-					<div  class="status" style="background: #999999;"></div>
-					<span>离线</span>
-					<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convert(item.age)}}</i>
-					<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
-						style="background: #3182FD;">{{convert(item.age)}}
-					</i>
-					<div>{{item.name}}</div>
-				</div>
-			</router-link>
-			<div class="info">
-				<div class="dinner">
-					<span class="d1">{{item.title}}</span>
-					<span class="d2">{{item.take}}小时</span>
-				</div>
-				<div class="time">
-					<i class="el-icon-timer">&nbsp;距结束</i>
-					<span class="count-down">
-						<CountDown
-							:endTime="endTime"
-						></CountDown>
-					</span>
-				</div>
-				<div class="local">
-					<i class="el-icon-location"></i>
-					<div>{{item.local}}</div>
-				</div>
-				<div class="price">
-					<span class="p1">当前价</span>
-					<span class="p2">$</span>
-					<span class="p3">{{item.price}}</span>
-					<span class="p4">(V00851)</span>
-				</div>
-				<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
 			</div>
 		</div>
 	</div>
@@ -98,6 +153,8 @@ export default {
 	mounted(){
 		productListApi().then(resp =>{
 			this.product = resp.data.data
+			this.$store.commit('changeStyle', true)
+			this.$store.commit('changeDay',1)
 		})
 	},
 	methods:{
