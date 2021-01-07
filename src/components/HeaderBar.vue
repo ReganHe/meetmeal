@@ -1,7 +1,7 @@
 <template>
 	<div class="title">
 		<i class="el-icon-arrow-left" @click=""></i>
-		{{titleName}}
+		<span>{{titleName}}</span>
 	</div>
 </template>
 
@@ -25,9 +25,13 @@
 		height: @h-height;
 		font-size: 5.6vmin;
 		vertical-align: middle;
-		line-height: @h-height;
 		font-weight: 600;
 		.mm-width;
+		span {
+			line-height: @h-height;
+			vertical-align: middle;
+			font-size: 4vmin;
+		}
 		.el-icon-arrow-left{
 			position: absolute;
 			left:5vmin;

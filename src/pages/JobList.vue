@@ -44,7 +44,7 @@
 				this.$router.go(-1)
 			},
 			chJobs() {
-				console.log(this.checkedJobs)
+				
 			}
 		}
 	}

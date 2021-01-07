@@ -28,7 +28,7 @@
 					<p>编辑资料</p>
 				</div>
 				
-				<div class="right">
+				<div class="right" @click="goPay()">
 					<i class="el-icon-s-finance"></i>
 					<p>我的钱包</p>
 				</div>
@@ -69,6 +69,10 @@
 			goEdit(){
 				this.$store.commit('changePage','mine')
 				this.$router.push({path:'/edit'})
+			},
+			goPay(){
+				this.$store.commit('changePage','mine')
+				this.$router.push({path:'/pay'})
 			}
 		}
 	}

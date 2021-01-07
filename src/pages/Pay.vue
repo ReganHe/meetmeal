@@ -1,6 +1,6 @@
 <template>
 	<div class="paypage">
-		<HeaderBar :titleName="titleName"></HeaderBar>
+		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
 		<!--余额显示-->
 		<div class="bal" >
 			<p style="font-size: 20px; padding-top: 20px;">账户余额</p>
@@ -57,7 +57,7 @@
 		</div>
 		
 		<!--充值按钮-->
-		<el-button class="pay">立即充值</el-button>
+		<el-button class="pay" @click="goPayMethod()">立即充值</el-button>
 	</div>
 </template>
 
@@ -75,6 +75,9 @@
 		methods:{
 			back () {
 				this.$router.go(-1)
+			},
+			goPayMethod() {
+				this.$router.push({path:'/pay-methods'})
 			}
 		}
 	}

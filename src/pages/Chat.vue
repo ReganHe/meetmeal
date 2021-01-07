@@ -10,7 +10,7 @@
 						置顶聊天
 					</el-dropdown-item>
 				    <el-dropdown-item>设置备注名</el-dropdown-item>
-				    <el-dropdown-item>举报该用户</el-dropdown-item>
+				    <el-dropdown-item><span @click="goReport()">举报该用户</span></el-dropdown-item>
 					<el-dropdown-item>加入黑名单</el-dropdown-item>
 					<el-dropdown-item>清除聊天记录</el-dropdown-item>
 				</el-dropdown-menu>
@@ -79,6 +79,9 @@
 		methods:{
 			goBack(){
 				this.$router.go(-1)
+			},
+			goReport(){
+				this.$router.push({path:'/report'})
 			}
 		}
 	}
