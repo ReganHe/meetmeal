@@ -51,7 +51,7 @@ let person  = Mock.mock({
 let order = Mock.mock({
 	"code":0,
 	"data|4":[{
-		"uid|+1":1,
+		"oid|+1":1,
 		"distance|1-10.1":1,
 		"age":"@datetime(yyyy)",
 		"name":"@cname",

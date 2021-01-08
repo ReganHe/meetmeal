@@ -24,8 +24,11 @@
 				<div v-for="item in order" class="list">
 					<div class="l1">
 						<div class="info">
-							<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
-							<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
+							<i v-if="item.gender == 0" class="el-icon-female gender-bg">
+							{{convertAge(item.age)}}
+							</i>
+							<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convertAge(item.age)}}</i>
 							<span style="color:black;">{{item.name}}</span>
 						</div>
 						<div class="l-time">距结束:
@@ -45,7 +48,7 @@
 						<div class="last-price">
 							当前价：<span class="sty-color">${{item.curPrice}}</span>
 						</div>
-						<div class="check-person sty-color" >
+						<div class="check-person sty-color" @click="goJoin(item.oid)">
 							再次出价
 						</div>
 					</div>
@@ -56,8 +59,11 @@
 					<div class="list">
 						<div class="l1">
 							<div class="info">
-								<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
-								<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 0" 
+								class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 1" 
+								class="el-icon-male gender-bg" 
+								style="background: #3182FD;">{{convertAge(item.age)}}</i>
 								<span style="color:black;">{{item.name}}</span>
 							</div>
 							<div class="l-time">距见面:
@@ -113,8 +119,10 @@
 				<div v-for="item in publish" class="list">
 					<div class="l1">
 						<div class="info">
-							<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
-							<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
+							<i v-if="item.gender == 0" class="el-icon-female gender-bg">
+							{{convertAge(item.age)}}</i>
+							<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convertAge(item.age)}}</i>
 							<span style="color:black;">{{item.name}}</span>
 						</div>
 						<div class="l-time">距结束:
@@ -142,8 +150,10 @@
 					<div class="list">
 						<div class="l1">
 							<div class="info">
-								<i v-if="item.gender == 0" class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
-								<i v-if="item.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 0" class="el-icon-female gender-bg">
+								{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 1" class="el-icon-male gender-bg" 
+								style="background: #3182FD;">{{convertAge(item.age)}}</i>
 								<span style="color:black;">{{item.name}}</span>
 							</div>
 							<div class="l-time">距见面:
@@ -286,13 +296,17 @@
 				this.$store.commit('changePage','order-release')
 				this.$router.push({path:`/participant?oid=${oid}`})
 			},
-			//参与订单
+			//获取参与订单
 			getPartOrder() {
 				getOrder().then(resp => {
 					this.order = resp.data.data
 				})
 			},
-			//发布订单
+			// 再次出价跳转到参加竞拍页
+			goJoin(id){
+				this.$router.push({path:`/join-bidding?id=${id}&status=0`})
+			},
+			//获取发布订单
 			getPublishOrder() {
 				getPublish().then( resp => {
 					this.publish = resp.data.data

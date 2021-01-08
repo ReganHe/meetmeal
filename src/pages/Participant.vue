@@ -11,8 +11,10 @@
 						<div class="info">
 							<div class="name">
 								<span>{{item.name}}</span>
-								<i v-if="item.gender == 0" class="el-icon-female gender">{{item.age}}</i>
-								<i v-if="item.gender == 1" class="el-icon-male gender" style="background: #3182FD;">{{item.age}}</i>
+								<i v-if="item.gender == 0" class="el-icon-female gender">
+								{{convertAge(item.age)}}</i>
+								<i v-if="item.gender == 1" class="el-icon-male gender" style="background: #3182FD;">
+								{{convertAge(item.age)}}</i>
 							</div>
 							<div class="type">{{item.job}}</div>
 						</div>
@@ -37,6 +39,7 @@
 <script>
 	import HeaderBar from '../components/HeaderBar.vue';
 	import {getPart} from '../api/order.js';
+	import {convertYear} from '../util/time.js'
 	
 	export default {
 		data () {
@@ -57,6 +60,9 @@
 		methods:{
 			back() {
 				this.$router.go(-1)
+			},
+			convertAge(year){
+				return convertYear(year)
 			}
  		}
 	}

@@ -85,7 +85,7 @@
 			width="70%"
 			top="24vh">
 		  <div class="pic">
-			  <div class="img"><img src="../assets/img.jpg" alt=""></div>
+			  <div class="img"><img :src=info.img alt=""></div>
 		  </div>
 		  <div class="user-info">
 			  <span>{{info.name}}</span>
