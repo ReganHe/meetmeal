@@ -39,7 +39,6 @@ let person  = Mock.mock({
 		"info":[
 			{"name":"身高","value|150-200":1},
 			{"name":"体重","value|40-80":1},
-			{"name":"年龄","value|20-70":1},
 			{"name":"城市","value":"@province"},
 			{"name":"职业","value":"@cword(2,4)"},
 			{"name":"抽烟","value|1":["抽烟","不抽烟"]},

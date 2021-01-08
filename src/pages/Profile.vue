@@ -42,7 +42,6 @@
 			</div>
 		</div>
 		<div class="p-bottom">
-			<el-button class="chat" @click="dialogVisible = true"><p>文字聊天</p><p style="font-size: 2.4vmin;margin-top: 1vmin;">0.1 $/条</p></el-button>
 			<el-button class="join">参与竞拍</el-button>
 		</div>
 		<el-button class="float">
@@ -153,10 +152,10 @@
 			}
 			.el-button {
 				color: white;
-				font-size: 3.7vmin;
+				font-size: 4.5vmin;
 				padding: 0;
 				height: 11vmin;
-				width: 27vmin;
+				width: 40vmin;
 				border-radius: 7vmin;
 			}
 		}
