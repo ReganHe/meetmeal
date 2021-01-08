@@ -15,10 +15,10 @@
 		</div>
 		<div class="con">
 			<div class="h-img">
-				<p>上海刘亦菲</p>
-				<p>我的拍卖号:V00001</p>
+				<p>{{person.name}}</p>
+				<p>我的拍卖号:V{{person.bidAcco}}</p>
 				<div class="head">
-					<img src="" alt="">
+					<img :src=person.img alt="">
 				</div>
 			</div>
 			<div class="list">
@@ -58,12 +58,17 @@
 </template>
 
 <script>
-	
+	import {getMine} from '../api/mine.js'
 	export default {
 		data () {
 			return{
-				
+				person:[],
 			}
+		},
+		mounted() {
+			getMine().then(resp => {
+				this.person = resp.data.data[0]
+			})
 		},
 		methods:{
 			goEdit(){
@@ -104,6 +109,9 @@
 				color: #333333;
 				border-bottom: 1px solid #D9D8D8;
 				text-align: center;
+			}
+			li {
+				white-space: nowrap;
 			}
 		}
 	}
@@ -155,7 +163,6 @@
 					width: 22vmin;
 					border-radius: 50%;
 					overflow: hidden;
-					background-image: url(../assets/999.jpg);
 					background-size: cover;
 					img {
 						width: 100%;

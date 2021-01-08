@@ -2,7 +2,7 @@
 	<div class="add-pay">
 		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
 		<div class="pay-list">
-			<div class="method">
+			<div class="method" @click="goAddCard()" style="border-top: 1px solid #D3D3D3;">
 				<div class="icon"><img src="../assets/visa.png" alt=""></div>
 				<p>添加Visa卡</p>
 				<i class="el-icon-arrow-right"></i>
@@ -30,6 +30,9 @@
 		methods: {
 			back () {
 				this.$router.go(-1)
+			},
+			goAddCard(){
+				this.$router.push({path:"/add-card"})
 			}
 		}
 	}
@@ -48,7 +51,6 @@
 				font-size: 4vmin;
 				padding: 2vmin 5vmin;
 				border-bottom: 1px solid #D3D3D3;
-				border-top: 1px solid #D3D3D3;
 				box-sizing: border-box;
 				width: 100%;
 				.mm-width;

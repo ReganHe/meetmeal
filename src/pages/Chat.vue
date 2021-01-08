@@ -195,7 +195,7 @@
 			.el-input {
 				background-color: #FFFFFF;
 				width: 68vmin;
-				height: 11vmin;
+				height: 12.5vmin;
 				.el-input__inner:focus {
 					border-color: #C0C4CC;
 				}

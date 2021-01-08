@@ -188,6 +188,19 @@ let chatList = Mock.mock({
 	"msg":"success,"
 })
 
+//个人信息数据
+let mine = Mock.mock({
+	"code":0,
+	"data":[{
+		"id|+1":1,
+		"oid|+1":1,
+		"name":"@cname",
+		"bidAcco":"@integer(100000,600000)",
+		"img":"@image(100x100,@color)",
+	}],
+	"msg":"success,"
+})
+
 let d1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),"get", homeList)
 let d2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/person' + ".*"),"get", person)
 let d3 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/order' + ".*"),"get", order)
@@ -199,4 +212,6 @@ let d7 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/toMeet' + ".*"),"
 let m1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/msgList' + ".*"),"get", msgList)
 let m2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/chatList' + ".*"),"get", chatList)
 
-export default {d1,d2,d3,d4,d5,d6,d7,m1,m2}
+let p1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/mine' + ".*"),"get", mine)
+
+export default {d1,d2,d3,d4,d5,d6,d7,m1,m2,p1}
