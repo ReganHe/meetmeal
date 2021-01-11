@@ -26,7 +26,7 @@
 				<p class="s-en">Lunch Time</p>
 				</div>
 			<div class="img-options">
-				<img src="../assets/m-bg.jpg" alt="">
+				<img src="../assets/img.jpg" alt="">
 				<p class="s-cn">晚餐时间</p>
 				<p class="s-en">Dinner Time</p>
 				</div>

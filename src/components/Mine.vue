@@ -147,9 +147,9 @@
 				flex-direction: column;
 				justify-content: flex-end;
 				align-items: flex-start;
-				padding-left: 18vmin;
+				padding-left: 17vmin;
 				padding-top: 14vmin;
-				background: url('../assets/m-bg.jpg') no-repeat;
+				background: url('../assets/m-bg.png') no-repeat;
 				background-size: 100% 100%;
 				font-size: 4.8vmin;
 				margin-bottom: 10vmin;

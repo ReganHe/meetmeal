@@ -8,7 +8,7 @@
 			<div>首页</div>
 		</div>
         <router-link to="/home" v-if="pageType == 1">
-          <img src="../assets/home_active.jpg" alt="home">
+          <img src="../assets/home_active.png" alt="home">
 		  <div class="h1"></div>
           <div class="bar-title">首页</div>
         </router-link>
@@ -36,7 +36,7 @@
 			<div>消息</div>
         </div>
         <router-link to="/home" v-if="pageType == 4">
-        	<img src="../assets/home_active.jpg" alt="home">
+        	<img src="" alt="home">
 			<div class="h1"></div>
         	<div class="bar-title">消息</div>
         </router-link>

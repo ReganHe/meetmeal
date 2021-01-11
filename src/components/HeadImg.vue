@@ -15,7 +15,7 @@
 		width:100%;
 		height:38vmin;
 		position: relative;
-		background:url('../assets/bg.jpg');
+		background:url('../assets/log.png');
 		background-size: cover;
 		
 		.pic {

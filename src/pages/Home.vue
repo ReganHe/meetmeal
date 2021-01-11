@@ -30,12 +30,12 @@
 			<mt-tabbar v-model="selected" >
 				<mt-tab-item id="home" @click.native="ch_page('home')">
 					<img v-if="pageType != 'home'" slot="icon" src="../assets/home.png">
-					<img v-if="pageType == 'home'" slot="icon" src="../assets/home_active.jpg">
+					<img v-if="pageType == 'home'" slot="icon" src="../assets/home_active.png">
 					首页
 				</mt-tab-item>
 				<mt-tab-item id="order-release" @click.native="ch_page('order-release')">
-					<img v-if="pageType != 'order-release'" slot="icon" src="../assets/order_icon.gif">
-					<img v-if="pageType == 'order-release'" slot="icon" src="../assets/order_active.jpg">
+					<img v-if="pageType != 'order-release'" slot="icon" src="../assets/order.png">
+					<img v-if="pageType == 'order-release'" slot="icon" src="../assets/order_active.png">
 					订单
 				</mt-tab-item>
 			  <mt-tab-item class="add" id="publish" @click.native="ch_page('publish')">
@@ -44,14 +44,14 @@
 				</div>
 			  </mt-tab-item>
 			  <mt-tab-item id="msg" @click.native="ch_page('msg')">
-				<img v-if="pageType != 'msg'" slot="icon" src="../assets/message_icon.gif">
-				<img v-if="pageType == 'msg'" slot="icon" src="../assets/message_icon.gif">
+				<img v-if="pageType != 'msg'" slot="icon" src="../assets/message.png">
+				<img v-if="pageType == 'msg'" slot="icon" src="../assets/message_active.png">
 				消息
 				<div class="msg-pop">{{msgNum}}</div>
 			  </mt-tab-item>
 			  <mt-tab-item id="mine" @click.native="ch_page('mine')">
-				<img v-if="pageType != 'mine'" slot="icon" src="../assets/me_icon.gif">
-				<img v-if="pageType == 'mine'" slot="icon" src="../assets/me_icon.gif">
+				<img v-if="pageType != 'mine'" slot="icon" src="../assets/me.png">
+				<img v-if="pageType == 'mine'" slot="icon" src="../assets/me_active.png">
 				我的
 			  </mt-tab-item>
 			</mt-tabbar>
@@ -138,7 +138,7 @@
 				.mint-tab-item {
 					padding-bottom: 2vmin;
 					.mint-tab-item-icon {
-						width: 7vmin;
+						width: 8vmin;
 						height: 8vmin;
 					}
 					.mint-tab-item-label {
