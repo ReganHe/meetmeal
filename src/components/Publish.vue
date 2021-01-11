@@ -17,13 +17,13 @@
 			>
 			<div class="img-options">
 				<img src="../assets/999.jpg" alt="">
-				<p class="s-cn">早餐时间</p>
-				<p class="s-en">Breakfast Time</p>
+				<p class="s-cn">午餐时间</p>
+				<p class="s-en">Lunch Time</p>
 				</div>
 			<div class="img-options">
 				<img src="../assets/bg.jpg" alt="">
-				<p class="s-cn">午餐时间</p>
-				<p class="s-en">Lunch Time</p>
+				<p class="s-cn">下午茶时间</p>
+				<p class="s-en">Tea Time</p>
 				</div>
 			<div class="img-options">
 				<img src="../assets/img.jpg" alt="">
@@ -117,9 +117,9 @@
 		  v-model="publishPop"
 		  class="publish-pop">
 			<div class="pic">
-				<i class="el-icon-position"></i>
+				<img src="../assets/pub-order.png" alt="">
 			</div>
-			<p class="pub-title">发布订单</p>
+			<p class="pub-title">发布固定价竞拍</p>
 			<div class="pub-con">
 				<p>日期：{{s_day}} {{fin_hour}}:{{fin_min}}</p>
 				<p>时长：{{s_long}}小时（21:00-23:00)</p>
@@ -305,6 +305,9 @@
 		.s-type {
 			padding: 18vmin 0 4vmin 0;
 			.type {
+				.active .img-options{
+					border: 2px solid @bid-color;
+				}
 				.img-options{
 					position: relative;
 					display: flex;
@@ -435,7 +438,11 @@
 			width: 75vmin;
 			height: 91vmin;
 			.pic {
-				font-size: 20vmin;
+				width: 34vmin;
+				margin: 2vmin auto 0 auto;
+				img {
+					width: 100%;
+				}
 			}
 			.pub-title {
 				font-size: 4.5vmin;
