@@ -9,12 +9,18 @@
 			</div>
 			<div v-if="orderType" class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">参拍中</div>
-				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getMeetList()">待见面</div>
+				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getMeetList()">
+					待见面
+					<div class="msg-pop">{{toMeet.length}}</div>
+				</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">已结束</div>
 			</div>
 			<div v-if="!orderType" class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">发布中</div>
-				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getMeetList()">待见面</div>
+				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getMeetList()">
+					待见面
+					<div class="msg-pop fb">{{toMeet.length - 1}}</div>
+				</div>
 				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">见面中</div>
 				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">已结束</div>
 			</div>
@@ -271,12 +277,19 @@
 			};
 		},
 		mounted(){
+			//参与订单->参拍中
 			getOrder().then(resp => {
 				this.order = resp.data.data
 			})
+			//发布订单->参拍中
 			getPublish().then( resp => {
 				this.publish = resp.data.data
 			})
+			//参与订单->待见面
+			getToMeet().then( resp => {
+				this.toMeet = resp.data.data
+			})
+			//发布订单->待见面 暂时与参与订单->待见面用一个mock接口
 		},
 		methods:{
 			changeStyle (num) {
@@ -402,6 +415,19 @@
 				.day-sty {
 					background-color: #F1F1F1;
 					border-radius: 3vmin;
+				}
+				.msg-pop {
+					background-color: red;
+					border-radius: 50%;
+					width: 2vmin;
+					height: 2vmin;
+					position: absolute;
+					top: 14vmin;
+					right: 60vmin;
+					line-height: 2vmin;
+					vertical-align: middle;
+					text-align: center;
+					color: white;
 				}
 			}
 		}

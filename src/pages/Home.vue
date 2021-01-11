@@ -37,6 +37,7 @@
 					<img v-if="pageType != 'order-release'" slot="icon" src="../assets/order.png">
 					<img v-if="pageType == 'order-release'" slot="icon" src="../assets/order_active.png">
 					订单
+					<div class="msg-pop order-pop">{{orderNum}}</div>
 				</mt-tab-item>
 			  <mt-tab-item class="add" id="publish" @click.native="ch_page('publish')">
 				<div>
@@ -70,6 +71,7 @@
 		computed:mapState({
 					pageType: state => state.pageType,
 					msgNum: state => state.msgNum,
+					orderNum: state => state.orderNum
 				}),
 		data() {
 		  return {
@@ -188,6 +190,9 @@
 					vertical-align: middle;
 					text-align: center;
 					color: white;
+				}
+				.order-pop {
+					right: 63vmin;
 				}
 			}
 		}
