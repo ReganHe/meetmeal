@@ -124,18 +124,26 @@
 			</div>
 		</div>
 		<el-drawer
+		:withHeader="false"
+		:show-close="false"
+		size="100%"
 		:visible.sync="drawer"
 		direction="rtl">
-			<el-checkbox-button :indeterminate="isIndeterminate" v-model="checkAll" 
-					@change="handleCheckAllChange">全选</el-checkbox-button>
-			<el-checkbox-group fill="#C12BE2"	v-model="checkbox"size="small">
-				<el-checkbox-button
-				@change="handleCheckedCitiesChange"
-				:v-model="checkedGender"
-				v-for="gender in gender" 
-				:label="gender" 
-				:key="gender">{{gender}}</el-checkbox-button>
-			</el-checkbox-group>
+			<div style="background-color: #F5F5F5;height: 100%;">
+				<div class="drawer-header">
+					<p @click="drawer = false">取消</p>
+					<p style="font-size: 5.5vmin;font-weight: 600;">筛选</p>
+					<p>确定</p>
+				</div>
+				<p class="con" style="font-size: 4vmin;font-weight: 600;">高级筛选</p>
+				<div style="background-color: #FFFFFF;padding: 3vmin 0;">
+					<el-radio-group fill="#C12BE2" v-model="radio" size="small" class="con">
+						<el-radio-button class="op" label="全部"></el-radio-button>
+						<el-radio-button class="op" label="男"></el-radio-button>
+						<el-radio-button class="op" label="女"></el-radio-button>
+					</el-radio-group>
+				</div>
+			</div>
 		</el-drawer>
 	</div>
 </template>
@@ -146,7 +154,6 @@ import '../api/mock/index.js';
 import CountDown from './CountDown.vue';
 import {mapState} from 'vuex';
 import {convertYear} from '../util/time.js';
-const genderOption = ["男","女"]
 export default {
 	name: 'Home',
 	computed:mapState({
@@ -157,11 +164,7 @@ export default {
 	data() {
 		return {
 			product: [],
-			gender: genderOption,
-			checkedGender:["男"],
-			checkAll:false,
-			isIndeterminate: true,
-			checkbox:[],
+			radio:"男",
 			endTime:"2021-03-31",
 			drawer: false,
 		};
@@ -220,11 +223,36 @@ export default {
 };
 </script>
 
-<style lang='less' scoped>
+<style lang='less'>
 	@import '../css/global.less';
 	.home {
 		padding-top: 27vmin;
 		padding-bottom: 20vmin;
+		.el-drawer__wrapper{
+			.el-drawer__body{
+				.drawer-header{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 3vmin;
+					background-color: #FFFFFF;
+					p{
+						font-size: 5vmin;
+						margin: 0;
+					}
+				}
+				.con {
+					padding: 0 5vmin;
+				}
+				.op .el-radio-button__inner{
+					border: 1px #DCDFE6 solid;
+					border-radius: 1vmin;
+				}
+				.el-radio-button{
+					margin-right: 5vmin;
+				}
+ 			}
+		}
 	}
 	
 	.home .header {

@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueLazyComponent from '@xunlei/vue-lazy-component'
-import 'element-ui/lib/theme-chalk/index.css';
+// import 'element-ui/lib/theme-chalk/index.css';
 import { Button, Input, Pagination, Menu,
 	Submenu, MenuItem, Carousel, CarouselItem,
 	Dialog, Form, FormItem, Select,
