@@ -7,15 +7,14 @@
 					<div v-else class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div class="on-sale" @click="changeStyle(1);getProductList()">拍卖中</div>
 					<div class="fin" @click="changeStyle(2)">已结束</div>
-					<div class="search"><i class="el-icon-search"></i></div>
+					<div class="filter" @click="drawer = true"><i class="el-icon-s-operation"></i></div>
 				</div>
 			</div>
 			<div class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1);getProductList()">全部</div>
 				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getTodayList()">今天</div>
-				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">明后天</div>
-				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">本周末</div>
-				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
+				<div v-show="finType" :class="{'day-sty':dayType == 3}" @click="changeDay(3)">明后天</div>
+				<div v-show="finType" :class="{'day-sty':dayType == 4}" @click="changeDay(4)">三天后</div>
 			</div>
 		</div>
 		<div v-if="finType == true && dayType == 1">
@@ -124,6 +123,20 @@
 				</div>
 			</div>
 		</div>
+		<el-drawer
+		:visible.sync="drawer"
+		direction="rtl">
+			<el-checkbox-button :indeterminate="isIndeterminate" v-model="checkAll" 
+					@change="handleCheckAllChange">全选</el-checkbox-button>
+			<el-checkbox-group fill="#C12BE2"	v-model="checkbox"size="small">
+				<el-checkbox-button
+				@change="handleCheckedCitiesChange"
+				:v-model="checkedGender"
+				v-for="gender in gender" 
+				:label="gender" 
+				:key="gender">{{gender}}</el-checkbox-button>
+			</el-checkbox-group>
+		</el-drawer>
 	</div>
 </template>
 
@@ -133,7 +146,7 @@ import '../api/mock/index.js';
 import CountDown from './CountDown.vue';
 import {mapState} from 'vuex';
 import {convertYear} from '../util/time.js';
-
+const genderOption = ["男","女"]
 export default {
 	name: 'Home',
 	computed:mapState({
@@ -144,7 +157,13 @@ export default {
 	data() {
 		return {
 			product: [],
+			gender: genderOption,
+			checkedGender:["男"],
+			checkAll:false,
+			isIndeterminate: true,
+			checkbox:[],
 			endTime:"2021-03-31",
+			drawer: false,
 		};
 	},
 	components: {
@@ -187,6 +206,15 @@ export default {
 		goTo (id) {
 			this.$store.commit('changePage','home')
 			this.$router.push({ path: `/join-bidding?id=${id}&status=0`})
+		},
+		handleCheckAllChange(val){
+			this.checkedGender = val ? genderOption : [];
+			this.isIndeterminate = false;
+		},
+		handleCheckedCitiesChange(value) {
+			let checkedCount = value.length;
+			this.checkAll = checkedCount === this.gender.length;
+			this.isIndeterminate = checkedCount > 0 && checkedCount < this.gender.length;
 		}
 	}
 };
@@ -244,9 +272,11 @@ export default {
 						width: 100%;
 					}
 				}
-				.search {
+				.filter {
 					margin-left: auto;
 					color: @base-color;
+					font-size: 5vmin;
+					padding: 0 1vmin 0 3vmin;
 				}
 			}
 		}
