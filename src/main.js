@@ -3,14 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import VueLazyComponent from '@xunlei/vue-lazy-component'
-import 'element-ui/lib/theme-chalk/index.css';
+// import 'element-ui/lib/theme-chalk/index.css';
 import { Button, Input, Pagination, Menu,
 	Submenu, MenuItem, Carousel, CarouselItem,
 	Dialog, Form, FormItem, Select,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
 	Upload, Option, Dropdown, DropdownMenu,
-	DropdownItem,Checkbox,CheckboxGroup} from 'element-ui';
+	DropdownItem,Checkbox,CheckboxGroup,Drawer,Slider} from 'element-ui';
 	
 import { Swipe, SwipeItem,Lazyload,
 		Tabbar, TabItem, TabContainer, 
@@ -58,6 +58,8 @@ Vue.use(DropdownItem)
 Vue.use(VueLazyComponent)
 Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
+Vue.use(Drawer)
+Vue.use(Slider)
 
 Vue.prototype.$message = Message
 Vue.config.productionTip = false

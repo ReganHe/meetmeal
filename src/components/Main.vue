@@ -7,15 +7,16 @@
 					<div v-else class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div class="on-sale" @click="changeStyle(1);getProductList()">拍卖中</div>
 					<div class="fin" @click="changeStyle(2)">已结束</div>
-					<div class="search"><i class="el-icon-search"></i></div>
+					<div class="filter" @click="drawer = true; showTip = true;value=['19','30']">
+						<i class="el-icon-s-operation"></i>
+					</div>
 				</div>
 			</div>
 			<div class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1);getProductList()">全部</div>
 				<div :class="{'day-sty':dayType == 2}" @click="changeDay(2);getTodayList()">今天</div>
-				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">明后天</div>
-				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">本周末</div>
-				<div :class="{'day-sty':dayType == 5}" @click="changeDay(5)">将结束</div>
+				<div v-show="finType" :class="{'day-sty':dayType == 3}" @click="changeDay(3)">明后天</div>
+				<div v-show="finType" :class="{'day-sty':dayType == 4}" @click="changeDay(4)">三天后</div>
 			</div>
 		</div>
 		<div v-if="finType == true && dayType == 1">
@@ -124,6 +125,44 @@
 				</div>
 			</div>
 		</div>
+		<el-drawer
+		:withHeader="false"
+		:show-close="false"
+		size="100%"
+		:visible.sync="drawer"
+		direction="rtl">
+			<div style="background-color: #F5F5F5;height: 100%;">
+				<div class="drawer-header">
+					<p @click="closeDrawer()">取消</p>
+					<p style="font-size: 5.5vmin;font-weight: 600;">筛选</p>
+					<p>确定</p>
+				</div>
+				<p class="con" style="font-size: 4vmin;font-weight: 600;">高级筛选</p>
+				<div style="background-color: #FFFFFF;padding: 3vmin 0;">
+					<el-radio-group fill="#C12BE2" v-model="radio" size="small" class="con">
+						<el-radio-button class="op" label="全部"></el-radio-button>
+						<el-radio-button class="op" label="男"></el-radio-button>
+						<el-radio-button class="op" label="女"></el-radio-button>
+					</el-radio-group>
+				</div>
+				<p class="con" style="font-size: 4vmin;font-weight: 600;">邀约对象</p>
+				<div 
+				style="background-color: #FFFFFF;padding: 4vmin 5vmin;
+				font-size: 2vmin;display: flex;justify-content: space-between;">
+					<span style="color: #606266;">年龄</span>
+					<span style="color: #333333;font-weight: 600;">{{value[0]}}-{{value[1]}}岁</span>
+				</div>
+				<div class="silder-sty">
+					<el-slider
+					  v-model="value"
+					  range
+					  :show-tooltip="showTip"
+					  :min="19"
+					  :max="80">
+					</el-slider>
+				</div>
+			</div>
+		</el-drawer>
 	</div>
 </template>
 
@@ -133,7 +172,6 @@ import '../api/mock/index.js';
 import CountDown from './CountDown.vue';
 import {mapState} from 'vuex';
 import {convertYear} from '../util/time.js';
-
 export default {
 	name: 'Home',
 	computed:mapState({
@@ -143,8 +181,12 @@ export default {
 			}),
 	data() {
 		return {
+			value: [19, 30],
 			product: [],
+			radio:"男",
 			endTime:"2021-03-31",
+			drawer: false,
+			showTip: true,
 		};
 	},
 	components: {
@@ -155,7 +197,7 @@ export default {
 			this.product = resp.data.data
 			this.$store.commit('changeStyle', true)
 			this.$store.commit('changeDay',1)
-		})
+		});
 	},
 	methods:{
 		changeStyle (num) {
@@ -187,16 +229,82 @@ export default {
 		goTo (id) {
 			this.$store.commit('changePage','home')
 			this.$router.push({ path: `/join-bidding?id=${id}&status=0`})
-		}
+		},
+		handleCheckAllChange(val){
+			this.checkedGender = val ? genderOption : [];
+			this.isIndeterminate = false;
+		},
+		handleCheckedCitiesChange(value) {
+			let checkedCount = value.length;
+			this.checkAll = checkedCount === this.gender.length;
+			this.isIndeterminate = checkedCount > 0 && checkedCount < this.gender.length;
+		},
+		closeDrawer(){
+			this.drawer = false
+			this.showTip = false;
+		},
 	}
 };
 </script>
 
-<style lang='less' scoped>
+<style lang='less'>
 	@import '../css/global.less';
 	.home {
 		padding-top: 27vmin;
 		padding-bottom: 20vmin;
+		.el-drawer__wrapper{
+			.el-drawer__body{
+				.drawer-header{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 3vmin;
+					background-color: #FFFFFF;
+					box-sizing: border-box;
+					p{
+						font-size: 5vmin;
+						margin: 0;
+					}
+				}
+				.con {
+					padding: 0 5vmin;
+				}
+				.op .el-radio-button__inner{
+					border: 1px #DCDFE6 solid;
+					border-radius: 1vmin;
+					padding: 1.5vmin 5vmin;
+				}
+				.el-radio-button{
+					margin-right: 5vmin;
+				}
+				.silder-sty {
+					padding: 3vmin 6vmin;
+					margin-top: 10vmin;
+					.el-tooltip{
+						border: 1px solid @base-color
+					}
+					.el-slider__bar {
+						background-color: @base-color;
+					}
+				}
+ 			}
+		}
+	}
+	body .el-tooltip__popper{
+		border: 1px solid @base-color;
+		width: 4vmin;
+		height: 4vmin;
+		min-width: 1vmin;
+		padding: 2vmin;
+		background: #ffffff !important;
+		color: @base-color !important;
+		white-space: nowrap;
+		.popper__arrow{
+			border-top-color:@base-color !important;
+			&::after{
+				border-top-color: #FFFFFF !important;
+			}
+		}
 	}
 	
 	.home .header {
@@ -244,9 +352,11 @@ export default {
 						width: 100%;
 					}
 				}
-				.search {
+				.filter {
 					margin-left: auto;
 					color: @base-color;
+					font-size: 5vmin;
+					padding: 0 1vmin 0 3vmin;
 				}
 			}
 		}
