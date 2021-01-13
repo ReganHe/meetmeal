@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div class="p-bottom">
-			<el-button class="join">参与竞拍</el-button>
+			<el-button class="join" @click="goBidding()">参与竞拍</el-button>
 		</div>
 		<el-button class="float">
 			<i class="el-icon-chat-line-round"></i>
@@ -94,6 +94,9 @@
 			},
 			convertAge(year) {
 				return convertYear(year)
+			},
+			goBidding(){
+				this.$router.push({path:`/join-bidding?id=1`})
 			},
 			goBack(){
 				this.$router.go(-1)

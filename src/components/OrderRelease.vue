@@ -103,7 +103,7 @@
 							<i class="el-icon-male gender-bg">18</i>
 							<span style="color:black;">上海刘亦菲</span>
 						</div>
-						<div class="l-time">已结束</div>
+						<div class="l-time evaluate">去评价</div>
 					</div>
 					<p>时间：（21:00-23:00）2小时</p>
 					<div class="page2">
@@ -215,7 +215,7 @@
 							<i class="el-icon-male gender-bg">18</i>
 							<span style="color:black;">上海刘亦菲</span>
 						</div>
-						<div class="l-time">已结束</div>
+						<div class="l-time evaluate">去评价</div>
 					</div>
 					<p>时间：（21:00-23:00）2小时</p>
 					<div class="page2">
@@ -463,6 +463,10 @@
 						border-radius: 1vmin;
 						color: white;
 						margin-right: 2vmin;
+					}
+					.evaluate{
+						color: @base-color;
+						text-decoration: underline;
 					}
 				}
 				.l3 {

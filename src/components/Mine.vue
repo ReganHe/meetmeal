@@ -36,7 +36,7 @@
 			<div class="list">
 				<div class="left">
 					<i class="el-icon-map-location"></i>
-					<p>收藏的地址</p>
+					<p>餐遇店名地址</p>
 				</div>
 				<div class="right">
 					<i class="el-icon-question"></i>
