@@ -32,6 +32,7 @@ let person  = Mock.mock({
 		"uid|+1":1,
 		"age":"@datetime(yyyy)",
 		"name":"@cname",
+		"distance|1-10.1":1,
 		"gender|1":["0","1"],
 		"online|1":["0","1"],
 		"distance|1-10.1":1,

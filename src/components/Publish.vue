@@ -4,9 +4,24 @@
 			发布餐遇
 			<i class="el-icon-question"></i>
 		</div>
-
 		<div class="s-type">
-			<carousel
+			<el-radio v-model="mealType" label="1" border
+			size="small">
+				<i class="el-icon-success"></i>
+				午餐时间 Lunch Time
+			</el-radio>
+			<el-radio v-model="mealType" label="2" border
+			size="small">
+				<i class="el-icon-success"></i>
+				下午茶时间 Tea Time  11:00am-9:30pm
+			</el-radio>
+			<el-radio v-model="mealType" label="3" border
+			size="small">
+				<i class="el-icon-success"></i>
+				晚餐时间 Dinner Time
+			</el-radio>
+			<!-- 轮播图样式，已弃用 -->
+			<!-- <carousel
 			class="type"
 			:pullDrag= "true"
 			:items="1"
@@ -30,7 +45,7 @@
 				<p class="s-cn">晚餐时间</p>
 				<p class="s-en">Dinner Time</p>
 				</div>
-			</carousel>
+			</carousel> -->
 		</div>
 		<div class="p-cont">
 			<el-button 
@@ -144,6 +159,7 @@
 				localPop: false,
 				pricePop: false,
 				publishPop: false,
+				mealType:"",
 				input1: "",
 				input2: "",
 				input3:"",
@@ -271,8 +287,6 @@
 				this.input3 = "$" + this.s_price;
 				this.pricePop = false;
 			},
-			chImg() {
-			}
 		}
 	}
 </script>
@@ -293,6 +307,7 @@
 			font-size: 4.5vmin;
 			color: @base-color;
 			position: fixed;
+			.mm-width;
 			background-color: #FFFFFF;
 			z-index: 10;
 			.el-icon-question {
@@ -303,46 +318,74 @@
 			}
 		}
 		.s-type {
-			padding: 18vmin 0 4vmin 0;
-			.type {
-				.active .img-options{
-					border: 2px solid @bid-color;
+			padding: 18vmin 5vmin 4vmin 5vmin;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			.el-radio{
+				margin: 0 0 3vmin 0;
+				width: 90vmin;
+				color: @unpick-color;
+				.el-radio__inner{
+					display: none;
 				}
-				.img-options{
-					position: relative;
-					display: flex;
-					flex-direction: column;
-					justify-content: center;
-					align-items: center;
-					height: 38vmin;
-					overflow: hidden;
-					margin: 0 1vmin;
-					border-radius: 2vmin;
-					.s-cn, .s-en {
-						margin: 1.5vmin 0;
-						font-size: 6.7vmin;
-						font-family: FZLanTingHeiS-UL-GB;
-						font-weight: 400;
-						color: #FFFFFF;
-					}
-					.s-en {
-						font-size: 4vmin;
-					}
-					img {
-						width: 100%;
-						position: absolute;
-						top: 0;
-						z-index: -10;
-					}
+				.el-icon-success{
+					margin-right: 2vmin;
+				}
+				.is-bordered+.el-radio.is-bordered {
+					margin-left: 0;
+					color: @base-color;
 				}
 			}
+			
+			.el-radio.is-bordered.is-checked {
+				border-color: @base-color;
+			}
+			.el-radio__input.is-checked+.el-radio__label{
+				color: @base-color;
+			}
+			// 轮播图样式
+			// .type {
+			// 	.active .img-options{
+			// 		border: 2px solid @bid-color;
+			// 	}
+			// 	.img-options{
+			// 		position: relative;
+			// 		display: flex;
+			// 		flex-direction: column;
+			// 		justify-content: center;
+			// 		align-items: center;
+			// 		height: 38vmin;
+			// 		overflow: hidden;
+			// 		margin: 0 1vmin;
+			// 		border-radius: 2vmin;
+			// 		.s-cn, .s-en {
+			// 			margin: 1.5vmin 0;
+			// 			font-size: 6.7vmin;
+			// 			font-family: FZLanTingHeiS-UL-GB;
+			// 			font-weight: 400;
+			// 			color: #FFFFFF;
+			// 		}
+			// 		.s-en {
+			// 			font-size: 4vmin;
+			// 		}
+			// 		img {
+			// 			width: 100%;
+			// 			position: absolute;
+			// 			top: 0;
+			// 			z-index: -10;
+			// 		}
+			// 	}
+			// }
 		}
 		.p-cont{
 			padding: 0 5vmin;
 			.but-sty {
 				width: 38vmin;
+				height: 8.5vmin;
 				position: relative;
-				padding: 3vmin 0 3vmin 2vmin;
+				padding: 2vmin 0 2vmin 2vmin;
 				text-align: left;
 				background-color: #B72BFE;
 				color: #FFFFFF;
@@ -357,6 +400,14 @@
 				.el-input__icon {
 					color: #B72BFE;
 					font-size: 6vmin;
+					font-size: 5vmin;
+					line-height: 8.5vmin;
+				}
+				.el-input__inner{
+					height: 8.5vmin;
+					&:focus{
+						border-color: @base-color;
+					}
 				}
 			}
 			.but-sty,.el-input {

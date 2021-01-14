@@ -4,6 +4,7 @@
 			<div class="img">
 				<div class="back" @click="goBack()">
 					<i class="el-icon-arrow-left"></i>
+					<span style="color: #FFFFFF;font-size: 5vmin;">{{info.distance}} mile</span>
 				</div>
 				<mt-swipe 
 				:auto="4000" 
