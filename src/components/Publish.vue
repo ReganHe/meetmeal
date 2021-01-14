@@ -150,7 +150,7 @@
 </template>
 
 <script>
-	import carousel from 'vue-owl-carousel';
+	// import carousel from 'vue-owl-carousel';
 	
 	export default {
 		data () {
@@ -227,9 +227,6 @@
 					textAlign: 'center',
 				}],
 			};
-		},
-		components: {
-			carousel
 		},
 		mounted() {
 			var nowDate = new Date().getTime(),

@@ -60,11 +60,14 @@
 			</div>
 			<div class="time">
 				<i class="el-icon-timer"> 距结束</i>
-				<span class="count-down">{{info.countdown}}</span>
+				<span class="count-down">
+					<CountDown
+					:endTime="endTime">
+					</CountDown>
+				</span>
 			</div>
-			<div class="information">参与竞拍并支付保证金，
-			保证金为竞拍价20% 竞拍失败保证金自动 退回
-			，竞盘成功后支付余额。</div>
+			<div class="information">竞拍前需预付竞拍保证金，
+			保证金为$15/次/人/，<span style="text-decoration: underline;color:#B629FF">去预付</span></div>
 		</div>
 		<div class="bot-bar">
 			<div class="alert">
@@ -146,6 +149,8 @@
 <script>
 	import {getProductInfo} from '../api/product.js';
 	import {convertYear} from '../util/time.js';
+	import CountDown from '../components/CountDown.vue';
+	import carousel from 'vue-owl-carousel';
 	
 	export default {
 		data () {
@@ -160,7 +165,11 @@
 				imgList:[],
 				perNum: '1',
 				total: '1',
+				endTime:"2021-03-31",
 			}
+		},
+		components: {
+			CountDown,
 		},
 		mounted () {
 			this.userStatus = this.$route.query.status
@@ -220,11 +229,12 @@
 	@import '../css/global.less';
 	.join-bidding {
 		width: 100%;
-		.poster {
-			.poster;
-		}
+		height: 92vh;
+		box-sizing: border-box;
+		.poster;
 		.price {
 			height: 7vh;
+			line-height: 7vh;
 			white-space: nowrap;
 			padding: 2.5vmin 3.5vmin;
 			border-bottom: 1px solid #F1F1F1;
@@ -269,7 +279,7 @@
 					font-weight: 400;
 				}
 				.d2 {
-					font-size: 4vmin;
+					font-size: 5vmin;
 					color: @unpick-color;
 				}
 				.d3 {
@@ -312,11 +322,12 @@
 				}
 			}
 			.information {
-				font-size: 3.5vmin;
+				font-size: 4vmin;
 				color: @unpick-color;
 			}
 		}
 		.bot-bar {
+			box-sizing: border-box;
 			width: 100%;
 			height: 8vh;
 			display: flex;

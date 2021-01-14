@@ -20,12 +20,12 @@
 				<el-form-item label="邮政编码">
 					<el-input v-model="cardForm.zipCode"></el-input>
 				</el-form-item>
-				<el-form-item label="持卡人姓名">
+				<!-- <el-form-item label="持卡人姓名">
 					<el-input v-model="cardForm.name"></el-input>
 				</el-form-item>
 				<el-form-item label="账单地址">
 					<el-input v-model="cardForm.address"></el-input>
-				</el-form-item>
+				</el-form-item> -->
 			</el-form>
 		</div>
 	</div>

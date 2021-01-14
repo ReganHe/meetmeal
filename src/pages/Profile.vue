@@ -4,7 +4,10 @@
 			<div class="img">
 				<div class="back" @click="goBack()">
 					<i class="el-icon-arrow-left"></i>
-					<span style="color: #FFFFFF;font-size: 5vmin;">{{info.distance}} mile</span>
+					<div style="width: 80%;color: #FFFFFF;font-size: 5vmin;display: flex;justify-content: space-between;">
+						<span>{{info.job}}</span>
+						<span >{{info.distance}} mile</span>
+					</div>
 				</div>
 				<mt-swipe 
 				:auto="4000" 
@@ -38,8 +41,8 @@
 		</div>
 		<div class="info-list">
 			<div v-for="item in info.info" :key="item.id" class="each">
-				<span class="option">{{item.name}}</span>
-				<span>{{item.value}}</span>
+				<p class="option">{{item.name}}</p>
+				<p>{{item.value}}</p>
 			</div>
 		</div>
 		<div class="p-bottom">
@@ -132,9 +135,11 @@
 				border-bottom: 2px solid #F6F6F6;
 				font-size: 4vmin;
 				color: #434343;
+				display: flex;
 				.option {
+					width: 20vmin;
 					color: #858585;
-					margin-right: 9vmin;
+					margin-right: 1vmin;
 				}
 			}
 		}
