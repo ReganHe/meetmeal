@@ -42,8 +42,8 @@
 				@click.native="popupVisible = true">
 				<i class="el-icon-arrow-right"></i></mt-field>
 			<mt-field 
-				label="身高"
-				placeholder="请添加你的身高"
+				label="职业特长"
+				placeholder="请添加你的职业或特长"
 				type="number">
 				<i class="el-icon-arrow-right"></i></mt-field>
 			<mt-field 
@@ -60,11 +60,24 @@
 				</mt-field>
 			</router-link>
 			<div class="t2">更多资料</div>
+			<mt-field
+				label="身高"
+				type="text"
+				placeholder="请添加你的身高">
+				<i class="el-icon-arrow-right"></i>
+			</mt-field>
+			<mt-field
+				label="体重"
+				type="text"
+				placeholder="请添加你的体重">
+				<i class="el-icon-arrow-right"></i>
+			</mt-field>
 			<mt-field 
 				label="我的声音"
 				type="text"
 				placeholder="请添加你的声音">
-				<i class="el-icon-arrow-right"></i></mt-field>
+				<i class="el-icon-arrow-right"></i>
+			</mt-field>
 			<router-link to="/job-list">
 				<mt-field 
 					label="职业"
@@ -79,7 +92,8 @@
 				label="爱好"
 				type="text"
 				placeholder="请添加你的爱好">
-				<i class="el-icon-arrow-right"></i></mt-field>
+				<i class="el-icon-arrow-right"></i>
+			</mt-field>
 			<router-link to="/safety-certificate">
 				<mt-field 
 					label="我的安全认证"
@@ -94,8 +108,9 @@
 				label="慈善捐助"
 				:disabled="false" 
 				type="text"
-				placeholder="请添加你的慈善捐助">
-				<i class="el-icon-arrow-right"></i></mt-field>
+				placeholder="请添加你的慈善捐助百分比">
+				<i class="el-icon-arrow-right"></i>
+			</mt-field>
 		</div>
 		<mt-popup
 		  v-model="popupVisible"
