@@ -67,10 +67,11 @@
 				</span>
 			</div>
 			<div class="information">竞拍前需预付竞拍保证金，
-			保证金为$15/次/人/，<span style="text-decoration: underline;color:#B629FF">去预付</span></div>
+			保证金为$15/次/人/，
+			<span style="text-decoration: underline;color:#B629FF" @click="goPrePay()">去预付</span></div>
 		</div>
 		<div class="bot-bar">
-			<div class="alert">
+			<div class="alert" @click="showAlert = true">
 				<i class="el-icon-alarm-clock"></i>
 				<p>提醒</p>
 			</div>
@@ -109,7 +110,11 @@
 				</p>
 				<div class="p-time">
 					<i class="el-icon-timer"> 距结束</i>
-					<span class="count-down">{{info.countdown}}</span>
+					<span class="count-down">
+						<CountDown
+						:endTime="endTime">
+						</CountDown>
+					</span>
 				</div>
 		  </div>
 		  <div class="note">
@@ -123,7 +128,8 @@
 		:visible.sync="Visible2"
 		width="70%"
 		top="24vh">
-			<p style="text-align: center;font-size: 10vmin;color: #C12BE2"><i class="el-icon-document-delete"></i></p>
+			<p style="text-align: center;font-size: 10vmin;color: #C12BE2">
+				<i class="el-icon-document-delete"></i></p>
 			<p style="color: red;text-align: center;">暂未登录，请去登录</p>
 			<el-button class="bid-but" @click="goLogIn()">去登陆</el-button>
 		</el-dialog>
@@ -142,7 +148,22 @@
 			<el-button class="but b-left" @click="depositPop = false">取消</el-button>
 			<el-button class="but b-right">支付参拍保证金</el-button>
 		</mt-popup>
-
+		<!-- 时间提醒弹窗 -->
+		<el-dialog
+		class="pop-alert"
+		:visible.sync="showAlert"
+		width="70%"
+		top="24vh">
+			<div class="time-alert">
+				<el-radio-group size="medium" v-model="timeAlert">
+					<el-radio label="1">提前<span> 5 </span>分钟提醒</el-radio>
+					<el-radio label="2">提前<span>15</span>分钟提醒</el-radio>
+					<el-radio label="3">提前<span>30</span>分钟提醒</el-radio>
+					<el-radio label="4">提前<span> 1 </span>小时提醒</el-radio>
+				</el-radio-group>
+			</div>
+			<el-button class="bid-but" @click="setAlert()">设置提醒</el-button>
+		</el-dialog>
 	</div>
 </template>
 
@@ -160,6 +181,8 @@
 				Visible1: false,
 				Visible2: false,
 				depositPop: false,
+				showAlert: false,
+				timeAlert:'1',
 				uid: 0,
 				info: [],
 				imgList:[],
@@ -220,6 +243,12 @@
 			},
 			goLogIn() {
 				this.$router.push({path:'/login'})
+			},
+			goPrePay(){
+				this.$router.push({path:"/pre-pay"})
+			},
+			setAlert(){
+				this.showAlert = false
 			}
 		}
 	}
@@ -233,14 +262,15 @@
 		box-sizing: border-box;
 		.poster;
 		.price {
-			height: 7vh;
-			line-height: 7vh;
+			height: 10vh;
 			white-space: nowrap;
 			padding: 2.5vmin 3.5vmin;
 			border-bottom: 1px solid #F1F1F1;
 			color: @unpick-color;
 			font-size: 3.2vmin;
 			.mm-width;
+			width: 100%;
+			box-sizing: border-box;
 			.symbol,.num {
 				color: @price-color;
 				font-size: 5vmin;
@@ -253,7 +283,7 @@
 			}
 			.user {
 				font-size: 3.6vmin;
-				margin-left: 23vmin;
+				margin-left: 17vmin;
 				.account {
 					color: @bid-color;
 				}
@@ -512,7 +542,7 @@
 				}
 			}
 		}
-		.pop-no-log {
+		.pop-no-log ,.pop-alert {
 			.el-dialog {
 				border-radius: 4vmin;
 				height: 65vmin;
@@ -579,6 +609,39 @@
 				background: #B928FD;
 				border: 1px solid #BA2CEF;
 				color: #FFFFFF;
+			}
+		}
+		.pop-alert {
+			.el-dialog{
+				padding: 2.5vmin 6vmin !important;
+				height: 78vmin;
+				.bid-but {
+					margin: 6vmin 2vmin;
+				}
+				.el-radio-group {
+					padding-left: 4vmin;
+				}
+			}
+			.el-radio {
+				margin: 2vmin 0;
+				width: 100%;
+				.el-radio__input{
+					margin-bottom: 1vmin;
+				}
+				.el-radio__input ,.el-radio__label {
+					font-size: 5.5vmin;
+					.el-radio__inner{
+						width: 5.5vmin;
+						height: 5.5vmin;
+					}
+				}
+				.el-radio__input.is-checked+.el-radio__label {
+					color: @base-color;
+				}
+				.el-radio__input.is-checked .el-radio__inner{
+					background:@base-color;
+					border-color: @base-color;
+				}
 			}
 		}
 	}

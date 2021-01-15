@@ -76,7 +76,8 @@
 				拍卖结束时间为见面时间前3个小时，距离结束11:59:59
 			</div>
 			<div class="but-pub" >
-				<el-button @click="publishPop = true" class="but-sty" style="text-align: center;" >发布</el-button>
+				<el-button @click="publishPop = true" 
+				class="but-sty" style="text-align: center;" >发布</el-button>
 			</div>
 		</div>
 		<mt-popup
@@ -331,11 +332,12 @@
 					margin-right: 2vmin;
 				}
 				.is-bordered+.el-radio.is-bordered {
-					margin-left: 0;
 					color: @base-color;
 				}
 			}
-			
+			.el-radio.is-bordered+.el-radio.is-bordered {
+				margin-left: 0;
+			}
 			.el-radio.is-bordered.is-checked {
 				border-color: @base-color;
 			}
