@@ -1,6 +1,6 @@
 <template>
 	<div class="safe-cert">
-		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<div class="list" style="margin-top: 18vmin;">
 			<div v-for="item in safetyType" class="safe-list">
 				<div class="s-name">{{item.name}}</div>
@@ -27,9 +27,6 @@
 			}
 		},
 		methods: {
-			back () {
-				this.$router.go(-1)
-			}
 		}
 	}
 </script>

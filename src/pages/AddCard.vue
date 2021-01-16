@@ -1,6 +1,6 @@
 <template>
 	<div class="add-card">
-		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<div class="card-info">
 			<el-form label-position=top label-width="80px" :model="cardForm">
 				<el-form-item label="卡号">
@@ -51,9 +51,6 @@
 			HeaderBar
 		},
 		methods: {
-			back () {
-				this.$router.go(-1)
-			}
 		}
 	}
 </script>

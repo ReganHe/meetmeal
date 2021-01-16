@@ -147,7 +147,7 @@ let toMeet = Mock.mock({
 		"finPrice|50-100":1,
 		"time|1-24":1,
 		"job|1":["学生","教师","会计","工程师","自由职业","职员"],
-		"address":'@city',
+		"address":'@county(true)',
 		"timeZone":"@datetime(hh:mm) - @datetime(hh:mm)",
 	}],
 	"msg":"success,"
@@ -202,6 +202,24 @@ let mine = Mock.mock({
 	"msg":"success,"
 })
 
+// 参与订单页，已结束数据
+let partFinOrder = Mock.mock({
+	"code":0,
+	"data|4":[{
+		"oid|+1":1,
+		"age":"@datetime(yyyy)",
+		"name":"@cname",
+		"gender|1":["0","1"],
+		"countdown":"12:34:43",
+		"address":'@county(true)',
+		"take|1-5":1,
+		"staPrice|1-50":1, //起拍价
+		"finPrice|30-60":1, //最终价
+		"fullTime":"@datetime(MM/dd/yyyy hh:mm-hh:mm)",
+		}],
+	"msg":"success,"
+})
+
 let d1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/V1/product-list' + ".*"),"get", homeList)
 let d2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/person' + ".*"),"get", person)
 let d3 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/order' + ".*"),"get", order)
@@ -214,5 +232,5 @@ let m1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/msgList' + ".*"),
 let m2 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/chatList' + ".*"),"get", chatList)
 
 let p1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/mine' + ".*"),"get", mine)
-
-export default {d1,d2,d3,d4,d5,d6,d7,m1,m2,p1}
+let o1 = Mock.mock(RegExp(process.env.VUE_APP_API_URL + '/rest/partFinOrder' + ".*"),"get", partFinOrder)
+export default {d1,d2,d3,d4,d5,d6,d7,m1,m2,p1,o1}

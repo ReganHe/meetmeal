@@ -1,6 +1,6 @@
 <template>
 	<div class="message">
-		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<div class="type">
 			<div class="push">
 				推送消息
@@ -38,9 +38,6 @@
 			HeaderBar
 		},
 		methods: {
-			back () {
-				this.$router.go(-1)
-			},
 		},
 	}
 </script>

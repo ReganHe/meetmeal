@@ -1,6 +1,6 @@
 <template>
 	<div class="participant">
-		<HeaderBar :titleName="titleName" @click.native='back()'></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<div v-for="item in partList">		
 			<div class="part-info">
 				<div v-show="partList.length != 0" class="user">
@@ -58,9 +58,6 @@
 			})
 		},
 		methods:{
-			back() {
-				this.$router.go(-1)
-			},
 			convertAge(year){
 				return convertYear(year)
 			}

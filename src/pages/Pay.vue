@@ -1,6 +1,6 @@
 <template>
 	<div class="paypage">
-		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<!--余额显示-->
 		<div class="bal" >
 			<p style="font-size: 20px; padding-top: 20px;">账户余额</p>
@@ -73,9 +73,6 @@
 			HeaderBar
 		},
 		methods:{
-			back () {
-				this.$router.go(-1)
-			},
 			goPayMethod() {
 				this.$router.push({path:'/pay-methods'})
 			}

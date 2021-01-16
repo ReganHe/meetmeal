@@ -1,6 +1,6 @@
 <template>
 	<div class="job-list">
-		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<el-checkbox-group 
 		v-model="checkedJobs"
 		:min="0"
@@ -40,9 +40,6 @@
 			}
 		},
 		methods: {
-			back () {
-				this.$router.go(-1)
-			},
 			chJobs() {
 				
 			}

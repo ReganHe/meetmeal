@@ -1,6 +1,6 @@
 <template>
 	<div class="title">
-		<i class="el-icon-arrow-left" @click=""></i>
+		<i class="el-icon-arrow-left" @click="goBack()"></i>
 		<span>{{titleName}}</span>
 	</div>
 </template>
@@ -10,6 +10,11 @@
 		props: {
 			'titleName': {default:''},
 		},
+		methods:{
+			goBack(){
+				this.$router.go(-1)
+			}
+		}
 	}
 </script>
 

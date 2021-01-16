@@ -1,6 +1,6 @@
 <template>
 	<div class="add-pay">
-		<HeaderBar :titleName="titleName" @click.native="back()"></HeaderBar>
+		<HeaderBar :titleName="titleName"></HeaderBar>
 		<div class="pay-list">
 			<div class="method" @click="goAddCard()" style="border-top: 1px solid #D3D3D3;">
 				<div class="icon"><img src="../assets/visa.png" alt=""></div>
@@ -28,9 +28,6 @@
 			HeaderBar
 		},
 		methods: {
-			back () {
-				this.$router.go(-1)
-			},
 			goAddCard(){
 				this.$router.push({path:"/add-card"})
 			}

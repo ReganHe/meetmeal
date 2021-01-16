@@ -13,7 +13,7 @@
 					待见面
 					<div class="msg-pop">{{toMeet.length}}</div>
 				</div>
-				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3)">已结束</div>
+				<div :class="{'day-sty':dayType == 3}" @click="changeDay(3);getFinOrder()">已结束</div>
 			</div>
 			<div v-if="!orderType" class="day">
 				<div :class="{'day-sty':dayType == 1}" @click="changeDay(1)">发布中</div>
@@ -25,6 +25,7 @@
 				<div :class="{'day-sty':dayType == 4}" @click="changeDay(4)">已结束</div>
 			</div>
 		</div>
+		<!-- 参与订单  参拍中  -->
 		<div v-if="orderType" class="body">
 			<div v-if="dayType == 1" >
 				<div v-for="item in order" class="list">
@@ -44,6 +45,12 @@
 								</CountDown>
 							</span>
 						</div>
+						<el-dropdown trigger="click" @command="revokeOrder">
+							<i class="el-icon-more"></i>
+						  <el-dropdown-menu slot="dropdown" class="revocation">
+						    <el-dropdown-item :command="item.oid">撤销</el-dropdown-item>
+						  </el-dropdown-menu>
+						</el-dropdown>
 					</div>
 					<p>时间：（21:00-23:00）{{item.take}}小时</p>
 					<div class="l3">
@@ -97,24 +104,28 @@
 				</div>
 			</div>
 			<div v-if="dayType == 3">
-				<div class="list">
+				<div v-for="item in finOrder" class="list">
 					<div class="l1">
 						<div class="info">
-							<i class="el-icon-male gender-bg">18</i>
-							<span style="color:black;">上海刘亦菲</span>
+							<i v-if="item.gender == 0" 
+							class="el-icon-female gender-bg">{{convertAge(item.age)}}</i>
+							<i v-if="item.gender == 1" 
+							class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convertAge(item.age)}}</i>
+							<span style="color:black;">{{item.name}}</span>
 						</div>
 						<div class="l-time evaluate">去评价</div>
 					</div>
-					<p>时间：（21:00-23:00）2小时</p>
+					<p>时间：（{{item.fullTime}}）{{item.take}}小时</p>
 					<div class="page2">
-						<p>地址：Trump Tower at Century City</p>
+						<p>地址：{{item.address}}</p>
 					</div>
 					<div class="l4">
-						<span>起拍价：$50</span>
-						<span>最终价：<span class="sty-color">$80</span></span>
+						<span>起拍价：${{item.staPrice}}</span>
+						<span>最终价：<span class="sty-color">${{item.finPrice}}</span></span>
 						<div class="info">
-							<i class="el-icon-male gender-bg">18</i>
-							<span style="color:black;">上海刘亦菲</span>
+							<i class="el-icon-male gender-bg">{{convertAge(item.age)}}</i>
+							<span style="color:black;">{{item.name}}</span>
 						</div>
 					</div>
 				</div>
@@ -138,6 +149,12 @@
 								</CountDown>
 							</span>
 						</div>
+						<el-dropdown trigger="click" @command="revokeOrder">
+							<i class="el-icon-more"></i>
+						  <el-dropdown-menu slot="dropdown" class="revocation">
+						    <el-dropdown-item :command="item.oid">撤销</el-dropdown-item>
+						  </el-dropdown-menu>
+						</el-dropdown>
 					</div>
 					<p>时间：（{{item.timeZone}}）{{item.take}}小时</p>
 					<p>起拍价：${{item.staPrice}}</p>
@@ -169,6 +186,12 @@
 									</CountDown>
 								</span>
 							</div>
+							<el-dropdown trigger="click" @command="revokeOrder">
+								<i class="el-icon-more"></i>
+							  <el-dropdown-menu slot="dropdown" class="revocation">
+							    <el-dropdown-item :command="item.oid">撤销</el-dropdown-item>
+							  </el-dropdown-menu>
+							</el-dropdown>
 						</div>
 						<p>时间：（{{item.timeZone}}）{{item.time}}小时</p>
 						<div class="page2">
@@ -255,7 +278,7 @@
 	import {getOrder} from '../api/product.js';
 	import {mapState} from 'vuex';
 	import CountDown from './CountDown.vue';
-	import {getPublish,getToMeet} from '../api/order.js';
+	import {getPublish,getToMeet,getPartFin} from '../api/order.js';
 	import {convertYear} from '../util/time.js'
 	
 	export default {
@@ -271,6 +294,7 @@
 				order: [],
 				publish:[],
 				toMeet:[],
+				finOrder:[],
 				meetpop:[],
 				endTime:"2021-03-31",
 				confirPop:false,
@@ -325,6 +349,12 @@
 					this.publish = resp.data.data
 				})
 			},
+			//获取参与订单 已结束
+			getFinOrder(){
+				getPartFin().then( resp => {
+					this.finOrder = resp.data.data
+				})
+			},
 			getMeetList() {
 				getToMeet().then( resp => {
 					this.toMeet = resp.data.data
@@ -340,6 +370,11 @@
 			},
 			convertAge(year){
 				return convertYear(year)
+			},
+			// 撤销订单
+			// @param command str
+			revokeOrder(command){
+				console.log(command)
 			}
 		}
 	}
@@ -347,6 +382,15 @@
 
 <style lang='less'>
 	@import '../css/global.less';
+	body {
+		.revocation{
+			width: 20vmin !important;
+			left: 77vmin !important;
+			.el-dropdown-menu__item {
+				border: none;
+			}
+		}
+	}
 	.order-release {
 		padding-bottom: 20vmin;
 		.header {
@@ -467,6 +511,11 @@
 					.evaluate{
 						color: @base-color;
 						text-decoration: underline;
+					}
+					.el-dropdown {
+						.el-icon-more{
+							transform: rotate(90deg);
+						}
 					}
 				}
 				.l3 {

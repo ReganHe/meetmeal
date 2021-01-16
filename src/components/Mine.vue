@@ -4,7 +4,7 @@
 			<div class="my-info">我的</div>
 			<el-dropdown trigger="click">
 				<i class="el-icon-setting"></i>
-				<el-dropdown-menu slot="dropdown">
+				<el-dropdown-menu slot="dropdown" class="mine-drop">
 				    <el-dropdown-item>
 						<router-link to="messages">消息通知</router-link>
 					</el-dropdown-item>
@@ -77,7 +77,7 @@
 			},
 			goPay(){
 				this.$store.commit('changePage','mine')
-				this.$router.push({path:'/pay'})
+				this.$router.push({path:'/my-wallet'})
 			}
 		}
 	}
@@ -92,6 +92,9 @@
 			text-decoration: none;
 			color: #333333;
 		}
+		.mine-drop {
+			left: 64.5vmin !important;
+		}
 		.el-popper[x-placement^=bottom] {
 			margin: 0;
 		}
@@ -99,7 +102,6 @@
 			width: 35vmin;
 			margin: 0;
 			padding: 0;
-			left: 65vmin !important;
 			.popper__arrow {
 				display: none !important;
 			}
@@ -119,6 +121,7 @@
 	.mine {
 		.mm-width;
 		width: 100%;
+		height: calc(100vh - 36vmin);
 		.m-header {
 			.mm-width;
 			box-sizing: border-box;
@@ -142,25 +145,27 @@
 		.con {
 			margin-top: @h-height;
 			margin-bottom: 10vmin;
+			height: 100%;
 			.h-img{
 				display: flex;
 				flex-direction: column;
 				justify-content: flex-end;
 				align-items: flex-start;
-				padding-left: 17vmin;
-				padding-top: 14vmin;
+				padding-left: 18.9vmin;
+				padding-top: 3vmin;
 				background: url('../assets/m-bg.png') no-repeat;
 				background-size: 100% 100%;
 				font-size: 4.8vmin;
-				margin-bottom: 10vmin;
+				margin-bottom: 2vmin;
 				color: white;
+				height: 30%;
 				p {
 					margin: 2vmin 0;
 					padding: 0;
 				}
 				.head {
-					height: 22vmin;
-					width: 22vmin;
+					height: 17vmin;
+					width: 17vmin;
 					border-radius: 50%;
 					overflow: hidden;
 					background-size: cover;
@@ -176,6 +181,7 @@
 				justify-content: space-between;
 				font-size: 3.8vmin;
 				font-weight: normal;
+				height: 22%;
 				p {
 					margin: 2.5vmin 0;
 					padding: 0;
@@ -189,7 +195,6 @@
 				}
 				.left , .right {
 					width: 50%;
-					height: 36vmin;
 					display: flex;
 					flex-direction: column;
 					justify-content: center;

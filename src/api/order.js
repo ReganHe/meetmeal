@@ -27,4 +27,15 @@ function getToMeet(){
 	})
 }
 
-export  {getPublish,getPart,getToMeet}
+function getPartFin(){
+	return axios({
+		method: 'get',
+		url: '/rest/partFinOrder',
+		// params: {
+		// }
+	})
+}
+
+
+
+export  {getPublish,getPart,getToMeet,getPartFin}
