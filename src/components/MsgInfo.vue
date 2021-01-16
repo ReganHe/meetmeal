@@ -10,7 +10,8 @@
 				</div>
 			</div>
 			<div class="content">
-				<div class="name">{{item.name}}</div>
+				<div v-if="item.mid == 1" class="name">系统消息</div>
+				<div v-else class="name">{{item.name}}</div>
 				<div class="msg">{{item.lastMsg}}</div>
 			</div>
 			<div class="info">

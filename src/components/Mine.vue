@@ -44,7 +44,7 @@
 				</div>
 			</div>
 			<div class="list">
-				<div class="left">
+				<div class="left" @click="goChat()">
 					<i class="el-icon-s-order"></i>
 					<p>反馈</p>
 				</div>
@@ -78,6 +78,9 @@
 			goPay(){
 				this.$store.commit('changePage','mine')
 				this.$router.push({path:'/my-wallet'})
+			},
+			goChat(){
+				this.$router.push({path:`/chat?mid=1`})
 			}
 		}
 	}

@@ -190,6 +190,7 @@
 					vertical-align: middle;
 					text-align: center;
 					color: white;
+					font-weight: 600;
 				}
 				.order-pop {
 					right: 63vmin;

@@ -2,10 +2,11 @@
 	<div class="chat">
 		<div class="h-chat">
 			<i class="el-icon-arrow-left" @click="goBack()"></i>
-			<div class="name">{{chatList.name}}</div>
+			<div v-if="chatList.mid == 1" class="name">系统消息</div>
+			<div v-else class="name">{{chatList.name}}</div>
 			<el-dropdown trigger="click">
 				<i class="el-icon-more"></i>
-				<el-dropdown-menu slot="dropdown">
+				<el-dropdown-menu slot="dropdown" class="chat-drop">
 				    <el-dropdown-item>
 						置顶聊天
 					</el-dropdown-item>
@@ -30,7 +31,7 @@
 						</div>
 					</div>
 				</div>
-				<div v-if="item.id == 2" class="mine">
+				<div v-if="item.id == 2" class="chat-mine">
 					<div class="h-img">
 						<img :src=chatList.mineImg alt="">
 					</div>
@@ -45,7 +46,7 @@
 		</div>
 		<div class="input">
 			<div><img src="../assets/mic.png" alt=""></div>
-			<el-input v-model="input" placeholder="请输入内容"></el-input>
+			<el-input maxlength="500" v-model="input" placeholder="请输入内容,最大500字"></el-input>
 			<div><img src="../assets/smile.png" alt=""></div>
 			<div><img src="../assets/add-circle.png" alt=""></div>
 		</div>
@@ -89,6 +90,9 @@
 
 <style lang="less">
 	@import '../css/global.less';
+	body .chat-drop {
+		left: 64.5vmin !important;
+	}
 	.chat {
 		.h-chat {
 			display: flex;
@@ -119,7 +123,7 @@
 			background-color: #EDEDED;
 		}
 		.con {
-			.firend,.mine {
+			.firend,.chat-mine {
 				display: flex;
 				justify-content: flex-start;
 				align-items: flex-end;
@@ -163,7 +167,7 @@
 					}
 				}
 			}
-			.mine {
+			.chat-mine {
 				flex-direction: row-reverse;
 				.msg {
 					border-radius: 4.3vmin 4.3vmin 1vmin 4.3vmin !important;
@@ -195,9 +199,12 @@
 			.el-input {
 				background-color: #FFFFFF;
 				width: 68vmin;
-				height: 12.5vmin;
+				height: 11vmin;
+				.el-input__inner{
+					height: 11vmin;
+				}
 				.el-input__inner:focus {
-					border-color: #C0C4CC;
+					border-color: @base-color;
 				}
 			}
 		}

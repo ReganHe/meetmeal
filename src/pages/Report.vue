@@ -22,7 +22,7 @@
 			</el-form>
 		</div>
 		<div style="text-align: center;margin-top: 10vmin;">
-			<el-button  type="primary" class="button">立即提交</el-button>
+			<el-button class="button">立即提交</el-button>
 		</div>
 	</div>
 </template>
