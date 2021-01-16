@@ -120,7 +120,8 @@
 							  :visible.sync="dialogVisible"
 							  width = 83vmin>
 							<div class="block">
-								<el-rate v-model="value1" show-score text-color="#ff9900" allow-half  :colors="colors"></el-rate>
+								<el-rate v-model="value1" @change="changeScore(value1)" text-color="#ff9900" allow-half  :colors="colors"></el-rate>
+								<p class="f-score">{{score}}</p>
 							</div>
 							<el-button type="primary" @click="subEvalution()">提交评价</el-button>
 						</el-dialog>
@@ -308,7 +309,8 @@
 				endTime:"2021-03-31",
 				confirPop:false,
 				dialogVisible:false,
-				value1:5.0,
+				value1:5,
+				score:"5.0",
 				colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
 			};
 		},
@@ -391,6 +393,11 @@
 			// 提交评价
 			subEvalution(){
 				this.dialogVisible = false
+			},
+			// 改变评分
+			changeScore(value) {
+				this.score = value.toFixed(1)
+				console.log(this.score)
 			}
 		}
 	}
@@ -536,17 +543,21 @@
 					.el-dialog__wrapper{
 						top: 34vmin;
 						.block{
+							display: flex;
+							justify-content: space-between;
+							align-items: center;
+							.f-score{
+								font-size: 7vmin;
+								width: 13vmin;
+								display: inline-block;
+								text-align: center;
+								color: #FF9900;
+							}
 							.el-rate{
-								height: 10vmin;
+								height: 11vmin;
 								.el-rate__icon{
 									font-size: 11vmin;
 									margin-right: 0;
-								}
-								.el-rate__text{
-									font-size: 7vmin;
-									width: 13vmin;
-									display: inline-block;
-									text-align: center;
 								}
 							}
 						}
@@ -560,12 +571,12 @@
 						}
 						.el-dialog__body{
 							text-align: center;
-							padding: 3vmin 1vmin 8vmin;
+							padding: 3vmin 6vmin 8vmin;
 						}
 						.el-dialog{
 							border-radius: 6vmin;
 							.el-dialog__title{
-								padding-left: 4vmin;
+								padding-left: 2vmin;
 							}
 						}
 					}
