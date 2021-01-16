@@ -114,7 +114,16 @@
 							style="background: #3182FD;">{{convertAge(item.age)}}</i>
 							<span style="color:black;">{{item.name}}</span>
 						</div>
-						<div class="l-time evaluate">去评价</div>
+						<div class="l-time evaluate" @click="dialogVisible = true; value1 = 5">去评价</div>
+						<el-dialog
+							  title="评价"
+							  :visible.sync="dialogVisible"
+							  width = 83vmin>
+							<div class="block">
+								<el-rate v-model="value1" show-score text-color="#ff9900" allow-half  :colors="colors"></el-rate>
+							</div>
+							<el-button type="primary" @click="subEvalution()">提交评价</el-button>
+						</el-dialog>
 					</div>
 					<p>时间：（{{item.fullTime}}）{{item.take}}小时</p>
 					<div class="page2">
@@ -298,6 +307,9 @@
 				meetpop:[],
 				endTime:"2021-03-31",
 				confirPop:false,
+				dialogVisible:false,
+				value1:5.0,
+				colors: ['#99A9BF', '#F7BA2A', '#FF9900'],
 			};
 		},
 		mounted(){
@@ -375,6 +387,10 @@
 			// @param command str
 			revokeOrder(command){
 				console.log(command)
+			},
+			// 提交评价
+			subEvalution(){
+				this.dialogVisible = false
 			}
 		}
 	}
@@ -515,6 +531,42 @@
 					.el-dropdown {
 						.el-icon-more{
 							transform: rotate(90deg);
+						}
+					}
+					.el-dialog__wrapper{
+						top: 34vmin;
+						.block{
+							.el-rate{
+								height: 10vmin;
+								.el-rate__icon{
+									font-size: 11vmin;
+									margin-right: 0;
+								}
+								.el-rate__text{
+									font-size: 7vmin;
+									width: 13vmin;
+									display: inline-block;
+									text-align: center;
+								}
+							}
+						}
+						.el-button{
+							margin-top: 5vmin;
+							border-radius: 2vmin;
+							width: 30vmin;
+							font-size: 5vmin;
+							background-color: @base-color;
+							border-color: @base-color;
+						}
+						.el-dialog__body{
+							text-align: center;
+							padding: 3vmin 1vmin 8vmin;
+						}
+						.el-dialog{
+							border-radius: 6vmin;
+							.el-dialog__title{
+								padding-left: 4vmin;
+							}
 						}
 					}
 				}

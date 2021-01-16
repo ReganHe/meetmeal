@@ -10,7 +10,7 @@ import { Button, Input, Pagination, Menu,
 	DatePicker, Message, Container, Aside,
 	RadioGroup, RadioButton, Radio,
 	Upload, Option, Dropdown, DropdownMenu,
-	DropdownItem,Checkbox,CheckboxGroup,Drawer,Slider} from 'element-ui';
+	DropdownItem,Checkbox,CheckboxGroup,Drawer,Slider,Rate} from 'element-ui';
 	
 import { Swipe, SwipeItem,Lazyload,
 		Tabbar, TabItem, TabContainer, 
@@ -60,6 +60,7 @@ Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
 Vue.use(Drawer)
 Vue.use(Slider)
+Vue.use(Rate)
 
 Vue.prototype.$message = Message
 Vue.config.productionTip = false
