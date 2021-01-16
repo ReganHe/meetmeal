@@ -185,7 +185,7 @@
 					height: 4vmin;
 					position: absolute;
 					top: -14vmin;
-					right: 23vmin;
+					right: 23%;
 					line-height: 4vmin;
 					vertical-align: middle;
 					text-align: center;
@@ -193,7 +193,7 @@
 					font-weight: 600;
 				}
 				.order-pop {
-					right: 63vmin;
+					right: 63%;
 				}
 			}
 		}
