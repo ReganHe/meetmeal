@@ -6,7 +6,7 @@
 					<div v-if="finType" class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div v-else class="pic"><img src="../assets/auction_icon.gif" alt=""></div>
 					<div class="on-sale" @click="changeStyle(1);getProductList()">拍卖中</div>
-					<div class="fin" @click="changeStyle(2)">已结束</div>
+					<div class="fin" @click="changeStyle(2);getProductList()">已结束</div>
 					<div class="filter" @click="drawer = true; showTip = true;value=['19','30']">
 						<i class="el-icon-s-operation"></i>
 					</div>
@@ -27,7 +27,10 @@
 					<div class="bg">
 						<img :src="item.img" alt="">
 					</div>
-					<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					<div class="head">
+						<div class="job">{{item.job}}</div>
+						<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					</div>
 					<div class="down">
 						<i style="color:#FF9900 ;font-size:5vmin;" class="el-icon-star-on"></i>
 						<span>{{item.score}}</span>
@@ -61,7 +64,10 @@
 						<span class="p3">{{item.price}}</span>
 						<span class="p4">(V00851)</span>
 					</div>
-					<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					<div class="timeAndBut">
+						<p>{{item.date}}</p>
+						<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -71,7 +77,10 @@
 					<div class="bg">
 						<img :src="item.img" alt="">
 					</div>
-					<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					<div class="head">
+						<div class="job">{{item.job}}</div>
+						<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					</div>
 					<div class="down">
 						<i style="color:#FF9900 ;font-size:5vmin;" class="el-icon-star-on"></i>
 						<span>{{item.score}}</span>
@@ -105,7 +114,10 @@
 						<span class="p3">{{item.price}}</span>
 						<span class="p4">(V00851)</span>
 					</div>
-					<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					<div class="timeAndBut">
+						<p>{{item.date}}</p>
+						<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -115,7 +127,10 @@
 					<div class="bg">
 						<img :src="item.img" alt="">
 					</div>
-					<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					<div class="head">
+						<div class="job">{{item.job}}</div>
+						<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					</div>
 					<div class="down">
 						<i style="color:#FF9900 ;font-size:5vmin;" class="el-icon-star-on"></i>
 						<span>{{item.score}}</span>
@@ -149,7 +164,10 @@
 						<span class="p3">{{item.price}}</span>
 						<span class="p4">(V00851)</span>
 					</div>
-					<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					<div class="timeAndBut">
+						<p>{{item.date}}</p>
+						<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -159,7 +177,10 @@
 					<div class="bg">
 						<img :src="item.img" alt="">
 					</div>
-					<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					<div class="head">
+						<div class="job">{{item.job}}</div>
+						<i class="el-icon-location-outline">{{item.distance}} Mile</i>
+					</div>
 					<div class="down">
 						<i style="color:#FF9900 ;font-size:5vmin;" class="el-icon-star-on"></i>
 						<span>{{item.score}}</span>
@@ -193,7 +214,10 @@
 						<span class="p3">{{item.price}}</span>
 						<span class="p4">(V00851)</span>
 					</div>
-					<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					<div class="timeAndBut">
+						<p>{{item.date}}</p>
+						<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -209,7 +233,7 @@
 					<p style="font-size: 5.5vmin;font-weight: 600;">筛选</p>
 					<p>确定</p>
 				</div>
-				<p class="con" style="font-size: 4vmin;font-weight: 600;">高级筛选</p>
+				<p class="con" style="font-size: 4vmin;font-weight: 600;">性别筛选</p>
 				<div style="background-color: #FFFFFF;padding: 3vmin 0;">
 					<el-radio-group fill="#C12BE2" v-model="radio" size="small" class="con">
 						<el-radio-button class="op" label="全部"></el-radio-button>
@@ -217,7 +241,7 @@
 						<el-radio-button class="op" label="女"></el-radio-button>
 					</el-radio-group>
 				</div>
-				<p class="con" style="font-size: 4vmin;font-weight: 600;">邀约对象</p>
+				<p class="con" style="font-size: 4vmin;font-weight: 600;">年龄筛选</p>
 				<div 
 				style="background-color: #FFFFFF;padding: 4vmin 5vmin;
 				font-size: 2vmin;display: flex;justify-content: space-between;">
@@ -253,7 +277,7 @@ export default {
 			}),
 	data() {
 		return {
-			value: [19, 30],
+			value: [19, 80],
 			product: [],
 			radio:"男",
 			endTime:"2021-03-31",
@@ -301,15 +325,6 @@ export default {
 		goTo (id) {
 			this.$store.commit('changePage','home')
 			this.$router.push({ path: `/join-bidding?id=${id}&status=0`})
-		},
-		handleCheckAllChange(val){
-			this.checkedGender = val ? genderOption : [];
-			this.isIndeterminate = false;
-		},
-		handleCheckedCitiesChange(value) {
-			let checkedCount = value.length;
-			this.checkAll = checkedCount === this.gender.length;
-			this.isIndeterminate = checkedCount > 0 && checkedCount < this.gender.length;
 		},
 		closeDrawer(){
 			this.drawer = false
@@ -498,17 +513,21 @@ export default {
 					height: 100%;
 				}
 			}
-			i {
+			.head {
 				font-size: 2.6vmin;
-				margin: 1.6vmin 1.6vmin 1.6vmin 0;
+				display: flex;
+				width: 100%;
+				justify-content: space-between;
+				padding: 1vmin 1.5vmin;
+				box-sizing: border-box;
+				align-items: center;
 			}
 			.down {
-				margin-right: auto;
 				font-size: 2.9vmin;
 				white-space: nowrap;
 				display: flex;
 				align-items: center;
-				margin: 0.6vmin 1.5vmin;
+				margin: 1vmin 1.5vmin;
 				margin-right: auto;
 				.status {
 					height: 1.6vmin;
@@ -518,11 +537,9 @@ export default {
 				}
 				.gender-bg {
 					background: #FE6491;
-					padding: 0.2vmin 0.5vmin;
-					border-radius: 0.5vmin;
-				}
-				* {
-					margin-left: 1vmin;
+					padding: 0.8vmin;
+					border-radius: 1.5vmin;
+					margin: 0 2vmin;
 				}
 			}
 		}
@@ -599,6 +616,16 @@ export default {
 				font-size: 2.9vmin;
 				padding: 1.6vmin 2.6vmin;
 				border-radius: 2vmin;
+			}
+			.timeAndBut{
+				display: flex;
+				align-items: center;
+				width: 38vmin;
+				justify-content: space-between;
+				p {
+					margin: 0;
+					white-space: nowrap;
+				}
 			}
 		}
 	}

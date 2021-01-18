@@ -4,7 +4,7 @@
 			<div class="img">
 				<div class="back" @click="goBack()">
 					<i class="el-icon-arrow-left"></i>
-					<div style="width: 80%;color: #FFFFFF;font-size: 5vmin;display: flex;justify-content: space-between;">
+					<div style="width: 80%;color: #FFFFFF;font-size: 6vmin;display: flex;justify-content: space-between;">
 						<span>{{info.job}}</span>
 						<span >{{info.distance}} mile</span>
 					</div>
@@ -19,18 +19,13 @@
 				</mt-swipe>
 				<div class="bottom">
 					<div class="page">{{perNum}}/{{total}}</div>
-					<div v-if="info.online == 1" class="down">
-						<div  class="status"></div>
-						<span>在线</span>
-						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{convertAge(info.age)}}</i>
-						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(info.age)}}</i>
-						<div>{{info.name}}</div>
-					</div>
-					<div v-if="info.online == 0" class="down">
-						<div  class="status" style="background: #999999;"></div>
-						<span>离线</span>
-						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{convertAge(info.age)}}</i>
-						<i v-if="info.gender == 1" class="el-icon-male gender-bg" style="background: #3182FD;">{{convertAge(info.age)}}</i>
+					<div class="down">
+						<i style="color:#FF9900 ;font-size:5vmin;" class="el-icon-star-on"></i>
+						<span>{{info.score}}</span>
+						<i v-if="info.gender == 0" class="el-icon-female gender-bg">{{convert(info.age)}}</i>
+						<i v-if="info.gender == 1" class="el-icon-male gender-bg" 
+							style="background: #3182FD;">{{convert(info.age)}}
+						</i>
 						<div>{{info.name}}</div>
 					</div>
 				</div>
@@ -96,7 +91,7 @@
 			handleChange(index) {
 				this.perNum = index + 1 ;
 			},
-			convertAge(year) {
+			convert(year) {
 				return convertYear(year)
 			},
 			goBidding(){

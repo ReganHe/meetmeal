@@ -2,21 +2,21 @@
 	<div class="pre-pay">
 		<div class="title">
 			<i class="el-icon-arrow-left" @click="back()"></i>
-			预付竞拍保证金
+			<span style="font-size: 5vmin;">预付竞拍保证金</span>
 			<div class="el-icon-question"></div>
 		</div>
 		<div class="pay-money">
-			<el-radio v-model="money" label="15" border>15</el-radio>
-			<el-radio v-model="money" label="20" border>30</el-radio>
-			<el-radio v-model="money" label="45" border>45</el-radio>
-			<el-radio v-model="money" label="60" border>60</el-radio>
-			<el-radio v-model="money" label="90" border>90</el-radio>
-			<el-radio v-model="money" label="120" border>120</el-radio>
-			<el-radio v-model="money" label="150" border>150</el-radio>
-			<el-radio v-model="money" label="180" border>180</el-radio>
-			<el-radio v-model="money" label="210" border>210</el-radio>
+			<el-radio v-model="money" label="15" border>$15</el-radio>
+			<el-radio v-model="money" label="20" border>$30</el-radio>
+			<el-radio v-model="money" label="45" border>$45</el-radio>
+			<el-radio v-model="money" label="60" border>$60</el-radio>
+			<el-radio v-model="money" label="90" border>$90</el-radio>
+			<el-radio v-model="money" label="120" border>$120</el-radio>
+			<el-radio v-model="money" label="150" border>$150</el-radio>
+			<el-radio v-model="money" label="180" border>$180</el-radio>
+			<el-radio v-model="money" label="210" border>$210</el-radio>
 		</div>
-		<div class="now-pay" @click="goPay()">立即充值</div>
+		<div class="now-pay" @click="goPay()">立即预付</div>
 	</div>
 </template>
 
@@ -86,6 +86,7 @@
 				vertical-align: middle;
 				.el-radio__label{
 					font-size: 4.8vmin;
+					padding: 0;
 				}
 				.is-bordered+.el-radio.is-bordered {
 					color: @base-color;

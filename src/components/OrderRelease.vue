@@ -3,7 +3,7 @@
 		<div class="header">
 			<div class="auction" :class="{'pick-up':orderType}">
 				<div class='sty'>
-					<div class="on-sale" @click="changeStyle(1);getPartOrder()">参与订单</div>
+					<div class="on-sale" @click="changeStyle(1);getPartOrder()">竞拍订单</div>
 					<div class="fin" @click="changeStyle(2);getPublishOrder()">发布订单</div>
 				</div>
 			</div>
@@ -86,6 +86,12 @@
 									</CountDown>
 								</span>
 							</div>
+							<el-dropdown trigger="click" @command="revokeOrder">
+								<i class="el-icon-more"></i>
+							  <el-dropdown-menu slot="dropdown" class="revocation">
+							    <el-dropdown-item :command="item.oid">撤销</el-dropdown-item>
+							  </el-dropdown-menu>
+							</el-dropdown>
 						</div>
 						<p>时间：（{{item.timeZone}}）{{item.time}}小时</p>
 						<div class="page2">
@@ -97,7 +103,7 @@
 								当前价：<span class="sty-color">${{item.price}}</span>
 							</div>
 							<div class="check-person sty-color" @click="confirm(item.oid)">
-								开始见面
+								查看店名地址
 							</div>
 						</div>
 					</div>
@@ -213,7 +219,7 @@
 								当前价：<span class="sty-color">${{item.price}}</span>
 							</div>
 							<div class="check-person sty-color" @click="confirm(item.oid)">
-								开始见面
+								查看店名地址
 							</div>
 						</div>
 					</div>
