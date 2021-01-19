@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-function RegisterApi(){
+function RegisterApi(data){
 	axios({
 		method: 'post',
 		url: '/rest/V1/customers',
 		data: {
 			"customer": {
-				"email": "123@example.com",
+				"email": `123${data.user}@example.com`,
 				"firstname": "jond",
 				"lastname": "2020",
 				"addresses": [
@@ -25,12 +25,12 @@ function RegisterApi(){
 							"123 Oak Ave"
 						],
 						"city": "Purchase",
-						"telephone": "512-555-1111",
+						"telephone": data.user,
 						"countryId": "ZH"
 					}
 				]
 			},
-			"password": "Password1"
+			"password": data.old
 		}
 	}).then(resp => {
 		console.log(resp)

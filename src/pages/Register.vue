@@ -5,32 +5,29 @@
 			<p>注册账号</p>			
 		</div>
 		<div class="reg">
-			<el-form
-			:ref="ruleForm"
+			<el-form ref="ruleForm"
 			:model="ruleForm"
 			:rules="rules"
 			label-width="17vmin"
 			hide-required-asterisk>
 				<el-form-item class="input-sty" 
 				label="用户名" prop="user">
-					<el-input v-model="ruleForm.phone" placeholder="请输入用户名"></el-input>
+					<el-input v-model="ruleForm.user" placeholder="请输入用户名"></el-input>
 				</el-form-item>
 				<div  style="display: flex;justify-content: space-between;">
 					<el-form-item class="input-sty code-sty" 
 					label="验证码" 
 					prop="code" >
-						<el-input type="password" 
-						autocomplete="off" 
-						v-model="ruleForm.code" 
+						<el-input type="text" autocomplete="off" v-model="ruleForm.code" 
 						placeholder="请输入验证码"></el-input>
 					</el-form-item>
 						<el-button class="get-code">获取验证码</el-button>
 				</div>
 				<el-form-item class="input-sty" label="密码" prop="old">
-					<el-input v-model="ruleForm.old" placeholder="请输入密码"></el-input>
+					<el-input type="password" v-model="ruleForm.old" placeholder="请输入密码"></el-input>
 				</el-form-item>
 				<el-form-item class="input-sty" label="确认密码" prop="new">
-					<el-input v-model="ruleForm.new" placeholder="请确认密码"></el-input>
+					<el-input type="password" v-model="ruleForm.new" placeholder="请确认密码"></el-input>
 				</el-form-item>
 					<el-button class="button" @click="register">注册账号</el-button>	
 			</el-form>
@@ -48,6 +45,23 @@
 			HeadImg
 		},
 		data () {
+			var validatePass2 = (rule, value, callback) => {
+					if (value !== this.ruleForm.old) {
+					  callback(new Error('两次密码不一致'));
+					} else {
+					  callback();
+					}
+				};
+
+			var checkPass = (rule, value, callback) => {
+				if (value.match(/[A-Z]/g) && value.match(/[0-9]/g) 
+					&& value.match(/[a-z]/g) && value.length >= 8) {
+				  callback();
+				} else {
+				  callback(new Error('密码必须包含大小写和数字，且至少 8 个字符'));
+				}
+			}
+			
 			return {
 				show:'true',
 				s1: '1',
@@ -70,25 +84,29 @@
 							message: '请输入密码',
 							trigger: 'blur',
 						}],
-					phone: [{
-							required: true,
-							message: '请输入手机号',
-							trigger: 'blur',
-						}],
 					code: [{
 							required: true,
 							message: '请输入验证码',
 							trigger: 'blur',
 						}],
-					old: [{
-							required: true,
-							message: '请输入原密码',
-							trigger: 'blur',
-						}],
 					new: [{
 							required: true,
-							message: '请确认密码',
+							message: '请输入密码',
 							trigger: 'blur',
+						}, {
+							validator: validatePass2,
+							trigger: 'blur'
+						},{
+							validator: checkPass,
+							trigger: 'blur'
+						}],
+					old: [{
+							required: true,
+							message: '请输入密码',
+							trigger: 'blur',
+						},{
+							validator: checkPass,
+							trigger: 'blur'
 						}]
 				}
 			}
@@ -103,7 +121,12 @@
 				}
 			},
 			register () {
-				RegisterApi()
+				this.$refs.ruleForm.validate((valid, obj)=> {
+					if (valid) {
+						RegisterApi(this.ruleForm)
+					}
+				})
+				
 			}
 		}
 	}
