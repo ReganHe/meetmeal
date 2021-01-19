@@ -6,7 +6,7 @@
 		:min="0"
 		:max="1"
 		@change="chJobs()">
-			<el-checkbox v-for="job in options" :label="job" :key="job.value">
+			<el-checkbox v-for="job in options" :label="job.label" :key="job.value">
 				{{job.label}}
 			</el-checkbox>
 		</el-checkbox-group>
@@ -25,15 +25,15 @@
 				checkedJobs:[],
 				options:[
 				  {
-					label: '学生',
+					label: '从不喝',
 					value: '1',
 				  },
 				  {
-					label: '收银员',
+					label: '偶尔喝',
 					value: '2'
 				  },
 				  {
-					label: '服务员',
+					label: '喜欢喝',
 					value: '3'
 				  }
 				],
@@ -41,7 +41,7 @@
 		},
 		methods: {
 			chJobs() {
-				
+				// console.log(this.checkedJobs) 输出选中值
 			}
 		}
 	}
@@ -57,6 +57,12 @@
 		overflow: hidden;
 		.el-checkbox-group {
 			margin: 20vmin 0;
+			.is-checked .is-checked {
+				.el-checkbox__inner {
+					background-color: @base-color;
+					border-color: @base-color;
+				}
+			}
 			.el-checkbox {
 				width: 100%;
 				height: 11.7vmin;
@@ -68,6 +74,11 @@
 				padding: 0 7vmin;
 				box-sizing: border-box;
 				border-bottom: 2px solid #F5F5F5;
+				.is-focus {
+					.el-checkbox__inner {
+						border-color: @base-color;
+					}
+				}
 				.el-checkbox__label {
 					font-size: 4vmin;
 					font-weight: 400;
@@ -82,6 +93,9 @@
 							left: 2vmin;
 							width: 1vmin;
 						}
+						// &:hover {
+						// 	background-color: @base-color;
+						// }
 					}
 				}
 			}

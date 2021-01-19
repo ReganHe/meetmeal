@@ -4,7 +4,7 @@
 			<div class="img">
 				<div class="back" @click="goBack()">
 					<i class="el-icon-arrow-left"></i>
-					<div style="width: 80%;color: #FFFFFF;font-size: 6vmin;display: flex;justify-content: space-between;">
+					<div style="width: 80%;color: #FFFFFF;display: flex;justify-content: space-between;">
 						<span>{{info.job}}</span>
 						<span >{{info.distance}} mile</span>
 					</div>

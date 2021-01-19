@@ -78,13 +78,13 @@
 				placeholder="请添加你的声音">
 				<i class="el-icon-arrow-right"></i>
 			</mt-field>
-			<router-link to="/job-list">
+			<router-link to="/drink-select">
 				<mt-field 
-					label="职业"
+					label="喝酒"
 					:readonly="true"
 					:disableClear="true"
 					type="text"
-					placeholder="请添加你的职业">
+					placeholder="是否喝酒">
 					<i class="el-icon-arrow-right"></i>
 				</mt-field>
 			</router-link>
