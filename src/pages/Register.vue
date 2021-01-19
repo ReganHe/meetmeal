@@ -24,7 +24,7 @@
 						v-model="ruleForm.code" 
 						placeholder="请输入验证码"></el-input>
 					</el-form-item>
-						<el-button class="get-code" type="primary">获取验证码</el-button>
+						<el-button class="get-code">获取验证码</el-button>
 				</div>
 				<el-form-item class="input-sty" label="密码" prop="old">
 					<el-input v-model="ruleForm.old" placeholder="请输入密码"></el-input>
@@ -32,7 +32,7 @@
 				<el-form-item class="input-sty" label="确认密码" prop="new">
 					<el-input v-model="ruleForm.new" placeholder="请确认密码"></el-input>
 				</el-form-item>
-					<el-button class="button" type="primary" @click="register">注册账号</el-button>	
+					<el-button class="button" @click="register">注册账号</el-button>	
 			</el-form>
 			
 		</div>
