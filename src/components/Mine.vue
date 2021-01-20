@@ -22,7 +22,6 @@
 				</div>
 			</div>
 			<div class="list">
-				
 				<div class="left" @click="goEdit()">
 					<i class="el-icon-user-solid"></i>
 					<p>编辑资料</p>
@@ -33,8 +32,8 @@
 					<p>我的钱包</p>
 				</div>
 			</div>
-			<div class="list">
-				<div class="left">
+			<div class="list" >
+				<div class="left" @click="goSearchStore()">
 					<i class="el-icon-map-location"></i>
 					<p>餐遇店名地址</p>
 				</div>
@@ -81,6 +80,9 @@
 			},
 			goChat(){
 				this.$router.push({path:`/chat?mid=1`})
+			},
+			goSearchStore(){
+				this.$router.push({path:`/search-store`})
 			}
 		}
 	}
