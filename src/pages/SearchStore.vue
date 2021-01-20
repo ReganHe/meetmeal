@@ -2,7 +2,7 @@
 	<div class="restaurant">
 		<div class="headline">
 			<div class="header">
-				<i class="el-icon-arrow-left"></i>
+				<i class="el-icon-arrow-left" @click="back()"></i>
 				<p>餐遇门店地址</p>
 				<p class="add">添加新门店</p>
 			</div>
@@ -52,6 +52,9 @@
 					<div class="icon">
 						<img src="../assets/none.png" alt="">
 					</div>
+					<p 
+					style="text-align: center;font-size: 4vmin;color: #999999;margin-top: 3vmin;">
+					您暂时没有添加门店哦</p>
 				</div>
 				<div v-show="false" class="store-info">
 					<div class="store-name">
@@ -87,6 +90,9 @@
 		methods:{
 			changeType(num){
 				this.type = num
+			},
+			back(){
+				this.$router.go(-1)
 			}
 		}
 	}

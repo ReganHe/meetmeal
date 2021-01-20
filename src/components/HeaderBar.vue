@@ -35,7 +35,7 @@
 		span {
 			line-height: @h-height;
 			vertical-align: middle;
-			font-size: 4vmin;
+			font-size: 5vmin;
 		}
 		.el-icon-arrow-left{
 			position: absolute;
