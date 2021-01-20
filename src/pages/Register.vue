@@ -5,7 +5,7 @@
 			<p>注册账号</p>			
 		</div>
 		<div class="reg">
-			<el-form ref="ruleForm"
+			<el-form ref="ruleForm" v-loading="formLoading"
 			:model="ruleForm"
 			:rules="rules"
 			label-width="17vmin"
@@ -63,6 +63,7 @@
 			}
 			
 			return {
+				formLoading: false,
 				show:'true',
 				s1: '1',
 				s2: '2',
@@ -121,9 +122,23 @@
 				}
 			},
 			register () {
-				this.$refs.ruleForm.validate((valid, obj)=> {
+				this.$refs.ruleForm.validate(async (valid, obj)=> {
 					if (valid) {
-						RegisterApi(this.ruleForm)
+						this.formLoading = true
+						let resp = await RegisterApi(this.ruleForm, () => {
+							this.formLoading = false
+							this.$message({
+								type: 'success',
+								message: '注册成功，请登录'
+							})
+							this.$router.push({path:'/login'})
+						}, () => {
+							this.formLoading = false
+							this.$message({
+								type: 'error',
+								message: '注册失败，请重试'
+							})
+						})
 					}
 				})
 				

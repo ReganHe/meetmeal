@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-function RegisterApi(data){
+function RegisterApi(data, handleSuccess, handleError){
 	axios({
 		method: 'post',
 		url: '/rest/V1/customers',
@@ -33,7 +33,11 @@ function RegisterApi(data){
 			"password": data.old
 		}
 	}).then(resp => {
-		console.log(resp)
+		if (resp.status === 200) {
+			handleSuccess && typeof handleSuccess === 'function' ? handleSuccess() : ''
+		}
+	}).catch(error => {
+		handleError && typeof handleError === 'function' ? handleError() : ''
 	})
 }
 
