@@ -15,6 +15,7 @@ const store = new Vuex.Store({
 		finType: "true",
 		//订单页，切换状态
 		orderType:"true",
+		odayType:"1",
 		joinType: "1",
 		publishType: "1",
 		//消息数量
@@ -33,6 +34,9 @@ const store = new Vuex.Store({
 		},
 		changeOrder(state,newVal) {
 			state.orderType = newVal
+		},
+		changeOrderDay(state,newVal) {
+			state.odayType = newVal
 		},
 		//参拍中 待见面 已结束 状态
 		changejoin(state,newVal) {

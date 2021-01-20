@@ -95,15 +95,21 @@
 						</div>
 						<p>时间：（{{item.timeZone}}）{{item.time}}小时</p>
 						<div class="page2">
-							<p>地址：{{item.address}}</p>
+							<!-- <P v-if="item.isSet == '0'">请联系发布人设置地址</P> -->
+							<p v-if="item.isSet == '1'">地址：{{item.address}}</p>
 							<span>最终价：<span class="sty-color">${{item.finPrice}}</span></span>
 						</div>
 						<div class="l4">
 							<div class="last-price">
 								当前价：<span class="sty-color">${{item.price}}</span>
 							</div>
-							<div class="check-person sty-color" @click="confirm(item.oid)">
+							<div v-if="item.isSet == '0'" 
+							class="check-person sty-color" @click="checkAddress(item.id)">
 								查看店名地址
+							</div>
+							<div v-if="item.isSet == '1'" 
+							class="check-person sty-color" @click="confirm(item.oid)">
+								开始见面
 							</div>
 						</div>
 					</div>
@@ -126,7 +132,8 @@
 							  :visible.sync="dialogVisible"
 							  width = 83vmin>
 							<div class="block">
-								<el-rate v-model="value1" @change="changeScore(value1)" text-color="#ff9900" allow-half  :colors="colors"></el-rate>
+								<el-rate v-model="value1" @change="changeScore(value1)" 
+								text-color="#ff9900" allow-half  :colors="colors"></el-rate>
 								<p class="f-score">{{score}}</p>
 							</div>
 							<el-button type="primary" @click="subEvalution()">提交评价</el-button>
@@ -211,15 +218,20 @@
 						</div>
 						<p>时间：（{{item.timeZone}}）{{item.time}}小时</p>
 						<div class="page2">
-							<p>地址：{{item.address}}</p>
+							<p v-if="item.isSet == '1'">地址：{{item.address}}</p>
 							<span>最终价：<span class="sty-color">${{item.finPrice}}</span></span>
 						</div>
 						<div class="l4">
 							<div class="last-price">
 								当前价：<span class="sty-color">${{item.price}}</span>
 							</div>
-							<div class="check-person sty-color" @click="confirm(item.oid)">
+							<div v-if="item.isSet == '0'"
+							class="check-person sty-color" @click="checkAddress(item.id)">
 								查看店名地址
+							</div>
+							<div v-if="item.isSet == '1'" 
+							class="check-person sty-color" @click="confirm(item.oid)">
+								开始见面
 							</div>
 						</div>
 					</div>
@@ -300,13 +312,13 @@
 	export default {
 		computed:mapState({
 				orderType: state => state.orderType,
+				dayType: state => state.odayType,
 			}),
 		components:{
 			CountDown,
 		},
 		data() {
 			return {
-				dayType: 1,
 				order: [],
 				publish:[],
 				toMeet:[],
@@ -339,15 +351,15 @@
 			changeStyle (num) {
 				if (num == 1) {
 					this.$store.commit('changeOrder',true)
-					this.dayType = 1;
+					this.$store.commit('changeOrderDay','1')
 				}
 				if (num == 2) {
 					this.$store.commit('changeOrder',false)
-					this.dayType = 1;
+					this.$store.commit('changeOrderDay','1')
 				}
 			},
 			changeDay (num) {
-				this.dayType = num;
+				this.$store.commit('changeOrderDay',num)
 			},
 			goPart(oid) {
 				this.$store.commit('changePage','order-release')
@@ -380,6 +392,7 @@
 					this.toMeet = resp.data.data
 				})
 			},
+			//确认见面弹窗
 			confirm(oid) {
 				this.confirPop = true
 				for (let info of this.toMeet) {
@@ -387,6 +400,11 @@
 						this.meetpop = info
 					}
 				}
+			},
+			checkAddress(id){
+				this.$store.commit('changeOrder',this.orderType)
+				this.$store.commit('changeOrderDay',this.dayType)
+				this.$router.push({path:`/chat?mid=${id}`})
 			},
 			convertAge(year){
 				return convertYear(year)

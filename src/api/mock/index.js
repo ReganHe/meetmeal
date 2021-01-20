@@ -150,6 +150,7 @@ let toMeet = Mock.mock({
 		"gender|1":["0","1"],
 		"price|1-100":1,
 		"finPrice|50-100":1,
+		"isSet|1":["0","1"],
 		"time|1-24":1,
 		"job|1":["学生","教师","会计","工程师","自由职业","职员"],
 		"address":'@county(true)',

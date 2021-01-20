@@ -4,7 +4,9 @@
 			<div class="header">
 				<i class="el-icon-arrow-left" @click="back()"></i>
 				<p>餐遇门店地址</p>
-				<p class="add">添加新门店</p>
+				<router-link to="/add-store">
+					<p class="add">添加新门店</p>
+				</router-link>
 			</div>
 			<div class="search">
 				<el-input
