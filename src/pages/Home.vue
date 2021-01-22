@@ -1,6 +1,6 @@
 <template>
 	<div class="mint-footer">
-		<mt-tab-container class="page-tabbar-container" v-model="selected">
+		<mt-tab-container class="page-tabbar-container" v-model="pageType">
 			<mt-tab-container-item id="home">
 				<Main/>
 			</mt-tab-container-item>
@@ -27,7 +27,7 @@
 		</mt-tab-container>
 		
 		<div class="f-bg">
-			<mt-tabbar v-model="selected" >
+			<mt-tabbar v-model="pageType" >
 				<mt-tab-item id="home" @click.native="ch_page('home')">
 					<img v-if="pageType != 'home'" slot="icon" src="../assets/home.png">
 					<img v-if="pageType == 'home'" slot="icon" src="../assets/home_active.png">
@@ -69,16 +69,15 @@
 	import {mapState} from 'vuex';
 	export default {
 		computed:{
-			selected:{
+			pageType:{
 				get: function(){
-					return this.$store.state.selectPage
+					return this.$store.state.pageType
 				},
-				set: function(selected) {
-					this.$store.state.selectPage = selected
+				set: function(pageType) {
+					this.$store.state.pageType = pageType
 				}
 			},
 			...mapState({
-					pageType: state => state.pageType,
 					msgNum: state => state.msgNum,
 					orderNum: state => state.orderNum,
 				}),
@@ -101,7 +100,6 @@
 				this.ch_page(home)
 			}else {
 				this.ch_page(page)
-				this.$store.commit('changeSelect',page)
 			}
 			if (this.msgNum < 10) {
 				
@@ -112,7 +110,6 @@
 		methods:{
 			ch_page (page) {
 				this.$store.commit('changePage',page)
-				this.$store.commit('changeSelect',page)
 			},
 			goPublish(){
 				var value = this.$route.query.profile

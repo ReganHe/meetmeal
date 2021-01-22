@@ -91,7 +91,6 @@
 			},
 			goPublish(){
 				this.$store.commit('changePage',"publish")
-				this.$store.commit('changeSelect',"publish")
 			}
 		}
 	}
