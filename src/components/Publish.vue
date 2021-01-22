@@ -179,7 +179,7 @@
 					textAlign: 'left'
 				},{
 					flex: 1,
-					values: ['01', '02', '03', '04', '05', '06'],
+					values: ['11', '12', '13', '14', '15', '16','17','18','19','20'],
 					className: 'slot2',
 					textAlign: 'center'
 				}, {
@@ -189,7 +189,7 @@
 					textAlign:'center',
 				},{
 					flex: 1,
-					values: ['1', '2', '3', '4', '5', '10'],
+					values: ['00', '10', '20', '30', '40', '50'],
 					className: 'slot3',
 					textAlign: 'center'
 				},{
@@ -231,19 +231,19 @@
 		},
 		mounted() {
 			var nowDate = new Date().getTime(),
-				week = new Array("日", "一", "二", "三", "四", "五", "六"),
+				week = new Array("今天", "明天", "后天", ),
 				nextDate,
 				nextMonth,
 				nextDay,
 				nextWeekDay,
 				time;
 				
-			for (let d = 1;d<=7;d++) {
+			for (let d = 0;d<=2;d++) {
 				nextDate = new Date(nowDate + 24*3600*1000*d)
 				nextMonth = nextDate.getMonth()
 				nextDay = nextDate.getDate()
 				nextWeekDay = nextDate.getDay()
-				time = (nextMonth + 1) + "月"+ nextDay + "日" + " 星期" + week[nextWeekDay]
+				time = (nextMonth + 1) + "月"+ nextDay + "日" + " " + week[d]
 				this.slot1[0].values.push(time)
 			}
 		},
@@ -255,17 +255,19 @@
 				this.s_day = picker.getValues()[0];
 				this.s_hour = picker.getValues()[1];
 				this.s_minute = picker.getValues()[2];
+				var totalMin = parseFloat(this.s_minute)+this.s_long*60;
 				this.fin_min =  this.$options.methods.addZero(
-				parseFloat(this.s_minute)+parseFloat(this.s_long,1)%1*60,2);
+				totalMin%60,2);
 				this.fin_hour = this.$options.methods.addZero(
-				parseInt(this.s_hour)+parseInt(this.s_long),2);
+				parseInt(this.s_hour)+parseInt(this.s_long)+parseInt(totalMin/60),2);
 			},
 			selectLong(picker,values) {
-				this.s_long = picker.getValues()[0]
+				this.s_long = picker.getValues()[0];
+				var totalMin = parseFloat(this.s_minute)+this.s_long*60;
 				this.fin_min =  this.$options.methods.addZero(
-				parseFloat(this.s_minute)+parseFloat(this.s_long,1)%1*60,2);
+				totalMin%60,2);
 				this.fin_hour = this.$options.methods.addZero(
-				parseInt(this.s_hour)+parseInt(this.s_long),2);
+				parseInt(this.s_hour)+parseInt(this.s_long)+parseInt(totalMin/60),2);
 			},
 			setTime () {
 				this.input1 = this.s_day + " " +this.fin_hour + ":"+ this.fin_min;

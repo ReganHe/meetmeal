@@ -41,7 +41,8 @@
 			</div>
 		</div>
 		<div class="p-bottom">
-			<el-button class="join" @click="goBidding()">参与竞拍</el-button>
+			<el-button v-if="isAlert == 1" class="join" @click="goBidding()">下次提醒</el-button>
+			<el-button v-else class="join" @click="goBidding()">参与竞拍</el-button>
 		</div>
 		<el-button class="float">
 			<i class="el-icon-chat-line-round"></i>
@@ -72,10 +73,12 @@
 				total: 1,
 				imgList:[],
 				uid:"",
+				isAlert:0,
 			}
 		},
 		mounted () {
 			this.uid = this.$route.query.uid
+			this.isAlert = this.$route.query.isAlert
 			getPerson().then( resp => {
 				this.all_info = resp.data.data
 				for (var p of this.all_info) {

@@ -123,7 +123,7 @@
 		</div>
 		<div v-if="finType == false && dayType == 1">
 			<div v-for="item in product" :key="item.uid" class="content">
-				<router-link :to="{path:'profile?uid=' + item.uid}" class="with-img">
+				<router-link :to="{path:'profile?uid=' + item.uid + '&isAlert=1'}" class="with-img">
 					<div class="bg">
 						<img :src="item.img" alt="">
 					</div>
@@ -159,21 +159,21 @@
 						<div>{{item.local}}</div>
 					</div>
 					<div class="price">
-						<span class="p1">当前价</span>
+						<span class="p1">最终价</span>
 						<span class="p2">$</span>
 						<span class="p3">{{item.price}}</span>
 						<span class="p4">(V00851)</span>
 					</div>
 					<div class="timeAndBut">
 						<p>{{item.date}}</p>
-						<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+						<el-button class="want-bid">下次提醒</el-button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div v-if="finType == false && dayType == 2">
 			<div v-for="item in product" :key="item.uid" class="content">
-				<router-link :to="{path:'profile?uid=' + item.uid}" class="with-img">
+				<router-link :to="{path:'profile?uid=' + item.uid + '&isAlert=1'}" class="with-img">
 					<div class="bg">
 						<img :src="item.img" alt="">
 					</div>
@@ -209,14 +209,14 @@
 						<div>{{item.local}}</div>
 					</div>
 					<div class="price">
-						<span class="p1">当前价</span>
+						<span class="p1">最终价</span>
 						<span class="p2">$</span>
 						<span class="p3">{{item.price}}</span>
 						<span class="p4">(V00851)</span>
 					</div>
 					<div class="timeAndBut">
 						<p>{{item.date}}</p>
-						<el-button class="want-bid" @click="goTo(item.id)">我要竞拍</el-button>
+						<el-button class="want-bid" @click="goTo(item.id)">下次提醒</el-button>
 					</div>
 				</div>
 			</div>

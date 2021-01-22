@@ -13,7 +13,7 @@
 					<p>竞拍保证金（$15次/人）</p>
 					<div class="amount">$:&nbsp;&nbsp;12</div>
 				</div>
-				<div class="pay">
+				<div class="pay"  @click="goPrePay()">
 					<p>预付竞拍保证金</p>
 					<i class="el-icon-arrow-right"></i>
 				</div>
@@ -68,6 +68,9 @@
 		methods: {
 			goAddCard(){
 				this.$router.push({path:"/add-pay"})
+			},
+			goPrePay(){
+				this.$router.push({path:"/pre-pay"})
 			}
 		}
 	}
