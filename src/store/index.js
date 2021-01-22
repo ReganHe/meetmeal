@@ -11,6 +11,7 @@ const store = new Vuex.Store({
 		dayType:"1",
 		//底边栏切换页面的状态
 		pageType:"home",
+		selectPage:"home",
 		//是否是已结束页面
 		finType: "true",
 		//订单页，切换状态
@@ -25,6 +26,9 @@ const store = new Vuex.Store({
 	mutations: {
 		changePage(state,newVal) {
 			state.pageType = newVal
+		},
+		changeSelect(state,newVal) {
+			state.selectPage = newVal
 		},
 		changeDay(state,newVal) {
 			state.dayType = newVal

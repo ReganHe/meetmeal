@@ -47,7 +47,7 @@
 					<i class="el-icon-s-order"></i>
 					<p>反馈</p>
 				</div>
-				<div class="right">
+				<div @click="goPublish()" class="right">
 					<i class="el-icon-circle-plus"></i>
 					<p>发布空闲时间</p>
 				</div>
@@ -58,7 +58,12 @@
 
 <script>
 	import {getMine} from '../api/mine.js'
+	import {mapState} from 'vuex';
 	export default {
+		// computed:mapState({
+		// 			pageType: state => state.pageType,
+		// 			selected: state => state.selectPage,
+		// 		}),
 		data () {
 			return{
 				person:[],
@@ -83,6 +88,10 @@
 			},
 			goSearchStore(){
 				this.$router.push({path:`/search-store`})
+			},
+			goPublish(){
+				this.$store.commit('changePage',"publish")
+				this.$store.commit('changeSelect',"publish")
 			}
 		}
 	}

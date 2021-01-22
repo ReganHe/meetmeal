@@ -68,14 +68,23 @@
 	import MsgInfo from '../components/MsgInfo.vue'
 	import {mapState} from 'vuex';
 	export default {
-		computed:mapState({
+		computed:{
+			selected:{
+				get: function(){
+					return this.$store.state.selectPage
+				},
+				set: function(selected) {
+					this.$store.state.selectPage = selected
+				}
+			},
+			...mapState({
 					pageType: state => state.pageType,
 					msgNum: state => state.msgNum,
-					orderNum: state => state.orderNum
+					orderNum: state => state.orderNum,
 				}),
+			},
 		data() {
 		  return {
-			selected: 'home',
 			show: false,
 		  };
 		},
@@ -89,10 +98,10 @@
 		mounted(){
 			let page = this.pageType
 			if (!page){
-				this.pageType = 'home'
+				this.ch_page(home)
 			}else {
 				this.ch_page(page)
-				this.selected = page
+				this.$store.commit('changeSelect',page)
 			}
 			if (this.msgNum < 10) {
 				
@@ -103,7 +112,7 @@
 		methods:{
 			ch_page (page) {
 				this.$store.commit('changePage',page)
-				this.selected = page
+				this.$store.commit('changeSelect',page)
 			},
 			goPublish(){
 				var value = this.$route.query.profile
