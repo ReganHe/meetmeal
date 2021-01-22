@@ -39,7 +39,7 @@
 					订单
 					<div class="msg-pop order-pop">{{orderNum}}</div>
 				</mt-tab-item>
-			  <mt-tab-item class="add" id="publish" @click.native="ch_page('publish')">
+			  <mt-tab-item class="add" id="publish" @click.native="ch_page('publish');goPublish()">
 				<div>
 					<el-button class="but">+</el-button>
 				</div>
@@ -105,6 +105,14 @@
 				this.$store.commit('changePage',page)
 				this.selected = page
 			},
+			goPublish(){
+				var value = this.$route.query.profile
+				if (value == 0) {
+					this.$router.push({path:"/home?profile=0"})
+				} else {
+					this.$router.push({path:`/home?profile=1`})
+				}
+			}
 		}
 	}
 </script>

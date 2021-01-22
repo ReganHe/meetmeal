@@ -41,7 +41,7 @@
 			</div>
 		</div>
 		<div class="p-bottom">
-			<el-button v-if="isAlert == 1" class="join" @click="goBidding()">下次提醒</el-button>
+			<el-button v-if="isAlert == 1" class="join">下次提醒</el-button>
 			<el-button v-else class="join" @click="goBidding()">参与竞拍</el-button>
 		</div>
 		<el-button class="float">

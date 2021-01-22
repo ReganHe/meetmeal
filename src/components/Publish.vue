@@ -56,7 +56,7 @@
 			    placeholder="您选择后自动生成具体时间"
 			    v-model="input1">
 			</el-input>
-			<el-button 
+			<!-- <el-button 
 			class="but-sty" 
 			@click="localPop = true"
 			icon="el-icon-caret-bottom">选择见面城市</el-button>
@@ -64,7 +64,7 @@
 			    placeholder="使用当前定位城市（地区）"
 			    prefix-icon="el-icon-location-outline"
 			    v-model="input2">
-			</el-input>
+			</el-input> -->
 			<el-button @click="pricePop = true"
 			class="but-sty" 
 			icon="el-icon-caret-bottom">选择起拍价</el-button>
@@ -76,7 +76,7 @@
 				拍卖结束时间为见面时间前3个小时，距离结束11:59:59
 			</div>
 			<div class="but-pub" >
-				<el-button @click="publishPop = true" 
+				<el-button @click="popType()" 
 				class="but-sty" style="text-align: center;" >发布</el-button>
 			</div>
 		</div>
@@ -147,6 +147,25 @@
 				<i class="el-icon-circle-close"></i>
 			</div>
 		</mt-popup>
+		<mt-popup
+		  v-model="addProfile"
+		  class="publish-pop">
+			<div class="pic">
+				<img src="../assets/pub-order.png" alt="">
+			</div>
+			<p class="pub-title">添加个人资料</p>
+			<div class="pub-con">
+				<p style="text-align: left;font-size: 5.5vmin;line-height: 10vmin; height: 19vmin;">
+					您还没添加个人资料，请添加个人资料后发布
+				</p>
+				<router-link to="/edit">
+					<el-button class="but">去添加</el-button>
+				</router-link>
+			</div>
+			<div class="close" @click="addProfile = false">
+				<i class="el-icon-circle-close"></i>
+			</div>
+		</mt-popup>
 	</div>
 </template>
 
@@ -160,6 +179,8 @@
 				localPop: false,
 				pricePop: false,
 				publishPop: false,
+				addProfile: false,
+				profile:"1",
 				mealType:"",
 				input1: "",
 				input2: "",
@@ -223,13 +244,16 @@
 					textAlign:'center',
 				},{
 					flex: 1,
-					values: ["5","10","15","150","200","1000"],
+					values: ["20","30","50","60","80"],
 					className: 'price',
 					textAlign: 'center',
 				}],
 			};
 		},
 		mounted() {
+			if (this.$route.query.profile) {
+				this.profile = this.$route.query.profile
+			}
 			var nowDate = new Date().getTime(),
 				week = new Array("今天", "明天", "后天", ),
 				nextDate,
@@ -287,6 +311,9 @@
 				this.input3 = "$" + this.s_price;
 				this.pricePop = false;
 			},
+			popType(){
+				(this.profile == 1) ? (this.publishPop = true) : (this.addProfile = true)
+			}
 		}
 	}
 </script>
